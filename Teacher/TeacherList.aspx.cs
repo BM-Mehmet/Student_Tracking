@@ -66,10 +66,7 @@ namespace StudentTracking.Teacher
             db.SaveChanges();
             // Öğretmenleri yeniden bağla
             BindTeachers();
-            BindTeachers();
         }
-
-
 
     }
 }

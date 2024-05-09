@@ -40,7 +40,7 @@ namespace StudentTracking.Student
                     txtName.Text = student.name;
                     txtSurname.Text = student.surname;
                     txtEmail.Text = student.email; // Email özelliğini ekle
-                    TextPassword.Text = student.password;
+                    txtPassword.Text = student.password;
                 }
             }
         }
@@ -75,7 +75,7 @@ namespace StudentTracking.Student
                     student.name = txtName.Text;
                     student.surname = txtSurname.Text;
                     student.email = txtEmail.Text; // Email özelliğini güncelle
-                    student.password = TextPassword.Text;
+                    student.password = txtPassword.Text;
                     db.SaveChanges();
                     Response.Redirect("StudentList.aspx");
                 }

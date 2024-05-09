@@ -4,34 +4,42 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Add Group</title>
-    <link rel="stylesheet" type="text/css" href="../Css/AddGroup.css" />
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <form id="form1" runat="server">
-        <div>
-            <h1>Add Group</h1>
-            <div>
-                <label for="txtGroupName">Group Name:</label>
-                <asp:TextBox ID="txtGroupName" runat="server"></asp:TextBox>
-                <asp:Label ID="lblMessage" runat="server" Text=""></asp:Label>
+    <form id="form1" runat="server" class="container mt-5">
+        <div class="card">
+            <div class="card-header">
+                <h1 class="text-center">Add Group</h1>
             </div>
-            <div>
-                <label for="ddlLeaderStudent">Leader Student:</label>
-                <asp:DropDownList ID="ddlLeaderStudent" runat="server"></asp:DropDownList>
-                <!-- Öğrenci liderlerin listesini veritabanından doldurmak için bir yöntem kullanılmalıdır -->
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="txtGroupName">Group Name:</label>
+                    <asp:TextBox ID="txtGroupName" runat="server" CssClass="form-control"></asp:TextBox>
+                    <asp:Label ID="lblMessage" runat="server" Text="" CssClass="text-danger"></asp:Label>
+                </div>
+                <div class="form-group">
+                    <label for="ddlLeaderStudent">Leader Student:</label>
+                    <asp:DropDownList ID="ddlLeaderStudent" runat="server" CssClass="form-control"></asp:DropDownList>
+                    <!-- Öğrenci liderlerin listesini veritabanından doldurmak için bir yöntem kullanılmalıdır -->
+                </div>
+                <div class="form-group">
+                    <label for="ddlProgram">Program:</label>
+                    <asp:DropDownList ID="ddlProgram" runat="server" CssClass="form-control"></asp:DropDownList>
+                    <!-- Programların listesini veritabanından doldurmak için bir yöntem kullanılmalıdır -->
+                </div>
+                <div class="form-group">
+                    <label for="ddlCourse">Course:</label>
+                    <asp:DropDownList ID="ddlCourse" runat="server" CssClass="form-control"></asp:DropDownList>
+                    <!-- Kursların listesini veritabanından doldurmak için bir yöntem kullanılmalıdır -->
+                </div>
+                <asp:Button ID="btnAddGroup" runat="server" Text="Add Group" OnClick="btnAddGroup_Click" CssClass="btn btn-primary" />
             </div>
-            <div>
-                <label for="ddlProgram">Program:</label>
-                <asp:DropDownList ID="ddlProgram" runat="server"></asp:DropDownList>
-                <!-- Programların listesini veritabanından doldurmak için bir yöntem kullanılmalıdır -->
-            </div>
-            <div>
-                <label for="ddlCourse">Course:</label>
-                <asp:DropDownList ID="ddlCourse" runat="server"></asp:DropDownList>
-                <!-- Kursların listesini veritabanından doldurmak için bir yöntem kullanılmalıdır -->
-            </div>
-            <asp:Button ID="btnAddGroup" runat="server" Text="Add Group" OnClick="btnAddGroup_Click" />
         </div>
     </form>
+
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

@@ -19,8 +19,11 @@ namespace StudentTracking.Group
                 ddlGroups.DataSource = db.groups.Where(g=> g.course_id == 1).
                     Select(g => new { g.id, GroupName = g.group_name }).ToList();
                 ddlGroups.DataBind();
+                LoadRequests();
             }
+
         }
+
 
         StudentTrackingDB db = new StudentTrackingDB();
         protected void RequestJoinButton_Click(object sender, EventArgs e)
@@ -44,10 +47,67 @@ namespace StudentTracking.Group
 
             // İstek gönderildikten sonra geri bildirim verebilirsiniz
             Response.Write("<script>alert('Join request sent successfully!');</script>");
-            Response.Redirect(Page.ResolveClientUrl("~/Group/ManageRequests.aspx"));
+            Response.Redirect(Page.ResolveClientUrl("~/Group/GroupRequest.aspx"));
 
         }
+        protected void LoadRequests()
+        {
+            int leaderId = 1;
 
+            var groupRequests = db.group_requests
+                                  .Where(gr => db.groups
+                                                 .Where(g => g.leader_student_id == leaderId)
+                                                 .Select(g => g.id)
+                                                 .Contains(gr.group_id) && gr.is_visible == true)
+                                  .ToList();
+
+
+            RequestsGridView.DataSource = groupRequests;
+            RequestsGridView.DataBind();
+        }
+        protected void RequestsGridView_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "Approve")
+            {
+                int requestId = Convert.ToInt32(e.CommandArgument);
+                ApproveRequest(requestId);
+            }
+            else if (e.CommandName == "Reject")
+            {
+                int requestId = Convert.ToInt32(e.CommandArgument);
+                RejectRequest(requestId);
+            }
+
+            // İstekleri yeniden yükle
+            LoadRequests();
+        }
+        protected void ApproveRequest(int requestId)
+        {
+            var request = db.group_requests.Find(requestId);
+            if (request != null)
+            {
+                request.status = "Approved";
+                request.is_visible = false;
+
+                var student = db.students.Find(request.student_id);
+                if (student != null)
+                {
+                    student.group_id = request.group_id;
+                }
+                db.SaveChanges();
+            }
+        }
+
+        protected void RejectRequest(int requestId)
+        {
+            var request = db.group_requests.Find(requestId);
+            if (request != null)
+            {
+                request.status = "Rejected";
+                request.is_visible = false;
+                db.SaveChanges();
+            }
+        }
     }
 }
 
