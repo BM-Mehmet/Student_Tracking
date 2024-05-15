@@ -16,7 +16,7 @@ namespace StudentTracking
 
         protected void Button2_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Teacher/TeacherManagement.aspx");
+            Response.Redirect("Admin/Admin.aspx");
         }
     }
 }

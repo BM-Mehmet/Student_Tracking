@@ -34,7 +34,7 @@
                         <h5 class="card-title text-center">Login</h5>
                         <div class="form-group">
                             <label for="TextBox1">Student Mail:</label>
-                            <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control"></asp:TextBox>
+                            <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control"  placeholder="Example@ogr.ksu.edu.tr" ></asp:TextBox>
                         </div>
                         <div class="form-group">
                             <label for="TextBox2">Password:</label>

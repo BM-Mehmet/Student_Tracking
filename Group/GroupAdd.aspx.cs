@@ -59,7 +59,7 @@ namespace StudentTracking.Group
             db.SaveChanges();
             // Grup ekleme işlemi tamamlandıktan sonra isteğe bağlı olarak bir mesaj gösterilebilir veya başka bir işlem yapılabilir
             Response.Write("<script>alert('Group added successfully!');</script>");
-            Response.Redirect("ManageRequests.aspx");
+            Response.Redirect("GroupRequest.aspx");
         }
     }
 }
