@@ -26,6 +26,7 @@ namespace StudentTracking
         public Nullable<bool> is_group_enabled { get; set; }
         public Nullable<int> semester_id { get; set; }
         public Nullable<bool> is_visible { get; set; }
+        public Nullable<bool> is_alone_enabled { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<groups> groups { get; set; }

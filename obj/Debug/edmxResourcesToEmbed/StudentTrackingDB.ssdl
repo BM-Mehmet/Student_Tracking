@@ -9,6 +9,7 @@
     <Property Name="is_group_enabled" Type="bit" />
     <Property Name="semester_id" Type="int" />
     <Property Name="is_visible" Type="bit" />
+    <Property Name="is_alone_enabled" Type="bit" />
   </EntityType>
   <EntityType Name="group_requests">
     <Key>

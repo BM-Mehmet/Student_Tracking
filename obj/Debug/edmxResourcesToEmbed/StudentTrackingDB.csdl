@@ -11,6 +11,7 @@
     <Property Name="is_visible" Type="Boolean" />
     <NavigationProperty Name="groups" Relationship="Self.FK__groups__course_i__4316F928" FromRole="courses" ToRole="groups" />
     <NavigationProperty Name="program" Relationship="Self.FK__program__course___3E52440B" FromRole="courses" ToRole="program" />
+    <Property Name="is_alone_enabled" Type="Boolean" />
   </EntityType>
   <EntityType Name="group_requests">
     <Key>

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="StudentTrackingDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="StudentTrackingDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="courses">
           <Key>
             <PropertyRef Name="id" />
@@ -14,6 +14,7 @@
           <Property Name="is_group_enabled" Type="bit" />
           <Property Name="semester_id" Type="int" />
           <Property Name="is_visible" Type="bit" />
+          <Property Name="is_alone_enabled" Type="bit" />
         </EntityType>
         <EntityType Name="group_requests">
           <Key>
@@ -244,8 +245,7 @@
             <End Role="groups" EntitySet="groups" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="StudentTrackingDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -260,6 +260,7 @@
           <Property Name="is_visible" Type="Boolean" />
           <NavigationProperty Name="groups" Relationship="Self.FK__groups__course_i__4316F928" FromRole="courses" ToRole="groups" />
           <NavigationProperty Name="program" Relationship="Self.FK__program__course___3E52440B" FromRole="courses" ToRole="program" />
+          <Property Name="is_alone_enabled" Type="Boolean" />
         </EntityType>
         <EntityType Name="group_requests">
           <Key>
@@ -515,6 +516,7 @@
           <EntitySetMapping Name="courses">
             <EntityTypeMapping TypeName="StudentTrackingDBModel.courses">
               <MappingFragment StoreEntitySet="courses">
+                <ScalarProperty Name="is_alone_enabled" ColumnName="is_alone_enabled" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="course_name" ColumnName="course_name" />
                 <ScalarProperty Name="is_group_enabled" ColumnName="is_group_enabled" />

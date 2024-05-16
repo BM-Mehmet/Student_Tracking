@@ -4,6 +4,7 @@
     <EntitySetMapping Name="courses">
       <EntityTypeMapping TypeName="StudentTrackingDBModel.courses">
         <MappingFragment StoreEntitySet="courses">
+          <ScalarProperty Name="is_alone_enabled" ColumnName="is_alone_enabled" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="course_name" ColumnName="course_name" />
           <ScalarProperty Name="is_group_enabled" ColumnName="is_group_enabled" />

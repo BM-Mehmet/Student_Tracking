@@ -28,7 +28,7 @@
                         <a class="nav-link" href="<%= ResolveUrl("~/program/ProgramList.aspx") %>">Programs</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<%= ResolveUrl("~/Course/CourseList.aspx") %>">Courses</a>
+                        <a class="nav-link" href="<%= ResolveUrl("~/Student/Course/CourseList.aspx") %>">Courses</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="<%= ResolveUrl("~/Group/GroupList.aspx") %>">Groups</a>

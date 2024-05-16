@@ -205,6 +205,10 @@
       <DependentUpon>StudentTrackingDB.edmx</DependentUpon>
       <LastGenOutput>StudentTrackingDB.cs</LastGenOutput>
     </Content>
+    <Content Include="Student\Course\CourseAdd.aspx" />
+    <Content Include="Student\Course\CourseDelete.aspx" />
+    <Content Include="Student\Course\CourseEdit.aspx" />
+    <Content Include="Student\Course\CourseList.aspx" />
     <Content Include="Student\Course\courseSign.aspx" />
     <Content Include="Student\Course\StudentRegister.aspx" />
     <Content Include="Student\StudentAdd.aspx" />
@@ -352,6 +356,34 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>StudentTrackingDB.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Student\Course\CourseAdd.aspx.cs">
+      <DependentUpon>CourseAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Student\Course\CourseAdd.aspx.designer.cs">
+      <DependentUpon>CourseAdd.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Student\Course\CourseDelete.aspx.cs">
+      <DependentUpon>CourseDelete.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Student\Course\CourseDelete.aspx.designer.cs">
+      <DependentUpon>CourseDelete.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Student\Course\CourseEdit.aspx.cs">
+      <DependentUpon>CourseEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Student\Course\CourseEdit.aspx.designer.cs">
+      <DependentUpon>CourseEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Student\Course\CourseList.aspx.cs">
+      <DependentUpon>CourseList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Student\Course\CourseList.aspx.designer.cs">
+      <DependentUpon>CourseList.aspx</DependentUpon>
     </Compile>
     <Compile Include="Student\Course\courseSign.aspx.cs">
       <DependentUpon>courseSign.aspx</DependentUpon>
