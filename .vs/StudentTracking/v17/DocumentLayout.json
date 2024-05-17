@@ -3,16 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\bmmeh\\source\\repos\\StudentTracking\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{9479ECB3-5559-453A-B168-4CE54BA042BA}|StudentTracking.csproj|c:\\users\\bmmeh\\source\\repos\\studenttracking\\admin\\admin.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{9479ECB3-5559-453A-B168-4CE54BA042BA}|StudentTracking.csproj|solutionrelative:admin\\admin.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9479ECB3-5559-453A-B168-4CE54BA042BA}|StudentTracking.csproj|c:\\users\\bmmeh\\source\\repos\\studenttracking\\student\\course\\coursedelete.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{9479ECB3-5559-453A-B168-4CE54BA042BA}|StudentTracking.csproj|solutionrelative:student\\course\\coursedelete.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9479ECB3-5559-453A-B168-4CE54BA042BA}|StudentTracking.csproj|c:\\users\\bmmeh\\source\\repos\\studenttracking\\student\\course\\coursedelete.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9479ECB3-5559-453A-B168-4CE54BA042BA}|StudentTracking.csproj|solutionrelative:student\\course\\coursedelete.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9479ECB3-5559-453A-B168-4CE54BA042BA}|StudentTracking.csproj|c:\\users\\bmmeh\\source\\repos\\studenttracking\\group\\grouprequest.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9479ECB3-5559-453A-B168-4CE54BA042BA}|StudentTracking.csproj|solutionrelative:group\\grouprequest.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -35,40 +27,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Admin.aspx",
-              "DocumentMoniker": "C:\\Users\\bmmeh\\source\\repos\\StudentTracking\\Admin\\Admin.aspx",
-              "RelativeDocumentMoniker": "Admin\\Admin.aspx",
-              "ToolTip": "C:\\Users\\bmmeh\\source\\repos\\StudentTracking\\Admin\\Admin.aspx",
-              "RelativeToolTip": "Admin\\Admin.aspx",
-              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2024-05-16T13:07:06.363Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "CourseDelete.aspx.cs",
-              "DocumentMoniker": "C:\\Users\\bmmeh\\source\\repos\\StudentTracking\\Student\\Course\\CourseDelete.aspx.cs",
-              "RelativeDocumentMoniker": "Student\\Course\\CourseDelete.aspx.cs",
-              "ToolTip": "C:\\Users\\bmmeh\\source\\repos\\StudentTracking\\Student\\Course\\CourseDelete.aspx.cs",
-              "RelativeToolTip": "Student\\Course\\CourseDelete.aspx.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAAAAAA",
+              "Title": "GroupRequest.aspx.cs",
+              "DocumentMoniker": "C:\\Users\\bmmeh\\source\\repos\\StudentTracking\\Group\\GroupRequest.aspx.cs",
+              "RelativeDocumentMoniker": "Group\\GroupRequest.aspx.cs",
+              "ToolTip": "C:\\Users\\bmmeh\\source\\repos\\StudentTracking\\Group\\GroupRequest.aspx.cs",
+              "RelativeToolTip": "Group\\GroupRequest.aspx.cs",
+              "ViewState": "AQIAAGEAAAAAAAAAAAAqwG4AAAA8AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-16T12:45:21.029Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "CourseDelete.aspx",
-              "DocumentMoniker": "C:\\Users\\bmmeh\\source\\repos\\StudentTracking\\Student\\Course\\CourseDelete.aspx",
-              "RelativeDocumentMoniker": "Student\\Course\\CourseDelete.aspx",
-              "ToolTip": "C:\\Users\\bmmeh\\source\\repos\\StudentTracking\\Student\\Course\\CourseDelete.aspx",
-              "RelativeToolTip": "Student\\Course\\CourseDelete.aspx",
-              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2024-05-16T12:40:34.317Z",
+              "WhenOpened": "2024-05-17T15:27:57.371Z",
               "EditorCaption": ""
             }
           ]

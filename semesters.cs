@@ -24,6 +24,8 @@ namespace StudentTracking
         public string academic_year { get; set; }
         public Nullable<int> semester { get; set; }
         public Nullable<bool> is_visible { get; set; }
+        public Nullable<System.DateTime> start_date { get; set; }
+        public Nullable<System.DateTime> end_date { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<program> program { get; set; }

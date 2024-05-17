@@ -22,6 +22,12 @@
         <AssociationConnector Association="StudentTrackingDBModel.FK_loader_student_id" ManuallyRouted="false" />
         <AssociationConnector Association="StudentTrackingDBModel.FK__program__semeste__3D5E1FD2" ManuallyRouted="false" />
         <AssociationConnector Association="StudentTrackingDBModel.FK__program__teacher__3F466844" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="StudentTrackingDBModel.enrollments" Width="1.5" PointX="10.5" PointY="10.5" />
+        <EntityTypeShape EntityType="StudentTrackingDBModel.group_memberships" Width="1.5" PointX="7.5" PointY="10.25" />
+        <AssociationConnector Association="StudentTrackingDBModel.FK__enrollmen__cours__70DDC3D8" />
+        <AssociationConnector Association="StudentTrackingDBModel.FK__enrollmen__stude__6FE99F9F" />
+        <AssociationConnector Association="StudentTrackingDBModel.FK__group_mem__group__02FC7413" />
+        <AssociationConnector Association="StudentTrackingDBModel.FK__group_mem__stude__03F0984C" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

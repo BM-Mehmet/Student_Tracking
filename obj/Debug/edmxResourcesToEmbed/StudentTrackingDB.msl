@@ -50,6 +50,8 @@
     <EntitySetMapping Name="semesters">
       <EntityTypeMapping TypeName="StudentTrackingDBModel.semesters">
         <MappingFragment StoreEntitySet="semesters">
+          <ScalarProperty Name="end_date" ColumnName="end_date" />
+          <ScalarProperty Name="start_date" ColumnName="start_date" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="academic_year" ColumnName="academic_year" />
           <ScalarProperty Name="semester" ColumnName="semester" />
@@ -92,6 +94,28 @@
           <ScalarProperty Name="password" ColumnName="password" />
           <ScalarProperty Name="is_admin" ColumnName="is_admin" />
           <ScalarProperty Name="is_visible" ColumnName="is_visible" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="enrollments">
+      <EntityTypeMapping TypeName="StudentTrackingDBModel.enrollments">
+        <MappingFragment StoreEntitySet="enrollments">
+          <ScalarProperty Name="enrollment_date" ColumnName="enrollment_date" />
+          <ScalarProperty Name="enrollment_status" ColumnName="enrollment_status" />
+          <ScalarProperty Name="course_id" ColumnName="course_id" />
+          <ScalarProperty Name="student_id" ColumnName="student_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="group_memberships">
+      <EntityTypeMapping TypeName="StudentTrackingDBModel.group_memberships">
+        <MappingFragment StoreEntitySet="group_memberships">
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="join_date" ColumnName="join_date" />
+          <ScalarProperty Name="student_id" ColumnName="student_id" />
+          <ScalarProperty Name="group_id" ColumnName="group_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

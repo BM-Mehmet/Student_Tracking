@@ -11,6 +11,26 @@
     <Property Name="is_visible" Type="bit" />
     <Property Name="is_alone_enabled" Type="bit" />
   </EntityType>
+  <EntityType Name="enrollments">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="student_id" Type="int" />
+    <Property Name="course_id" Type="int" />
+    <Property Name="enrollment_status" Type="nvarchar" MaxLength="50" />
+    <Property Name="enrollment_date" Type="datetime" />
+  </EntityType>
+  <EntityType Name="group_memberships">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="group_id" Type="int" />
+    <Property Name="student_id" Type="int" />
+    <Property Name="join_date" Type="datetime" />
+    <Property Name="status" Type="nvarchar" MaxLength="50" />
+  </EntityType>
   <EntityType Name="group_requests">
     <Key>
       <PropertyRef Name="id" />
@@ -50,6 +70,8 @@
     <Property Name="academic_year" Type="varchar" MaxLength="255" />
     <Property Name="semester" Type="int" />
     <Property Name="is_visible" Type="bit" />
+    <Property Name="start_date" Type="date" />
+    <Property Name="end_date" Type="date" />
   </EntityType>
   <EntityType Name="students">
     <Key>
@@ -86,6 +108,54 @@
     <Property Name="is_admin" Type="bit" />
     <Property Name="is_visible" Type="bit" />
   </EntityType>
+  <Association Name="FK__enrollmen__cours__70DDC3D8">
+    <End Role="courses" Type="Self.courses" Multiplicity="0..1" />
+    <End Role="enrollments" Type="Self.enrollments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="courses">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="enrollments">
+        <PropertyRef Name="course_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__enrollmen__stude__6FE99F9F">
+    <End Role="students" Type="Self.students" Multiplicity="0..1" />
+    <End Role="enrollments" Type="Self.enrollments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="students">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="enrollments">
+        <PropertyRef Name="student_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__group_mem__group__02FC7413">
+    <End Role="groups" Type="Self.groups" Multiplicity="0..1" />
+    <End Role="group_memberships" Type="Self.group_memberships" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="groups">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="group_memberships">
+        <PropertyRef Name="group_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__group_mem__stude__03F0984C">
+    <End Role="students" Type="Self.students" Multiplicity="0..1" />
+    <End Role="group_memberships" Type="Self.group_memberships" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="students">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="group_memberships">
+        <PropertyRef Name="student_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK__group_req__group__68487DD7">
     <End Role="groups" Type="Self.groups" Multiplicity="1" />
     <End Role="group_requests" Type="Self.group_requests" Multiplicity="*" />
@@ -196,6 +266,8 @@
   </Association>
   <EntityContainer Name="StudentTrackingDBModelStoreContainer">
     <EntitySet Name="courses" EntityType="Self.courses" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="enrollments" EntityType="Self.enrollments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="group_memberships" EntityType="Self.group_memberships" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="group_requests" EntityType="Self.group_requests" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="groups" EntityType="Self.groups" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="program" EntityType="Self.program" Schema="dbo" store:Type="Tables" />
@@ -203,6 +275,22 @@
     <EntitySet Name="students" EntityType="Self.students" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="teachers" EntityType="Self.teachers" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__enrollmen__cours__70DDC3D8" Association="Self.FK__enrollmen__cours__70DDC3D8">
+      <End Role="courses" EntitySet="courses" />
+      <End Role="enrollments" EntitySet="enrollments" />
+    </AssociationSet>
+    <AssociationSet Name="FK__enrollmen__stude__6FE99F9F" Association="Self.FK__enrollmen__stude__6FE99F9F">
+      <End Role="students" EntitySet="students" />
+      <End Role="enrollments" EntitySet="enrollments" />
+    </AssociationSet>
+    <AssociationSet Name="FK__group_mem__group__02FC7413" Association="Self.FK__group_mem__group__02FC7413">
+      <End Role="groups" EntitySet="groups" />
+      <End Role="group_memberships" EntitySet="group_memberships" />
+    </AssociationSet>
+    <AssociationSet Name="FK__group_mem__stude__03F0984C" Association="Self.FK__group_mem__stude__03F0984C">
+      <End Role="students" EntitySet="students" />
+      <End Role="group_memberships" EntitySet="group_memberships" />
+    </AssociationSet>
     <AssociationSet Name="FK__group_req__group__68487DD7" Association="Self.FK__group_req__group__68487DD7">
       <End Role="groups" EntitySet="groups" />
       <End Role="group_requests" EntitySet="group_requests" />

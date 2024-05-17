@@ -33,5 +33,7 @@ namespace StudentTracking
         public virtual DbSet<students> students { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<teachers> teachers { get; set; }
+        public virtual DbSet<enrollments> enrollments { get; set; }
+        public virtual DbSet<group_memberships> group_memberships { get; set; }
     }
 }

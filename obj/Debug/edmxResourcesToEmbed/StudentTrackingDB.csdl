@@ -12,6 +12,7 @@
     <NavigationProperty Name="groups" Relationship="Self.FK__groups__course_i__4316F928" FromRole="courses" ToRole="groups" />
     <NavigationProperty Name="program" Relationship="Self.FK__program__course___3E52440B" FromRole="courses" ToRole="program" />
     <Property Name="is_alone_enabled" Type="Boolean" />
+    <NavigationProperty Name="enrollments" Relationship="StudentTrackingDBModel.FK__enrollmen__cours__70DDC3D8" FromRole="courses" ToRole="enrollments" />
   </EntityType>
   <EntityType Name="group_requests">
     <Key>
@@ -40,6 +41,7 @@
     <NavigationProperty Name="program" Relationship="Self.FK__groups__program___4222D4EF" FromRole="groups" ToRole="program" />
     <NavigationProperty Name="students" Relationship="Self.FK__students__group___45F365D3" FromRole="groups" ToRole="students" />
     <NavigationProperty Name="students1" Relationship="Self.FK_loader_student_id" FromRole="groups" ToRole="students" />
+    <NavigationProperty Name="group_memberships" Relationship="StudentTrackingDBModel.FK__group_mem__group__02FC7413" FromRole="groups" ToRole="group_memberships" />
   </EntityType>
   <EntityType Name="program">
     <Key>
@@ -64,6 +66,8 @@
     <Property Name="semester" Type="Int32" />
     <Property Name="is_visible" Type="Boolean" />
     <NavigationProperty Name="program" Relationship="Self.FK__program__semeste__3D5E1FD2" FromRole="semesters" ToRole="program" />
+    <Property Name="start_date" Type="DateTime" Precision="0" />
+    <Property Name="end_date" Type="DateTime" Precision="0" />
   </EntityType>
   <EntityType Name="students">
     <Key>
@@ -80,6 +84,8 @@
     <NavigationProperty Name="group_requests" Relationship="Self.FK__group_req__stude__693CA210" FromRole="students" ToRole="group_requests" />
     <NavigationProperty Name="groups" Relationship="Self.FK__students__group___45F365D3" FromRole="students" ToRole="groups" />
     <NavigationProperty Name="groups1" Relationship="Self.FK_loader_student_id" FromRole="students" ToRole="groups" />
+    <NavigationProperty Name="enrollments" Relationship="StudentTrackingDBModel.FK__enrollmen__stude__6FE99F9F" FromRole="students" ToRole="enrollments" />
+    <NavigationProperty Name="group_memberships" Relationship="StudentTrackingDBModel.FK__group_mem__stude__03F0984C" FromRole="students" ToRole="group_memberships" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>
@@ -257,5 +263,95 @@
       <End Role="teachers" EntitySet="teachers" />
       <End Role="program" EntitySet="program" />
     </AssociationSet>
+    <EntitySet Name="enrollments" EntityType="StudentTrackingDBModel.enrollments" />
+    <EntitySet Name="group_memberships" EntityType="StudentTrackingDBModel.group_memberships" />
+    <AssociationSet Name="FK__enrollmen__cours__70DDC3D8" Association="StudentTrackingDBModel.FK__enrollmen__cours__70DDC3D8">
+      <End Role="courses" EntitySet="courses" />
+      <End Role="enrollments" EntitySet="enrollments" />
+    </AssociationSet>
+    <AssociationSet Name="FK__enrollmen__stude__6FE99F9F" Association="StudentTrackingDBModel.FK__enrollmen__stude__6FE99F9F">
+      <End Role="students" EntitySet="students" />
+      <End Role="enrollments" EntitySet="enrollments" />
+    </AssociationSet>
+    <AssociationSet Name="FK__group_mem__group__02FC7413" Association="StudentTrackingDBModel.FK__group_mem__group__02FC7413">
+      <End Role="groups" EntitySet="groups" />
+      <End Role="group_memberships" EntitySet="group_memberships" />
+    </AssociationSet>
+    <AssociationSet Name="FK__group_mem__stude__03F0984C" Association="StudentTrackingDBModel.FK__group_mem__stude__03F0984C">
+      <End Role="students" EntitySet="students" />
+      <End Role="group_memberships" EntitySet="group_memberships" />
+    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="enrollments">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="student_id" Type="Int32" />
+    <Property Name="course_id" Type="Int32" />
+    <Property Name="enrollment_status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="enrollment_date" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="courses" Relationship="StudentTrackingDBModel.FK__enrollmen__cours__70DDC3D8" FromRole="enrollments" ToRole="courses" />
+    <NavigationProperty Name="students" Relationship="StudentTrackingDBModel.FK__enrollmen__stude__6FE99F9F" FromRole="enrollments" ToRole="students" />
+  </EntityType>
+  <EntityType Name="group_memberships">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="group_id" Type="Int32" />
+    <Property Name="student_id" Type="Int32" />
+    <Property Name="join_date" Type="DateTime" Precision="3" />
+    <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="groups" Relationship="StudentTrackingDBModel.FK__group_mem__group__02FC7413" FromRole="group_memberships" ToRole="groups" />
+    <NavigationProperty Name="students" Relationship="StudentTrackingDBModel.FK__group_mem__stude__03F0984C" FromRole="group_memberships" ToRole="students" />
+  </EntityType>
+  <Association Name="FK__enrollmen__cours__70DDC3D8">
+    <End Type="StudentTrackingDBModel.courses" Role="courses" Multiplicity="0..1" />
+    <End Type="StudentTrackingDBModel.enrollments" Role="enrollments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="courses">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="enrollments">
+        <PropertyRef Name="course_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__enrollmen__stude__6FE99F9F">
+    <End Type="StudentTrackingDBModel.students" Role="students" Multiplicity="0..1" />
+    <End Type="StudentTrackingDBModel.enrollments" Role="enrollments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="students">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="enrollments">
+        <PropertyRef Name="student_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__group_mem__group__02FC7413">
+    <End Type="StudentTrackingDBModel.groups" Role="groups" Multiplicity="0..1" />
+    <End Type="StudentTrackingDBModel.group_memberships" Role="group_memberships" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="groups">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="group_memberships">
+        <PropertyRef Name="group_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__group_mem__stude__03F0984C">
+    <End Type="StudentTrackingDBModel.students" Role="students" Multiplicity="0..1" />
+    <End Type="StudentTrackingDBModel.group_memberships" Role="group_memberships" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="students">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="group_memberships">
+        <PropertyRef Name="student_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

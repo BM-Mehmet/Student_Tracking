@@ -16,7 +16,7 @@ namespace StudentTracking.Group
             if (!IsPostBack)
             {
                 // Populate the dropdown list with groups
-                ddlGroups.DataSource = db.groups.Where(g=> g.course_id == 1).
+                ddlGroups.DataSource = db.groups.Where(g => g.course_id == 1).
                     Select(g => new { g.id, GroupName = g.group_name }).ToList();
                 ddlGroups.DataBind();
                 LoadRequests();
@@ -84,17 +84,25 @@ namespace StudentTracking.Group
         protected void ApproveRequest(int requestId)
         {
             var request = db.group_requests.Find(requestId);
+            var student = db.students.Find(request.student_id);
+
             if (request != null)
             {
                 request.status = "Approved";
                 request.is_visible = false;
-
-                var student = db.students.Find(request.student_id);
                 if (student != null)
                 {
-                    student.group_id = request.group_id;
+                    var Group_member = new group_memberships
+                    {
+                        status = request.status,
+                        group_id = request.group_id,
+                        student_id = request.student_id,
+                        join_date = DateTime.Now,
+                    };
+                    db.group_memberships.Add(Group_member);
+                    db.group_requests.ToList();
+                    db.SaveChanges();
                 }
-                db.SaveChanges();
             }
         }
 
@@ -105,8 +113,18 @@ namespace StudentTracking.Group
             {
                 request.status = "Rejected";
                 request.is_visible = false;
+                var Group_member = new group_memberships
+                {
+                    status = request.status,
+                    group_id = request.group_id,
+                    student_id = request.student_id,
+                    join_date = DateTime.Now,
+                };
+                db.group_memberships.Add(Group_member);
+
                 db.SaveChanges();
             }
+
         }
     }
 }
