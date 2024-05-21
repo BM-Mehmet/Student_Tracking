@@ -4,7 +4,6 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Xml.Linq;
 
 namespace StudentTracking.Student.Course
 {
@@ -35,15 +34,15 @@ namespace StudentTracking.Student.Course
 
         private void PopulateUpdateData(int courseId)
         {
-            using (var db = new StudentTrackingDB())
+            using (var db = new StudentTrackingEntitiesDB())
             {
                 var courses = db.courses.FirstOrDefault(s => s.id == courseId);
-                if ( courses != null)
+                if (courses != null)
                 {
                     course_name.Text = courses.course_name;
-                    semester_id.Text = Convert.ToString( courses.semester_id);
-                    is_group_enabled.Checked = Convert.ToBoolean( courses.is_group_enabled); // Email özelliğini ekle
-                    is_alone_enabled.Checked = Convert.ToBoolean( courses.is_alone_enabled);
+                    semester_id.Text = Convert.ToString(courses.semester_id);
+                    is_group_enabled.Checked = Convert.ToBoolean(courses.is_group_enabled); // Email özelliğini ekle
+                    is_alone_enabled.Checked = Convert.ToBoolean(courses.is_alone_enabled);
                 }
             }
         }
@@ -70,7 +69,7 @@ namespace StudentTracking.Student.Course
 
         private void UpdateCoursesData(int courseId)
         {
-            using (var db = new StudentTrackingDB())
+            using (var db = new StudentTrackingEntitiesDB())
             {
                 var courses = db.courses.FirstOrDefault(s => s.id == courseId);
                 if (courses != null)

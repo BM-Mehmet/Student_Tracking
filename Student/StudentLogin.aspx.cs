@@ -21,13 +21,12 @@ public partial class StudentLogin : System.Web.UI.Page
         // Örneğin, giriş bilgilerini kontrol etmek için bir fonksiyon çağırabilirsiniz
         if (ValidateLogin(studentMail, password))
         {
-            // Giriş başarılı ise yönlendirme yapabilirsiniz
-            Response.Redirect(Page.ResolveClientUrl("Course/courseSign.aspx"));
+                // Giriş başarılı ise yönlendirme yapabilirsiniz
+                Response.Redirect(Page.ResolveClientUrl("Course/CourseList.aspx"));
+            
         }
         else
         {
-            // Giriş başarısız ise kullanıcıya bir hata mesajı gösterebilirsiniz
-            // Örneğin:
             Response.Write("<script>alert('Giriş başarısız. Lütfen geçerli bir e-posta ve şifre girin.');</script>");
         }
     }
@@ -44,7 +43,7 @@ public partial class StudentLogin : System.Web.UI.Page
                 return false;
             }
 
-            using (var db = new StudentTrackingDB())
+            using (var db = new StudentTrackingEntitiesDB())
             {
                 // Kullanıcıyı veritabanından e-posta adresine göre bul
                 var user = db.students.SingleOrDefault(s => s.email == studentMail);
@@ -56,6 +55,8 @@ public partial class StudentLogin : System.Web.UI.Page
                 }
 
                 // Eğer herhangi bir hata yoksa, doğrulama başarılı olur
+                Session["UserRole"] = "öğrenci";
+                Session["UserId"] = user.id;
                 return true;
             }
         }

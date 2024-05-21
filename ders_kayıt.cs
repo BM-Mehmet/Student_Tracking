@@ -12,7 +12,7 @@ namespace StudentTracking
     using System;
     using System.Collections.Generic;
     
-    public partial class enrollments
+    public partial class ders_kayıt
     {
         public int id { get; set; }
         public Nullable<int> student_id { get; set; }

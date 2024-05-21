@@ -21,8 +21,8 @@
                 </div>
                 <div class="form-group">
                     <label for="ddlLeaderStudent">Leader Student:</label>
-                    <asp:DropDownList ID="ddlLeaderStudent" runat="server" CssClass="form-control"></asp:DropDownList>
-                    <!-- Öğrenci liderlerin listesini veritabanından doldurmak için bir yöntem kullanılmalıdır -->
+                    <asp:DropDownList ID="ddlLeaderStudent" runat="server" CssClass="form-control" Enabled="false"></asp:DropDownList>
+                    <!-- Lider olarak otomatik olarak giriş yapan kullanıcı seçilir -->
                 </div>
                 <div class="form-group">
                     <label for="ddlProgram">Program:</label>
@@ -31,8 +31,8 @@
                 </div>
                 <div class="form-group">
                     <label for="ddlCourse">Course:</label>
-                    <asp:DropDownList ID="ddlCourse" runat="server" CssClass="form-control"></asp:DropDownList>
-                    <!-- Kursların listesini veritabanından doldurmak için bir yöntem kullanılmalıdır -->
+                    <asp:DropDownList ID="ddlCourse" runat="server" CssClass="form-control" Enabled="false"></asp:DropDownList>
+                    <!-- Kurs bilgisi önceki sayfadan alınarak burada gösterilir ve değiştirilemez -->
                 </div>
                 <asp:Button ID="btnAddGroup" runat="server" Text="Add Group" OnClick="btnAddGroup_Click" CssClass="btn btn-primary" />
             </div>

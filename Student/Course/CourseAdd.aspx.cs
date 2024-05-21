@@ -9,7 +9,7 @@ namespace StudentTracking.Student.Course
 {
     public partial class CourseAdd : System.Web.UI.Page
     {
-        StudentTrackingDB db = new StudentTrackingDB();
+        StudentTrackingEntitiesDB db = new StudentTrackingEntitiesDB();
 
         protected void btnAddCourse_Click(object sender, EventArgs e)
         {
@@ -17,9 +17,9 @@ namespace StudentTracking.Student.Course
             string CourseName = txtNewcourse_name.Text;
             bool IsGroupEnabled = chkIsGroupEnabled.Checked;
             bool IsAloneEnabled = chkIsAloneEnabled.Checked;
-            int  SemesterId =  Convert.ToInt32( txtNewsemester_id.Text);
+            int SemesterId = Convert.ToInt32(txtNewsemester_id.Text);
 
-            using (var db = new StudentTrackingDB()) // Veritabanı bağlantısı
+            using (var db = new StudentTrackingEntitiesDB()) // Veritabanı bağlantısı
             {
                 // Yeni öğrenci oluştur
                 var newCourses = new courses
@@ -31,16 +31,15 @@ namespace StudentTracking.Student.Course
                     is_visible = true
                 };
 
-                db.courses.Add(newCourses); // Öğrenciyi veritabanına ekle
-                db.SaveChanges(); // Değişiklikleri kaydet
+                db.courses.Add(newCourses); 
+                db.SaveChanges(); 
 
             }
 
             txtNewcourse_name.Text = ""; // TextBox'ları temizle
             txtNewsemester_id.Text = "";
 
-            Response.Redirect(Page.ResolveClientUrl("CoursesList.aspx"));
+            Response.Redirect(Page.ResolveClientUrl("CourseSign.aspx"));
         }
-
     }
 }

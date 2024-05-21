@@ -9,7 +9,7 @@ namespace StudentTracking.Group
 {
     public partial class GroupList : System.Web.UI.Page
     {
-        StudentTrackingDB db = new StudentTrackingDB();
+        StudentTrackingEntitiesDB db = new StudentTrackingEntitiesDB();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -20,12 +20,8 @@ namespace StudentTracking.Group
 
         private void BindGroupList()
         {
-            // Grup verilerini veritabanından al ve GridView'e bağla
-            // Örnek kod:
-             GridViewGroups.DataSource = db.groups.Where(g => g.is_visible == true).ToList();
-             GridViewGroups.DataBind();
-
-            // Burada veritabanından grup verilerini alarak GridView'e bağlayın
+            GridViewGroups.DataSource = db.groups.Where(g => g.is_visible == true).ToList();
+            GridViewGroups.DataBind();
         }
 
         protected void GridViewGroups_RowEditing(object sender, GridViewEditEventArgs e)
@@ -48,5 +44,31 @@ namespace StudentTracking.Group
 
             BindGroupList();
         }
+
+        protected void GridViewGroups_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                int groupId = Convert.ToInt32(GridViewGroups.DataKeys[e.Row.RowIndex].Value);
+                GridView gridViewMembers = e.Row.FindControl("GridViewMembers") as GridView;
+
+                if (gridViewMembers != null) // gridViewMembers kontrolü ekleyin
+                {
+                    var members = db.group_memberships
+                                    .Where(m => m.group_id == groupId)
+                                    .Select(m => new
+                                    {
+                                        student_name = m.students.name,
+                                        join_date = m.join_date,
+                                        status = m.status
+                                    }).ToList();
+
+                    gridViewMembers.DataSource = members;
+                    gridViewMembers.DataBind();
+                }
+            }
+        }
+
     }
 }
