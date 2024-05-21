@@ -21,7 +21,7 @@ namespace StudentTracking.Group
         private void BindDropdownLists()
         {
             // Öğrenci liderleri, programlar ve kurslar dropdown listelerini doldurmak için gerekli verileri veritabanından alın
-            using (var db = new StudentTrackingDB())
+            using (var db = new StudentTrackingEntitiesDB())
             {
                 ddlLeaderStudent.DataSource = db.students.Select(x => new { StudentId = x.id, StudentName = x.name }).ToList();
                 ddlLeaderStudent.DataTextField = "StudentName";
@@ -49,7 +49,7 @@ namespace StudentTracking.Group
             if (Request.QueryString["groupId"] != null)
             {
                 int groupId = Convert.ToInt32(Request.QueryString["groupId"]);
-                using (var db = new StudentTrackingDB())
+                using (var db = new StudentTrackingEntitiesDB())
                 {
                     var group = db.groups.FirstOrDefault(g => g.id == groupId);
                     if (group != null)
@@ -69,7 +69,7 @@ namespace StudentTracking.Group
             if (Request.QueryString["groupId"] != null)
             {
                 int groupId = Convert.ToInt32(Request.QueryString["groupId"]);
-                using (var db = new StudentTrackingDB())
+                using (var db = new StudentTrackingEntitiesDB())
                 {
                     var groupToUpdate = db.groups.FirstOrDefault(g => g.id == groupId);
                     if (groupToUpdate != null)

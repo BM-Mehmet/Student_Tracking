@@ -133,6 +133,7 @@
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="GroupRequests\ManageGroupRequests.aspx" />
     <Content Include="Group\GroupAdd.aspx" />
     <Content Include="Group\GroupList.aspx" />
     <Content Include="Group\GroupRequest.aspx" />
@@ -195,22 +196,21 @@
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Site.Master" />
-    <Content Include="StudentTrackingDB.Context.tt">
+    <Content Include="StudentTrackingEntities.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>StudentTrackingDB.Context.cs</LastGenOutput>
-      <DependentUpon>StudentTrackingDB.edmx</DependentUpon>
+      <DependentUpon>StudentTrackingEntities.edmx</DependentUpon>
+      <LastGenOutput>StudentTrackingEntities.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="StudentTrackingDB.tt">
+    <Content Include="StudentTrackingEntities.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>StudentTrackingDB.edmx</DependentUpon>
-      <LastGenOutput>StudentTrackingDB.cs</LastGenOutput>
+      <DependentUpon>StudentTrackingEntities.edmx</DependentUpon>
+      <LastGenOutput>StudentTrackingEntities.cs</LastGenOutput>
     </Content>
     <Content Include="Student\Course\CourseAdd.aspx" />
     <Content Include="Student\Course\CourseDelete.aspx" />
     <Content Include="Student\Course\CourseEdit.aspx" />
     <Content Include="Student\Course\CourseList.aspx" />
     <Content Include="Student\Course\courseSign.aspx" />
-    <Content Include="Student\Course\StudentRegister.aspx" />
     <Content Include="Student\StudentAdd.aspx" />
     <Content Include="Student\StudentDelete.aspx" />
     <Content Include="Student\StudentEdit.aspx" />
@@ -219,19 +219,13 @@
     <Content Include="Student\StudentRegister.aspx" />
     <Content Include="Teacher\TeacherAdd.aspx" />
     <Content Include="Teacher\TeacherList.aspx" />
+    <Content Include="Teacher\TeacherLogin.aspx" />
     <Content Include="Teacher\TeacherManagement.aspx" />
     <Content Include="Teacher\TeacherUpdate.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
     <Content Include="Site.Mobile.Master" />
-    <EntityDeploy Include="StudentTrackingDB.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>StudentTrackingDB.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="StudentTrackingDB.edmx.diagram">
-      <DependentUpon>StudentTrackingDB.edmx</DependentUpon>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Admin\Admin.aspx.cs">
@@ -258,7 +252,7 @@
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
     <Compile Include="courses.cs">
-      <DependentUpon>StudentTrackingDB.tt</DependentUpon>
+      <DependentUpon>StudentTrackingEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -267,14 +261,21 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="enrollments.cs">
-      <DependentUpon>StudentTrackingDB.tt</DependentUpon>
+    <Compile Include="ders_kayıt.cs">
+      <DependentUpon>StudentTrackingEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="GroupRequests\ManageGroupRequests.aspx.cs">
+      <DependentUpon>ManageGroupRequests.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GroupRequests\ManageGroupRequests.aspx.designer.cs">
+      <DependentUpon>ManageGroupRequests.aspx</DependentUpon>
+    </Compile>
     <Compile Include="groups.cs">
-      <DependentUpon>StudentTrackingDB.tt</DependentUpon>
+      <DependentUpon>StudentTrackingEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Group\GroupAdd.aspx.cs">
       <DependentUpon>GroupAdd.aspx</DependentUpon>
@@ -305,10 +306,10 @@
       <DependentUpon>GroupUpdate.aspx</DependentUpon>
     </Compile>
     <Compile Include="group_memberships.cs">
-      <DependentUpon>StudentTrackingDB.tt</DependentUpon>
+      <DependentUpon>StudentTrackingEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="group_requests.cs">
-      <DependentUpon>StudentTrackingDB.tt</DependentUpon>
+      <DependentUpon>StudentTrackingEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>
@@ -318,7 +319,7 @@
       <DependentUpon>index.aspx</DependentUpon>
     </Compile>
     <Compile Include="program.cs">
-      <DependentUpon>StudentTrackingDB.tt</DependentUpon>
+      <DependentUpon>StudentTrackingEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Program\ProgramAdd.aspx.cs">
       <DependentUpon>ProgramAdd.aspx</DependentUpon>
@@ -329,7 +330,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="semesters.cs">
-      <DependentUpon>StudentTrackingDB.tt</DependentUpon>
+      <DependentUpon>StudentTrackingEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
@@ -345,23 +346,30 @@
     <Compile Include="Site.Mobile.Master.designer.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
+    <Compile Include="StudentMaster.Master.cs">
+      <DependentUpon>StudentMaster.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StudentMaster.Master.designer.cs">
+      <DependentUpon>StudentMaster.Master</DependentUpon>
+    </Compile>
     <Compile Include="students.cs">
-      <DependentUpon>StudentTrackingDB.tt</DependentUpon>
+      <DependentUpon>StudentTrackingEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="StudentTrackingDB.Context.cs">
+    <Compile Include="StudentTrackingEntities.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>StudentTrackingDB.Context.tt</DependentUpon>
+      <DependentUpon>StudentTrackingEntities.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="StudentTrackingDB.cs">
+    <Compile Include="StudentTrackingEntities.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>StudentTrackingDB.tt</DependentUpon>
+      <DependentUpon>StudentTrackingEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="StudentTrackingDB.Designer.cs">
+    <Compile Include="StudentTrackingEntities.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>StudentTrackingDB.edmx</DependentUpon>
+      <DependentUpon>StudentTrackingEntities.edmx</DependentUpon>
     </Compile>
     <Compile Include="Student\Course\CourseAdd.aspx.cs">
       <DependentUpon>CourseAdd.aspx</DependentUpon>
@@ -397,13 +405,6 @@
     </Compile>
     <Compile Include="Student\Course\courseSign.aspx.designer.cs">
       <DependentUpon>courseSign.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Student\Course\StudentRegister.aspx.cs">
-      <DependentUpon>StudentRegister.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Student\Course\StudentRegister.aspx.designer.cs">
-      <DependentUpon>StudentRegister.aspx</DependentUpon>
     </Compile>
     <Compile Include="Student\StudentAdd.aspx.cs">
       <DependentUpon>StudentAdd.aspx</DependentUpon>
@@ -447,11 +448,8 @@
     <Compile Include="Student\StudentRegister.aspx.designer.cs">
       <DependentUpon>StudentRegister.aspx</DependentUpon>
     </Compile>
-    <Compile Include="sysdiagrams.cs">
-      <DependentUpon>StudentTrackingDB.tt</DependentUpon>
-    </Compile>
     <Compile Include="teachers.cs">
-      <DependentUpon>StudentTrackingDB.tt</DependentUpon>
+      <DependentUpon>StudentTrackingEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Teacher\TeacherAdd.aspx.cs">
       <DependentUpon>TeacherAdd.aspx</DependentUpon>
@@ -466,6 +464,13 @@
     </Compile>
     <Compile Include="Teacher\TeacherList.aspx.designer.cs">
       <DependentUpon>TeacherList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\TeacherLogin.aspx.cs">
+      <DependentUpon>TeacherLogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Teacher\TeacherLogin.aspx.designer.cs">
+      <DependentUpon>TeacherLogin.aspx</DependentUpon>
     </Compile>
     <Compile Include="Teacher\TeacherManagement.aspx.cs">
       <DependentUpon>TeacherManagement.aspx</DependentUpon>
@@ -496,6 +501,14 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+    <EntityDeploy Include="StudentTrackingEntities.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>StudentTrackingEntities.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="StudentTrackingEntities.edmx.diagram">
+      <DependentUpon>StudentTrackingEntities.edmx</DependentUpon>
+    </Content>
+    <Content Include="StudentMaster.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

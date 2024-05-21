@@ -15,14 +15,27 @@
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <asp:GridView ID="GridViewGroups" runat="server" AutoGenerateColumns="False" OnRowDeleting="GridViewGroups_RowDeleting" OnRowEditing="GridViewGroups_RowEditing" DataKeyNames="ID" CssClass="table">
+                    <asp:GridView ID="GridViewGroups" runat="server" AutoGenerateColumns="False"
+                         OnRowDeleting="GridViewGroups_RowDeleting" OnRowEditing="GridViewGroups_RowEditing"
+                         OnRowDataBound="GridViewGroups_RowDataBound" DataKeyNames="id" CssClass="table table-hover">
                         <Columns>
                             <asp:BoundField DataField="group_name" HeaderText="Group Name" />
                             <asp:BoundField DataField="leader_student_id" HeaderText="Leader Student ID" />
                             <asp:BoundField DataField="program_id" HeaderText="Program ID" />
                             <asp:BoundField DataField="course_id" HeaderText="Course ID" />
                             <asp:CommandField ShowEditButton="True" ButtonType="Button" ControlStyle-CssClass="btn btn-primary" />
-                            <asp:ButtonField ButtonType="Button" CommandName="Delete" Text="Delete" ControlStyle-CssClass="btn btn-danger" />
+                            <asp:CommandField ShowDeleteButton="True" ButtonType="Button" ControlStyle-CssClass="btn btn-danger" />
+                            <asp:TemplateField HeaderText="Members">
+                                <ItemTemplate>
+                                    <asp:GridView ID="GridViewMembers" runat="server" AutoGenerateColumns="False" CssClass="table table-sm">
+                                        <Columns>
+                                            <asp:BoundField DataField="student_name" HeaderText="Student Name" />
+                                            <asp:BoundField DataField="join_date" HeaderText="Join Date" DataFormatString="{0:yyyy-MM-dd}" />
+                                            <asp:BoundField DataField="status" HeaderText="Status" />
+                                        </Columns>
+                                    </asp:GridView>
+                                </ItemTemplate>
+                            </asp:TemplateField>
                         </Columns>
                     </asp:GridView>
                 </div>

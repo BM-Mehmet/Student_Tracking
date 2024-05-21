@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace StudentTracking.Program
 {
@@ -16,7 +12,7 @@ namespace StudentTracking.Program
             int TeacherId = Convert.ToInt32(txtNewteacher_id.Text);
             int SemesterId = Convert.ToInt32( txtNewsemester_id.Text);
 
-            using (var db = new StudentTrackingDB()) // Veritabanı bağlantısı
+            using (var db = new StudentTrackingEntitiesDB()) // Veritabanı bağlantısı
             {
                 // Yeni öğrenci oluştur
                 var newProgram = new program

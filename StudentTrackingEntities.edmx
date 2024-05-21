@@ -1,0 +1,851 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="StudentTrackingEntities.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="courses">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="course_name" Type="varchar" MaxLength="255" />
+          <Property Name="is_group_enabled" Type="bit" />
+          <Property Name="semester_id" Type="int" />
+          <Property Name="is_visible" Type="bit" />
+          <Property Name="is_alone_enabled" Type="bit" />
+        </EntityType>
+        <EntityType Name="ders_kayıt">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="student_id" Type="int" />
+          <Property Name="course_id" Type="int" />
+          <Property Name="enrollment_status" Type="nvarchar" MaxLength="50" />
+          <Property Name="enrollment_date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="group_memberships">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="group_id" Type="int" />
+          <Property Name="student_id" Type="int" />
+          <Property Name="join_date" Type="datetime" />
+          <Property Name="status" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="group_requests">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="student_id" Type="int" Nullable="false" />
+          <Property Name="group_id" Type="int" Nullable="false" />
+          <Property Name="request_date" Type="datetime" />
+          <Property Name="is_visible" Type="bit" />
+          <Property Name="status" Type="varchar" MaxLength="255" />
+          <Property Name="join_message" Type="nvarchar(max)" />
+          <Property Name="reject_reason" Type="nvarchar(max)" />
+          <Property Name="course_id" Type="int" />
+        </EntityType>
+        <EntityType Name="groups">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="group_name" Type="varchar" MaxLength="255" />
+          <Property Name="program_id" Type="int" Nullable="false" />
+          <Property Name="course_id" Type="int" />
+          <Property Name="leader_student_id" Type="int" />
+          <Property Name="is_visible" Type="bit" />
+        </EntityType>
+        <EntityType Name="program">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="semester_id" Type="int" Nullable="false" />
+          <Property Name="course_id" Type="int" Nullable="false" />
+          <Property Name="teachers_id" Type="int" Nullable="false" />
+          <Property Name="is_visible" Type="bit" />
+        </EntityType>
+        <EntityType Name="semesters">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="academic_year" Type="varchar" MaxLength="255" />
+          <Property Name="semester" Type="int" />
+          <Property Name="is_visible" Type="bit" />
+          <Property Name="start_date" Type="date" />
+          <Property Name="end_date" Type="date" />
+        </EntityType>
+        <EntityType Name="students">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="255" />
+          <Property Name="surname" Type="varchar" MaxLength="255" />
+          <Property Name="email" Type="varchar" MaxLength="255" />
+          <Property Name="group_id" Type="int" />
+          <Property Name="password" Type="varchar" MaxLength="255" />
+          <Property Name="is_visible" Type="bit" />
+        </EntityType>
+        <EntityType Name="teachers">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="255" />
+          <Property Name="surname" Type="varchar" MaxLength="255" />
+          <Property Name="email" Type="varchar" MaxLength="255" />
+          <Property Name="password" Type="varchar" MaxLength="255" />
+          <Property Name="is_admin" Type="bit" />
+          <Property Name="is_visible" Type="bit" />
+        </EntityType>
+        <Association Name="FK__ders_kayı__cours__6C190EBB">
+          <End Role="courses" Type="Self.courses" Multiplicity="0..1" />
+          <End Role="ders_kayıt" Type="Self.ders_kayıt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="courses">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ders_kayıt">
+              <PropertyRef Name="course_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ders_kayı__stude__6B24EA82">
+          <End Role="students" Type="Self.students" Multiplicity="0..1" />
+          <End Role="ders_kayıt" Type="Self.ders_kayıt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="students">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ders_kayıt">
+              <PropertyRef Name="student_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__group_mem__group__6FE99F9F">
+          <End Role="groups" Type="Self.groups" Multiplicity="0..1" />
+          <End Role="group_memberships" Type="Self.group_memberships" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="groups">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="group_memberships">
+              <PropertyRef Name="group_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__group_mem__stude__70DDC3D8">
+          <End Role="students" Type="Self.students" Multiplicity="0..1" />
+          <End Role="group_memberships" Type="Self.group_memberships" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="students">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="group_memberships">
+              <PropertyRef Name="student_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__groups__course_i__4316F928">
+          <End Role="courses" Type="Self.courses" Multiplicity="0..1" />
+          <End Role="groups" Type="Self.groups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="courses">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="groups">
+              <PropertyRef Name="course_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__groups__program___4222D4EF">
+          <End Role="program" Type="Self.program" Multiplicity="1" />
+          <End Role="groups" Type="Self.groups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="program">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="groups">
+              <PropertyRef Name="program_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__program__course___3E52440B">
+          <End Role="courses" Type="Self.courses" Multiplicity="1" />
+          <End Role="program" Type="Self.program" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="courses">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="program">
+              <PropertyRef Name="course_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__program__semeste__3D5E1FD2">
+          <End Role="semesters" Type="Self.semesters" Multiplicity="1" />
+          <End Role="program" Type="Self.program" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="semesters">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="program">
+              <PropertyRef Name="semester_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__program__teacher__3F466844">
+          <End Role="teachers" Type="Self.teachers" Multiplicity="1" />
+          <End Role="program" Type="Self.program" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="teachers">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="program">
+              <PropertyRef Name="teachers_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__students__group___45F365D3">
+          <End Role="groups" Type="Self.groups" Multiplicity="0..1" />
+          <End Role="students" Type="Self.students" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="groups">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="students">
+              <PropertyRef Name="group_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_group_requests_courses">
+          <End Role="courses" Type="Self.courses" Multiplicity="0..1" />
+          <End Role="group_requests" Type="Self.group_requests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="courses">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="group_requests">
+              <PropertyRef Name="course_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_group_requests_groups">
+          <End Role="groups" Type="Self.groups" Multiplicity="1" />
+          <End Role="group_requests" Type="Self.group_requests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="groups">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="group_requests">
+              <PropertyRef Name="group_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_group_requests_students">
+          <End Role="students" Type="Self.students" Multiplicity="1" />
+          <End Role="group_requests" Type="Self.group_requests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="students">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="group_requests">
+              <PropertyRef Name="student_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_loader_student_id">
+          <End Role="students" Type="Self.students" Multiplicity="0..1" />
+          <End Role="groups" Type="Self.groups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="students">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="groups">
+              <PropertyRef Name="leader_student_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="StudentTrackingEntitiesStoreContainer">
+          <EntitySet Name="courses" EntityType="Self.courses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ders_kayıt" EntityType="Self.ders_kayıt" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="group_memberships" EntityType="Self.group_memberships" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="group_requests" EntityType="Self.group_requests" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="groups" EntityType="Self.groups" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="program" EntityType="Self.program" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="semesters" EntityType="Self.semesters" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="students" EntityType="Self.students" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="teachers" EntityType="Self.teachers" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__ders_kayı__cours__6C190EBB" Association="Self.FK__ders_kayı__cours__6C190EBB">
+            <End Role="courses" EntitySet="courses" />
+            <End Role="ders_kayıt" EntitySet="ders_kayıt" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ders_kayı__stude__6B24EA82" Association="Self.FK__ders_kayı__stude__6B24EA82">
+            <End Role="students" EntitySet="students" />
+            <End Role="ders_kayıt" EntitySet="ders_kayıt" />
+          </AssociationSet>
+          <AssociationSet Name="FK__group_mem__group__6FE99F9F" Association="Self.FK__group_mem__group__6FE99F9F">
+            <End Role="groups" EntitySet="groups" />
+            <End Role="group_memberships" EntitySet="group_memberships" />
+          </AssociationSet>
+          <AssociationSet Name="FK__group_mem__stude__70DDC3D8" Association="Self.FK__group_mem__stude__70DDC3D8">
+            <End Role="students" EntitySet="students" />
+            <End Role="group_memberships" EntitySet="group_memberships" />
+          </AssociationSet>
+          <AssociationSet Name="FK__groups__course_i__4316F928" Association="Self.FK__groups__course_i__4316F928">
+            <End Role="courses" EntitySet="courses" />
+            <End Role="groups" EntitySet="groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK__groups__program___4222D4EF" Association="Self.FK__groups__program___4222D4EF">
+            <End Role="program" EntitySet="program" />
+            <End Role="groups" EntitySet="groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK__program__course___3E52440B" Association="Self.FK__program__course___3E52440B">
+            <End Role="courses" EntitySet="courses" />
+            <End Role="program" EntitySet="program" />
+          </AssociationSet>
+          <AssociationSet Name="FK__program__semeste__3D5E1FD2" Association="Self.FK__program__semeste__3D5E1FD2">
+            <End Role="semesters" EntitySet="semesters" />
+            <End Role="program" EntitySet="program" />
+          </AssociationSet>
+          <AssociationSet Name="FK__program__teacher__3F466844" Association="Self.FK__program__teacher__3F466844">
+            <End Role="teachers" EntitySet="teachers" />
+            <End Role="program" EntitySet="program" />
+          </AssociationSet>
+          <AssociationSet Name="FK__students__group___45F365D3" Association="Self.FK__students__group___45F365D3">
+            <End Role="groups" EntitySet="groups" />
+            <End Role="students" EntitySet="students" />
+          </AssociationSet>
+          <AssociationSet Name="FK_group_requests_courses" Association="Self.FK_group_requests_courses">
+            <End Role="courses" EntitySet="courses" />
+            <End Role="group_requests" EntitySet="group_requests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_group_requests_groups" Association="Self.FK_group_requests_groups">
+            <End Role="groups" EntitySet="groups" />
+            <End Role="group_requests" EntitySet="group_requests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_group_requests_students" Association="Self.FK_group_requests_students">
+            <End Role="students" EntitySet="students" />
+            <End Role="group_requests" EntitySet="group_requests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_loader_student_id" Association="Self.FK_loader_student_id">
+            <End Role="students" EntitySet="students" />
+            <End Role="groups" EntitySet="groups" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="StudentTrackingEntities" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="courses">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="course_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="is_group_enabled" Type="Boolean" />
+          <Property Name="semester_id" Type="Int32" />
+          <Property Name="is_visible" Type="Boolean" />
+          <NavigationProperty Name="groups" Relationship="Self.FK__groups__course_i__4316F928" FromRole="courses" ToRole="groups" />
+          <NavigationProperty Name="program" Relationship="Self.FK__program__course___3E52440B" FromRole="courses" ToRole="program" />
+          <Property Name="is_alone_enabled" Type="Boolean" />
+          <NavigationProperty Name="ders_kayıt" Relationship="StudentTrackingEntities.FK__ders_kayı__cours__6C190EBB" FromRole="courses" ToRole="ders_kayıt" />
+          <NavigationProperty Name="group_requests" Relationship="StudentTrackingEntities.FK_group_requests_courses" FromRole="courses" ToRole="group_requests" />
+        </EntityType>
+        <EntityType Name="group_requests">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="student_id" Type="Int32" Nullable="false" />
+          <Property Name="group_id" Type="Int32" Nullable="false" />
+          <Property Name="request_date" Type="DateTime" Precision="3" />
+          <Property Name="is_visible" Type="Boolean" />
+          <Property Name="status" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="groups" Relationship="Self.FK_group_requests_groups" FromRole="group_requests" ToRole="groups" />
+          <NavigationProperty Name="students" Relationship="Self.FK_group_requests_students" FromRole="group_requests" ToRole="students" />
+          <Property Name="join_message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="reject_reason" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="course_id" Type="Int32" />
+          <NavigationProperty Name="courses" Relationship="StudentTrackingEntities.FK_group_requests_courses" FromRole="group_requests" ToRole="courses" />
+        </EntityType>
+        <EntityType Name="groups">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="group_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="program_id" Type="Int32" Nullable="false" />
+          <Property Name="course_id" Type="Int32" />
+          <Property Name="leader_student_id" Type="Int32" />
+          <Property Name="is_visible" Type="Boolean" />
+          <NavigationProperty Name="courses" Relationship="Self.FK__groups__course_i__4316F928" FromRole="groups" ToRole="courses" />
+          <NavigationProperty Name="group_requests" Relationship="Self.FK_group_requests_groups" FromRole="groups" ToRole="group_requests" />
+          <NavigationProperty Name="program" Relationship="Self.FK__groups__program___4222D4EF" FromRole="groups" ToRole="program" />
+          <NavigationProperty Name="students" Relationship="Self.FK__students__group___45F365D3" FromRole="groups" ToRole="students" />
+          <NavigationProperty Name="students1" Relationship="Self.FK_loader_student_id" FromRole="groups" ToRole="students" />
+          <NavigationProperty Name="group_memberships" Relationship="StudentTrackingEntities.FK__group_mem__group__6FE99F9F" FromRole="groups" ToRole="group_memberships" />
+        </EntityType>
+        <EntityType Name="program">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="semester_id" Type="Int32" Nullable="false" />
+          <Property Name="course_id" Type="Int32" Nullable="false" />
+          <Property Name="teachers_id" Type="Int32" Nullable="false" />
+          <Property Name="is_visible" Type="Boolean" />
+          <NavigationProperty Name="courses" Relationship="Self.FK__program__course___3E52440B" FromRole="program" ToRole="courses" />
+          <NavigationProperty Name="groups" Relationship="Self.FK__groups__program___4222D4EF" FromRole="program" ToRole="groups" />
+          <NavigationProperty Name="semesters" Relationship="Self.FK__program__semeste__3D5E1FD2" FromRole="program" ToRole="semesters" />
+          <NavigationProperty Name="teachers" Relationship="Self.FK__program__teacher__3F466844" FromRole="program" ToRole="teachers" />
+        </EntityType>
+        <EntityType Name="semesters">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="academic_year" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="semester" Type="Int32" />
+          <Property Name="is_visible" Type="Boolean" />
+          <NavigationProperty Name="program" Relationship="Self.FK__program__semeste__3D5E1FD2" FromRole="semesters" ToRole="program" />
+          <Property Name="start_date" Type="DateTime" Precision="0" />
+          <Property Name="end_date" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="students">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="surname" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="group_id" Type="Int32" />
+          <Property Name="password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="is_visible" Type="Boolean" />
+          <NavigationProperty Name="group_requests" Relationship="Self.FK_group_requests_students" FromRole="students" ToRole="group_requests" />
+          <NavigationProperty Name="groups" Relationship="Self.FK__students__group___45F365D3" FromRole="students" ToRole="groups" />
+          <NavigationProperty Name="groups1" Relationship="Self.FK_loader_student_id" FromRole="students" ToRole="groups" />
+          <NavigationProperty Name="ders_kayıt" Relationship="StudentTrackingEntities.FK__ders_kayı__stude__6B24EA82" FromRole="students" ToRole="ders_kayıt" />
+          <NavigationProperty Name="group_memberships" Relationship="StudentTrackingEntities.FK__group_mem__stude__70DDC3D8" FromRole="students" ToRole="group_memberships" />
+        </EntityType>
+        <EntityType Name="teachers">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="surname" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="is_admin" Type="Boolean" />
+          <Property Name="is_visible" Type="Boolean" />
+          <NavigationProperty Name="program" Relationship="Self.FK__program__teacher__3F466844" FromRole="teachers" ToRole="program" />
+        </EntityType>
+        <Association Name="FK__groups__course_i__4316F928">
+          <End Role="courses" Type="Self.courses" Multiplicity="0..1" />
+          <End Role="groups" Type="Self.groups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="courses">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="groups">
+              <PropertyRef Name="course_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__program__course___3E52440B">
+          <End Role="courses" Type="Self.courses" Multiplicity="1" />
+          <End Role="program" Type="Self.program" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="courses">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="program">
+              <PropertyRef Name="course_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_group_requests_groups">
+          <End Role="groups" Type="Self.groups" Multiplicity="1" />
+          <End Role="group_requests" Type="Self.group_requests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="groups">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="group_requests">
+              <PropertyRef Name="group_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_group_requests_students">
+          <End Role="students" Type="Self.students" Multiplicity="1" />
+          <End Role="group_requests" Type="Self.group_requests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="students">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="group_requests">
+              <PropertyRef Name="student_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__groups__program___4222D4EF">
+          <End Role="program" Type="Self.program" Multiplicity="1" />
+          <End Role="groups" Type="Self.groups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="program">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="groups">
+              <PropertyRef Name="program_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__students__group___45F365D3">
+          <End Role="groups" Type="Self.groups" Multiplicity="0..1" />
+          <End Role="students" Type="Self.students" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="groups">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="students">
+              <PropertyRef Name="group_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_loader_student_id">
+          <End Role="students" Type="Self.students" Multiplicity="0..1" />
+          <End Role="groups" Type="Self.groups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="students">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="groups">
+              <PropertyRef Name="leader_student_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__program__semeste__3D5E1FD2">
+          <End Role="semesters" Type="Self.semesters" Multiplicity="1" />
+          <End Role="program" Type="Self.program" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="semesters">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="program">
+              <PropertyRef Name="semester_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__program__teacher__3F466844">
+          <End Role="teachers" Type="Self.teachers" Multiplicity="1" />
+          <End Role="program" Type="Self.program" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="teachers">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="program">
+              <PropertyRef Name="teachers_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="StudentTrackingEntitiesDB" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="courses" EntityType="Self.courses" />
+          <EntitySet Name="group_requests" EntityType="Self.group_requests" />
+          <EntitySet Name="groups" EntityType="Self.groups" />
+          <EntitySet Name="program" EntityType="Self.program" />
+          <EntitySet Name="semesters" EntityType="Self.semesters" />
+          <EntitySet Name="students" EntityType="Self.students" />
+          <EntitySet Name="teachers" EntityType="Self.teachers" />
+          <AssociationSet Name="FK__groups__course_i__4316F928" Association="Self.FK__groups__course_i__4316F928">
+            <End Role="courses" EntitySet="courses" />
+            <End Role="groups" EntitySet="groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK__program__course___3E52440B" Association="Self.FK__program__course___3E52440B">
+            <End Role="courses" EntitySet="courses" />
+            <End Role="program" EntitySet="program" />
+          </AssociationSet>
+          <AssociationSet Name="FK_group_requests_groups" Association="Self.FK_group_requests_groups">
+            <End Role="groups" EntitySet="groups" />
+            <End Role="group_requests" EntitySet="group_requests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_group_requests_students" Association="Self.FK_group_requests_students">
+            <End Role="students" EntitySet="students" />
+            <End Role="group_requests" EntitySet="group_requests" />
+          </AssociationSet>
+          <AssociationSet Name="FK__groups__program___4222D4EF" Association="Self.FK__groups__program___4222D4EF">
+            <End Role="program" EntitySet="program" />
+            <End Role="groups" EntitySet="groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK__students__group___45F365D3" Association="Self.FK__students__group___45F365D3">
+            <End Role="groups" EntitySet="groups" />
+            <End Role="students" EntitySet="students" />
+          </AssociationSet>
+          <AssociationSet Name="FK_loader_student_id" Association="Self.FK_loader_student_id">
+            <End Role="students" EntitySet="students" />
+            <End Role="groups" EntitySet="groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK__program__semeste__3D5E1FD2" Association="Self.FK__program__semeste__3D5E1FD2">
+            <End Role="semesters" EntitySet="semesters" />
+            <End Role="program" EntitySet="program" />
+          </AssociationSet>
+          <AssociationSet Name="FK__program__teacher__3F466844" Association="Self.FK__program__teacher__3F466844">
+            <End Role="teachers" EntitySet="teachers" />
+            <End Role="program" EntitySet="program" />
+          </AssociationSet>
+          <EntitySet Name="ders_kayıt" EntityType="StudentTrackingEntities.ders_kayıt" />
+          <AssociationSet Name="FK__ders_kayı__cours__6C190EBB" Association="StudentTrackingEntities.FK__ders_kayı__cours__6C190EBB">
+            <End Role="courses" EntitySet="courses" />
+            <End Role="ders_kayıt" EntitySet="ders_kayıt" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ders_kayı__stude__6B24EA82" Association="StudentTrackingEntities.FK__ders_kayı__stude__6B24EA82">
+            <End Role="students" EntitySet="students" />
+            <End Role="ders_kayıt" EntitySet="ders_kayıt" />
+          </AssociationSet>
+          <AssociationSet Name="FK_group_requests_courses" Association="StudentTrackingEntities.FK_group_requests_courses">
+            <End Role="courses" EntitySet="courses" />
+            <End Role="group_requests" EntitySet="group_requests" />
+          </AssociationSet>
+          <EntitySet Name="group_memberships" EntityType="StudentTrackingEntities.group_memberships" />
+          <AssociationSet Name="FK__group_mem__group__6FE99F9F" Association="StudentTrackingEntities.FK__group_mem__group__6FE99F9F">
+            <End Role="groups" EntitySet="groups" />
+            <End Role="group_memberships" EntitySet="group_memberships" />
+          </AssociationSet>
+          <AssociationSet Name="FK__group_mem__stude__70DDC3D8" Association="StudentTrackingEntities.FK__group_mem__stude__70DDC3D8">
+            <End Role="students" EntitySet="students" />
+            <End Role="group_memberships" EntitySet="group_memberships" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="ders_kayıt">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="student_id" Type="Int32" />
+          <Property Name="course_id" Type="Int32" />
+          <Property Name="enrollment_status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="enrollment_date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="courses" Relationship="StudentTrackingEntities.FK__ders_kayı__cours__6C190EBB" FromRole="ders_kayıt" ToRole="courses" />
+          <NavigationProperty Name="students" Relationship="StudentTrackingEntities.FK__ders_kayı__stude__6B24EA82" FromRole="ders_kayıt" ToRole="students" />
+        </EntityType>
+        <Association Name="FK__ders_kayı__cours__6C190EBB">
+          <End Type="StudentTrackingEntities.courses" Role="courses" Multiplicity="0..1" />
+          <End Type="StudentTrackingEntities.ders_kayıt" Role="ders_kayıt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="courses">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ders_kayıt">
+              <PropertyRef Name="course_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ders_kayı__stude__6B24EA82">
+          <End Type="StudentTrackingEntities.students" Role="students" Multiplicity="0..1" />
+          <End Type="StudentTrackingEntities.ders_kayıt" Role="ders_kayıt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="students">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ders_kayıt">
+              <PropertyRef Name="student_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_group_requests_courses">
+          <End Type="StudentTrackingEntities.courses" Role="courses" Multiplicity="0..1" />
+          <End Type="StudentTrackingEntities.group_requests" Role="group_requests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="courses">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="group_requests">
+              <PropertyRef Name="course_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="group_memberships">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="group_id" Type="Int32" />
+          <Property Name="student_id" Type="Int32" />
+          <Property Name="join_date" Type="DateTime" Precision="3" />
+          <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="groups" Relationship="StudentTrackingEntities.FK__group_mem__group__6FE99F9F" FromRole="group_memberships" ToRole="groups" />
+          <NavigationProperty Name="students" Relationship="StudentTrackingEntities.FK__group_mem__stude__70DDC3D8" FromRole="group_memberships" ToRole="students" />
+        </EntityType>
+        <Association Name="FK__group_mem__group__6FE99F9F">
+          <End Type="StudentTrackingEntities.groups" Role="groups" Multiplicity="0..1" />
+          <End Type="StudentTrackingEntities.group_memberships" Role="group_memberships" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="groups">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="group_memberships">
+              <PropertyRef Name="group_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__group_mem__stude__70DDC3D8">
+          <End Type="StudentTrackingEntities.students" Role="students" Multiplicity="0..1" />
+          <End Type="StudentTrackingEntities.group_memberships" Role="group_memberships" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="students">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="group_memberships">
+              <PropertyRef Name="student_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="StudentTrackingEntitiesStoreContainer" CdmEntityContainer="StudentTrackingEntitiesDB">
+          <EntitySetMapping Name="courses">
+            <EntityTypeMapping TypeName="StudentTrackingEntities.courses">
+              <MappingFragment StoreEntitySet="courses">
+                <ScalarProperty Name="is_alone_enabled" ColumnName="is_alone_enabled" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="course_name" ColumnName="course_name" />
+                <ScalarProperty Name="is_group_enabled" ColumnName="is_group_enabled" />
+                <ScalarProperty Name="semester_id" ColumnName="semester_id" />
+                <ScalarProperty Name="is_visible" ColumnName="is_visible" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="group_requests">
+            <EntityTypeMapping TypeName="StudentTrackingEntities.group_requests">
+              <MappingFragment StoreEntitySet="group_requests">
+                <ScalarProperty Name="course_id" ColumnName="course_id" />
+                <ScalarProperty Name="reject_reason" ColumnName="reject_reason" />
+                <ScalarProperty Name="join_message" ColumnName="join_message" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="student_id" ColumnName="student_id" />
+                <ScalarProperty Name="group_id" ColumnName="group_id" />
+                <ScalarProperty Name="request_date" ColumnName="request_date" />
+                <ScalarProperty Name="is_visible" ColumnName="is_visible" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="groups">
+            <EntityTypeMapping TypeName="StudentTrackingEntities.groups">
+              <MappingFragment StoreEntitySet="groups">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="group_name" ColumnName="group_name" />
+                <ScalarProperty Name="program_id" ColumnName="program_id" />
+                <ScalarProperty Name="course_id" ColumnName="course_id" />
+                <ScalarProperty Name="leader_student_id" ColumnName="leader_student_id" />
+                <ScalarProperty Name="is_visible" ColumnName="is_visible" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="program">
+            <EntityTypeMapping TypeName="StudentTrackingEntities.program">
+              <MappingFragment StoreEntitySet="program">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="semester_id" ColumnName="semester_id" />
+                <ScalarProperty Name="course_id" ColumnName="course_id" />
+                <ScalarProperty Name="teachers_id" ColumnName="teachers_id" />
+                <ScalarProperty Name="is_visible" ColumnName="is_visible" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="semesters">
+            <EntityTypeMapping TypeName="StudentTrackingEntities.semesters">
+              <MappingFragment StoreEntitySet="semesters">
+                <ScalarProperty Name="end_date" ColumnName="end_date" />
+                <ScalarProperty Name="start_date" ColumnName="start_date" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="academic_year" ColumnName="academic_year" />
+                <ScalarProperty Name="semester" ColumnName="semester" />
+                <ScalarProperty Name="is_visible" ColumnName="is_visible" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="students">
+            <EntityTypeMapping TypeName="StudentTrackingEntities.students">
+              <MappingFragment StoreEntitySet="students">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="surname" ColumnName="surname" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="group_id" ColumnName="group_id" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="is_visible" ColumnName="is_visible" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="teachers">
+            <EntityTypeMapping TypeName="StudentTrackingEntities.teachers">
+              <MappingFragment StoreEntitySet="teachers">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="surname" ColumnName="surname" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="is_admin" ColumnName="is_admin" />
+                <ScalarProperty Name="is_visible" ColumnName="is_visible" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ders_kayıt">
+            <EntityTypeMapping TypeName="StudentTrackingEntities.ders_kayıt">
+              <MappingFragment StoreEntitySet="ders_kayıt">
+                <ScalarProperty Name="enrollment_date" ColumnName="enrollment_date" />
+                <ScalarProperty Name="enrollment_status" ColumnName="enrollment_status" />
+                <ScalarProperty Name="course_id" ColumnName="course_id" />
+                <ScalarProperty Name="student_id" ColumnName="student_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="group_memberships">
+            <EntityTypeMapping TypeName="StudentTrackingEntities.group_memberships">
+              <MappingFragment StoreEntitySet="group_memberships">
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="join_date" ColumnName="join_date" />
+                <ScalarProperty Name="student_id" ColumnName="student_id" />
+                <ScalarProperty Name="group_id" ColumnName="group_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

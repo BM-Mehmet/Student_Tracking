@@ -4,7 +4,6 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Xml.Linq;
 
 namespace StudentTracking.Student.Course
 {
@@ -16,7 +15,7 @@ namespace StudentTracking.Student.Course
             {
                 int courseId = Convert.ToInt32(Request.QueryString["id"]);
 
-                using (var db = new StudentTrackingDB())
+                using (var db = new StudentTrackingEntitiesDB())
                 {
                     var course = db.courses.Find(courseId);
 
@@ -36,7 +35,7 @@ namespace StudentTracking.Student.Course
         {
             int courseId = Convert.ToInt32(Request.QueryString["id"]);
 
-            using (var db = new StudentTrackingDB())
+            using (var db = new StudentTrackingEntitiesDB())
             {
                 var course = db.courses.Find(courseId);
 

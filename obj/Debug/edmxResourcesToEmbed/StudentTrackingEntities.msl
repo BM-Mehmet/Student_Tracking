@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="StudentTrackingEntitiesStoreContainer" CdmEntityContainer="StudentTrackingEntitiesDB">
+    <EntitySetMapping Name="courses">
+      <EntityTypeMapping TypeName="StudentTrackingEntities.courses">
+        <MappingFragment StoreEntitySet="courses">
+          <ScalarProperty Name="is_alone_enabled" ColumnName="is_alone_enabled" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="course_name" ColumnName="course_name" />
+          <ScalarProperty Name="is_group_enabled" ColumnName="is_group_enabled" />
+          <ScalarProperty Name="semester_id" ColumnName="semester_id" />
+          <ScalarProperty Name="is_visible" ColumnName="is_visible" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="group_requests">
+      <EntityTypeMapping TypeName="StudentTrackingEntities.group_requests">
+        <MappingFragment StoreEntitySet="group_requests">
+          <ScalarProperty Name="course_id" ColumnName="course_id" />
+          <ScalarProperty Name="reject_reason" ColumnName="reject_reason" />
+          <ScalarProperty Name="join_message" ColumnName="join_message" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="student_id" ColumnName="student_id" />
+          <ScalarProperty Name="group_id" ColumnName="group_id" />
+          <ScalarProperty Name="request_date" ColumnName="request_date" />
+          <ScalarProperty Name="is_visible" ColumnName="is_visible" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="groups">
+      <EntityTypeMapping TypeName="StudentTrackingEntities.groups">
+        <MappingFragment StoreEntitySet="groups">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="group_name" ColumnName="group_name" />
+          <ScalarProperty Name="program_id" ColumnName="program_id" />
+          <ScalarProperty Name="course_id" ColumnName="course_id" />
+          <ScalarProperty Name="leader_student_id" ColumnName="leader_student_id" />
+          <ScalarProperty Name="is_visible" ColumnName="is_visible" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="program">
+      <EntityTypeMapping TypeName="StudentTrackingEntities.program">
+        <MappingFragment StoreEntitySet="program">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="semester_id" ColumnName="semester_id" />
+          <ScalarProperty Name="course_id" ColumnName="course_id" />
+          <ScalarProperty Name="teachers_id" ColumnName="teachers_id" />
+          <ScalarProperty Name="is_visible" ColumnName="is_visible" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="semesters">
+      <EntityTypeMapping TypeName="StudentTrackingEntities.semesters">
+        <MappingFragment StoreEntitySet="semesters">
+          <ScalarProperty Name="end_date" ColumnName="end_date" />
+          <ScalarProperty Name="start_date" ColumnName="start_date" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="academic_year" ColumnName="academic_year" />
+          <ScalarProperty Name="semester" ColumnName="semester" />
+          <ScalarProperty Name="is_visible" ColumnName="is_visible" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="students">
+      <EntityTypeMapping TypeName="StudentTrackingEntities.students">
+        <MappingFragment StoreEntitySet="students">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="surname" ColumnName="surname" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="group_id" ColumnName="group_id" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="is_visible" ColumnName="is_visible" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="teachers">
+      <EntityTypeMapping TypeName="StudentTrackingEntities.teachers">
+        <MappingFragment StoreEntitySet="teachers">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="surname" ColumnName="surname" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="is_admin" ColumnName="is_admin" />
+          <ScalarProperty Name="is_visible" ColumnName="is_visible" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ders_kayıt">
+      <EntityTypeMapping TypeName="StudentTrackingEntities.ders_kayıt">
+        <MappingFragment StoreEntitySet="ders_kayıt">
+          <ScalarProperty Name="enrollment_date" ColumnName="enrollment_date" />
+          <ScalarProperty Name="enrollment_status" ColumnName="enrollment_status" />
+          <ScalarProperty Name="course_id" ColumnName="course_id" />
+          <ScalarProperty Name="student_id" ColumnName="student_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="group_memberships">
+      <EntityTypeMapping TypeName="StudentTrackingEntities.group_memberships">
+        <MappingFragment StoreEntitySet="group_memberships">
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="join_date" ColumnName="join_date" />
+          <ScalarProperty Name="student_id" ColumnName="student_id" />
+          <ScalarProperty Name="group_id" ColumnName="group_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
