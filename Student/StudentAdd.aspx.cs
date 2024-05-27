@@ -18,7 +18,7 @@ namespace StudentTracking.Student
             string surname = txtNewSurname.Text;
             string email = txtNewEmail.Text;
 
-            using (var db = new StudentTrackingEntitiesDB()) // Veritabanı bağlantısı
+            using (var db = new StudentTrackingDBEntities()) // Veritabanı bağlantısı
             {
                 // Yeni öğrenci oluştur
                 var newStudent = new students

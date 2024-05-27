@@ -17,10 +17,11 @@ namespace StudentTracking
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public students()
         {
-            this.group_requests = new HashSet<group_requests>();
-            this.groups1 = new HashSet<groups>();
             this.ders_kayıt = new HashSet<ders_kayıt>();
             this.group_memberships = new HashSet<group_memberships>();
+            this.group_requests = new HashSet<group_requests>();
+            this.groups1 = new HashSet<groups>();
+            this.TeacherRequests = new HashSet<TeacherRequests>();
         }
     
         public int id { get; set; }
@@ -30,15 +31,18 @@ namespace StudentTracking
         public Nullable<int> group_id { get; set; }
         public string password { get; set; }
         public Nullable<bool> is_visible { get; set; }
+        public Nullable<int> student_no { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ders_kayıt> ders_kayıt { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<group_memberships> group_memberships { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<group_requests> group_requests { get; set; }
         public virtual groups groups { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<groups> groups1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ders_kayıt> ders_kayıt { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<group_memberships> group_memberships { get; set; }
+        public virtual ICollection<TeacherRequests> TeacherRequests { get; set; }
     }
 }

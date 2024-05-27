@@ -34,7 +34,7 @@ namespace StudentTracking.Student.Course
 
         private void PopulateUpdateData(int courseId)
         {
-            using (var db = new StudentTrackingEntitiesDB())
+            using (var db = new StudentTrackingDBEntities())
             {
                 var courses = db.courses.FirstOrDefault(s => s.id == courseId);
                 if (courses != null)
@@ -69,7 +69,7 @@ namespace StudentTracking.Student.Course
 
         private void UpdateCoursesData(int courseId)
         {
-            using (var db = new StudentTrackingEntitiesDB())
+            using (var db = new StudentTrackingDBEntities())
             {
                 var courses = db.courses.FirstOrDefault(s => s.id == courseId);
                 if (courses != null)

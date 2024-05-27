@@ -1,17 +1,19 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="StudentList.aspx.cs" Inherits="StudentTracking.Student.StudentList" %>
 
+<%@ Register Src="~/Navbar.ascx" TagName="Navbar" TagPrefix="uc" %>
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Students Page</title>
     <!-- Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"/>
 </head>
 <body>
     <form id="form1" runat="server" class="container mt-5">
         <div>
-            <h1 class="mb-4">Students List</h1>
+               <uc:Navbar ID="Navbar1" runat="server" />
+            <h5 class="mb-4">Students List</h5>
             <div class="table-responsive">
                 <asp:GridView ID="GridViewStudents" runat="server" AutoGenerateColumns="False" DataKeyNames="id"
                     OnRowEditing="GridViewStudents_RowEditing" OnRowDeleting="GridViewStudents_RowDeleting" CellPadding="4" ForeColor="#333333" GridLines="None" CssClass="table">

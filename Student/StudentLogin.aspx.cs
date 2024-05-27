@@ -43,7 +43,7 @@ public partial class StudentLogin : System.Web.UI.Page
                 return false;
             }
 
-            using (var db = new StudentTrackingEntitiesDB())
+            using (var db = new StudentTrackingDBEntities())
             {
                 // Kullanıcıyı veritabanından e-posta adresine göre bul
                 var user = db.students.SingleOrDefault(s => s.email == studentMail);

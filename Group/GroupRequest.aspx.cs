@@ -7,7 +7,7 @@ namespace StudentTracking.Group
 {
     public partial class GroupRequest : System.Web.UI.Page
     {
-        StudentTrackingEntitiesDB db = new StudentTrackingEntitiesDB();
+        StudentTrackingDBEntities db = new StudentTrackingDBEntities();
 
         protected void Page_Load(object sender, EventArgs e)
         {

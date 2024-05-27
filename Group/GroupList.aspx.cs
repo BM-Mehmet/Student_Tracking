@@ -9,7 +9,7 @@ namespace StudentTracking.Group
 {
     public partial class GroupList : System.Web.UI.Page
     {
-        StudentTrackingEntitiesDB db = new StudentTrackingEntitiesDB();
+        StudentTrackingDBEntities db = new StudentTrackingDBEntities();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -20,7 +20,21 @@ namespace StudentTracking.Group
 
         private void BindGroupList()
         {
-            GridViewGroups.DataSource = db.groups.Where(g => g.is_visible == true).ToList();
+            var query = from g in db.groups
+                        join p in db.program on g.program_id equals p.id
+                        join c in db.courses on g.course_id equals c.id
+                        join s in db.students on g.leader_student_id equals s.id
+                        where g.is_visible == true
+                        select new
+                        {
+                            g.id,
+                            g.group_name,
+                            CourseName = c.course_name,
+                            LeaderStudentName = s.name,
+                            g.is_visible
+                        };
+
+            GridViewGroups.DataSource = query.ToList();
             GridViewGroups.DataBind();
         }
 

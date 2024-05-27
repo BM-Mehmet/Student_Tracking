@@ -26,9 +26,9 @@ namespace StudentTracking
         public int teachers_id { get; set; }
         public Nullable<bool> is_visible { get; set; }
     
-        public virtual courses courses { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<groups> groups { get; set; }
+        public virtual courses courses { get; set; }
         public virtual semesters semesters { get; set; }
         public virtual teachers teachers { get; set; }
     }

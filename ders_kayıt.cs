@@ -20,7 +20,7 @@ namespace StudentTracking
         public string enrollment_status { get; set; }
         public Nullable<System.DateTime> enrollment_date { get; set; }
     
-        public virtual courses courses { get; set; }
         public virtual students students { get; set; }
+        public virtual courses courses { get; set; }
     }
 }

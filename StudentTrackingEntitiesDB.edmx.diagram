@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8420c0c5066a4df990460ac50752d6e0" Name="Diagram1" ZoomLevel="74">
+        <EntityTypeShape EntityType="StudentTrackingDBModel.ders_kayıt" Width="1.5" PointX="3" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="StudentTrackingDBModel.group_memberships" Width="1.5" PointX="10.5" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="StudentTrackingDBModel.group_requests" Width="1.5" PointX="13.5" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="StudentTrackingDBModel.groups" Width="1.5" PointX="6" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="StudentTrackingDBModel.program" Width="1.5" PointX="3" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="StudentTrackingDBModel.students" Width="1.5" PointX="8.25" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="StudentTrackingDBModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="StudentTrackingDBModel.FK__enrollmen__stude__6FE99F9F" ManuallyRouted="false" />
+        <AssociationConnector Association="StudentTrackingDBModel.FK__group_mem__group__02FC7413" ManuallyRouted="false" />
+        <AssociationConnector Association="StudentTrackingDBModel.FK__group_mem__stude__03F0984C" ManuallyRouted="false" />
+        <AssociationConnector Association="StudentTrackingDBModel.FK__group_req__group__68487DD7" ManuallyRouted="false" />
+        <AssociationConnector Association="StudentTrackingDBModel.FK__group_req__stude__693CA210" ManuallyRouted="false" />
+        <AssociationConnector Association="StudentTrackingDBModel.FK__groups__program___4222D4EF" ManuallyRouted="false" />
+        <AssociationConnector Association="StudentTrackingDBModel.FK__students__group___45F365D3" ManuallyRouted="false" />
+        <AssociationConnector Association="StudentTrackingDBModel.FK_loader_student_id" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="StudentTrackingDBModel.TeacherRequests" Width="1.5" PointX="10.5" PointY="7.625" />
+        <AssociationConnector Association="StudentTrackingDBModel.FK_TeacherRequests_Students" />
+        <EntityTypeShape EntityType="StudentTrackingDBModel.courses" Width="1.5" PointX="0.75" PointY="8.25" />
+        <AssociationConnector Association="StudentTrackingDBModel.FK__enrollmen__cours__70DDC3D8" />
+        <AssociationConnector Association="StudentTrackingDBModel.FK__groups__course_i__4316F928" />
+        <AssociationConnector Association="StudentTrackingDBModel.FK__program__course___3E52440B" />
+        <AssociationConnector Association="StudentTrackingDBModel.FK_group_requests_courses" />
+        <AssociationConnector Association="StudentTrackingDBModel.FK_TeacherRequests_Courses" />
+        <EntityTypeShape EntityType="StudentTrackingDBModel.semesters" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="StudentTrackingDBModel.teachers" Width="1.5" PointX="5.375" PointY="1" />
+        <AssociationConnector Association="StudentTrackingDBModel.FK__program__semeste__3D5E1FD2" />
+        <AssociationConnector Association="StudentTrackingDBModel.FK__program__teacher__3F466844" />
+        <AssociationConnector Association="StudentTrackingDBModel.FK_TeacherRequests_Teachers" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

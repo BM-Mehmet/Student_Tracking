@@ -17,7 +17,7 @@ namespace StudentTracking.Teacher
                 string teacherId = Request.QueryString["id"];
                 if (!string.IsNullOrEmpty(teacherId))
                 {
-                    using (var db = new StudentTrackingEntitiesDB())
+                    using (var db = new StudentTrackingDBEntities())
                     {
                         int id = int.Parse(teacherId);
                         var teacher = db.teachers.FirstOrDefault(t => t.id == id);
@@ -38,7 +38,7 @@ namespace StudentTracking.Teacher
             string teacherId = Request.QueryString["id"];
             if (!string.IsNullOrEmpty(teacherId))
             {
-                using (var db = new StudentTrackingEntitiesDB())
+                using (var db = new StudentTrackingDBEntities())
                 {
                     int id = int.Parse(teacherId);
                     var teacher = db.teachers.FirstOrDefault(t => t.id == id);

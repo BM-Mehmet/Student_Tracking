@@ -1,0 +1,446 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="StudentTrackingDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ders_kayıt">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="student_id" Type="Int32" />
+    <Property Name="course_id" Type="Int32" />
+    <Property Name="enrollment_status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="enrollment_date" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="students" Relationship="Self.FK__enrollmen__stude__6FE99F9F" FromRole="ders_kayıt" ToRole="students" />
+    <NavigationProperty Name="courses" Relationship="StudentTrackingDBModel.FK__enrollmen__cours__70DDC3D8" FromRole="ders_kayıt" ToRole="courses" />
+  </EntityType>
+  <EntityType Name="group_memberships">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="group_id" Type="Int32" />
+    <Property Name="student_id" Type="Int32" />
+    <Property Name="join_date" Type="DateTime" Precision="3" />
+    <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="groups" Relationship="Self.FK__group_mem__group__02FC7413" FromRole="group_memberships" ToRole="groups" />
+    <NavigationProperty Name="students" Relationship="Self.FK__group_mem__stude__03F0984C" FromRole="group_memberships" ToRole="students" />
+  </EntityType>
+  <EntityType Name="group_requests">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="group_id" Type="Int32" Nullable="false" />
+    <Property Name="student_id" Type="Int32" Nullable="false" />
+    <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="is_visible" Type="Boolean" />
+    <NavigationProperty Name="groups" Relationship="Self.FK__group_req__group__68487DD7" FromRole="group_requests" ToRole="groups" />
+    <NavigationProperty Name="students" Relationship="Self.FK__group_req__stude__693CA210" FromRole="group_requests" ToRole="students" />
+    <Property Name="course_id" Type="Int32" Nullable="false" />
+    <Property Name="request_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="join_message" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="reject_reason" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="courses" Relationship="StudentTrackingDBModel.FK_group_requests_courses" FromRole="group_requests" ToRole="courses" />
+  </EntityType>
+  <EntityType Name="groups">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="group_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="program_id" Type="Int32" Nullable="false" />
+    <Property Name="course_id" Type="Int32" />
+    <Property Name="leader_student_id" Type="Int32" />
+    <Property Name="is_visible" Type="Boolean" />
+    <NavigationProperty Name="group_memberships" Relationship="Self.FK__group_mem__group__02FC7413" FromRole="groups" ToRole="group_memberships" />
+    <NavigationProperty Name="group_requests" Relationship="Self.FK__group_req__group__68487DD7" FromRole="groups" ToRole="group_requests" />
+    <NavigationProperty Name="program" Relationship="Self.FK__groups__program___4222D4EF" FromRole="groups" ToRole="program" />
+    <NavigationProperty Name="students" Relationship="Self.FK__students__group___45F365D3" FromRole="groups" ToRole="students" />
+    <NavigationProperty Name="students1" Relationship="Self.FK_loader_student_id" FromRole="groups" ToRole="students" />
+    <NavigationProperty Name="courses" Relationship="StudentTrackingDBModel.FK__groups__course_i__4316F928" FromRole="groups" ToRole="courses" />
+  </EntityType>
+  <EntityType Name="program">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="semester_id" Type="Int32" Nullable="false" />
+    <Property Name="course_id" Type="Int32" Nullable="false" />
+    <Property Name="teachers_id" Type="Int32" Nullable="false" />
+    <Property Name="is_visible" Type="Boolean" />
+    <NavigationProperty Name="groups" Relationship="Self.FK__groups__program___4222D4EF" FromRole="program" ToRole="groups" />
+    <NavigationProperty Name="courses" Relationship="StudentTrackingDBModel.FK__program__course___3E52440B" FromRole="program" ToRole="courses" />
+    <NavigationProperty Name="semesters" Relationship="StudentTrackingDBModel.FK__program__semeste__3D5E1FD2" FromRole="program" ToRole="semesters" />
+    <NavigationProperty Name="teachers" Relationship="StudentTrackingDBModel.FK__program__teacher__3F466844" FromRole="program" ToRole="teachers" />
+  </EntityType>
+  <EntityType Name="students">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="surname" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="group_id" Type="Int32" />
+    <Property Name="password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="is_visible" Type="Boolean" />
+    <Property Name="student_no" Type="Int32" />
+    <NavigationProperty Name="ders_kayıt" Relationship="Self.FK__enrollmen__stude__6FE99F9F" FromRole="students" ToRole="ders_kayıt" />
+    <NavigationProperty Name="group_memberships" Relationship="Self.FK__group_mem__stude__03F0984C" FromRole="students" ToRole="group_memberships" />
+    <NavigationProperty Name="group_requests" Relationship="Self.FK__group_req__stude__693CA210" FromRole="students" ToRole="group_requests" />
+    <NavigationProperty Name="groups" Relationship="Self.FK__students__group___45F365D3" FromRole="students" ToRole="groups" />
+    <NavigationProperty Name="groups1" Relationship="Self.FK_loader_student_id" FromRole="students" ToRole="groups" />
+    <NavigationProperty Name="TeacherRequests" Relationship="StudentTrackingDBModel.FK_TeacherRequests_Students" FromRole="students" ToRole="TeacherRequests" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK__enrollmen__stude__6FE99F9F">
+    <End Role="students" Type="Self.students" Multiplicity="0..1" />
+    <End Role="ders_kayıt" Type="Self.ders_kayıt" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="students">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ders_kayıt">
+        <PropertyRef Name="student_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__group_mem__group__02FC7413">
+    <End Role="groups" Type="Self.groups" Multiplicity="0..1" />
+    <End Role="group_memberships" Type="Self.group_memberships" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="groups">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="group_memberships">
+        <PropertyRef Name="group_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__group_mem__stude__03F0984C">
+    <End Role="students" Type="Self.students" Multiplicity="0..1" />
+    <End Role="group_memberships" Type="Self.group_memberships" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="students">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="group_memberships">
+        <PropertyRef Name="student_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__group_req__group__68487DD7">
+    <End Role="groups" Type="Self.groups" Multiplicity="1" />
+    <End Role="group_requests" Type="Self.group_requests" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="groups">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="group_requests">
+        <PropertyRef Name="group_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__group_req__stude__693CA210">
+    <End Role="students" Type="Self.students" Multiplicity="1" />
+    <End Role="group_requests" Type="Self.group_requests" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="students">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="group_requests">
+        <PropertyRef Name="student_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__groups__program___4222D4EF">
+    <End Role="program" Type="Self.program" Multiplicity="1" />
+    <End Role="groups" Type="Self.groups" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="program">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="groups">
+        <PropertyRef Name="program_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__students__group___45F365D3">
+    <End Role="groups" Type="Self.groups" Multiplicity="0..1" />
+    <End Role="students" Type="Self.students" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="groups">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="students">
+        <PropertyRef Name="group_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_loader_student_id">
+    <End Role="students" Type="Self.students" Multiplicity="0..1" />
+    <End Role="groups" Type="Self.groups" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="students">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="groups">
+        <PropertyRef Name="leader_student_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="StudentTrackingDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ders_kayıt" EntityType="Self.ders_kayıt" />
+    <EntitySet Name="group_memberships" EntityType="Self.group_memberships" />
+    <EntitySet Name="group_requests" EntityType="Self.group_requests" />
+    <EntitySet Name="groups" EntityType="Self.groups" />
+    <EntitySet Name="program" EntityType="Self.program" />
+    <EntitySet Name="students" EntityType="Self.students" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <AssociationSet Name="FK__enrollmen__stude__6FE99F9F" Association="Self.FK__enrollmen__stude__6FE99F9F">
+      <End Role="students" EntitySet="students" />
+      <End Role="ders_kayıt" EntitySet="ders_kayıt" />
+    </AssociationSet>
+    <AssociationSet Name="FK__group_mem__group__02FC7413" Association="Self.FK__group_mem__group__02FC7413">
+      <End Role="groups" EntitySet="groups" />
+      <End Role="group_memberships" EntitySet="group_memberships" />
+    </AssociationSet>
+    <AssociationSet Name="FK__group_mem__stude__03F0984C" Association="Self.FK__group_mem__stude__03F0984C">
+      <End Role="students" EntitySet="students" />
+      <End Role="group_memberships" EntitySet="group_memberships" />
+    </AssociationSet>
+    <AssociationSet Name="FK__group_req__group__68487DD7" Association="Self.FK__group_req__group__68487DD7">
+      <End Role="groups" EntitySet="groups" />
+      <End Role="group_requests" EntitySet="group_requests" />
+    </AssociationSet>
+    <AssociationSet Name="FK__group_req__stude__693CA210" Association="Self.FK__group_req__stude__693CA210">
+      <End Role="students" EntitySet="students" />
+      <End Role="group_requests" EntitySet="group_requests" />
+    </AssociationSet>
+    <AssociationSet Name="FK__groups__program___4222D4EF" Association="Self.FK__groups__program___4222D4EF">
+      <End Role="program" EntitySet="program" />
+      <End Role="groups" EntitySet="groups" />
+    </AssociationSet>
+    <AssociationSet Name="FK__students__group___45F365D3" Association="Self.FK__students__group___45F365D3">
+      <End Role="groups" EntitySet="groups" />
+      <End Role="students" EntitySet="students" />
+    </AssociationSet>
+    <AssociationSet Name="FK_loader_student_id" Association="Self.FK_loader_student_id">
+      <End Role="students" EntitySet="students" />
+      <End Role="groups" EntitySet="groups" />
+    </AssociationSet>
+    <EntitySet Name="TeacherRequests" EntityType="StudentTrackingDBModel.TeacherRequests" />
+    <AssociationSet Name="FK_TeacherRequests_Students" Association="StudentTrackingDBModel.FK_TeacherRequests_Students">
+      <End Role="students" EntitySet="students" />
+      <End Role="TeacherRequests" EntitySet="TeacherRequests" />
+    </AssociationSet>
+    <EntitySet Name="courses" EntityType="StudentTrackingDBModel.courses" />
+    <AssociationSet Name="FK__enrollmen__cours__70DDC3D8" Association="StudentTrackingDBModel.FK__enrollmen__cours__70DDC3D8">
+      <End Role="courses" EntitySet="courses" />
+      <End Role="ders_kayıt" EntitySet="ders_kayıt" />
+    </AssociationSet>
+    <AssociationSet Name="FK__groups__course_i__4316F928" Association="StudentTrackingDBModel.FK__groups__course_i__4316F928">
+      <End Role="courses" EntitySet="courses" />
+      <End Role="groups" EntitySet="groups" />
+    </AssociationSet>
+    <AssociationSet Name="FK__program__course___3E52440B" Association="StudentTrackingDBModel.FK__program__course___3E52440B">
+      <End Role="courses" EntitySet="courses" />
+      <End Role="program" EntitySet="program" />
+    </AssociationSet>
+    <AssociationSet Name="FK_group_requests_courses" Association="StudentTrackingDBModel.FK_group_requests_courses">
+      <End Role="courses" EntitySet="courses" />
+      <End Role="group_requests" EntitySet="group_requests" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TeacherRequests_Courses" Association="StudentTrackingDBModel.FK_TeacherRequests_Courses">
+      <End Role="courses" EntitySet="courses" />
+      <End Role="TeacherRequests" EntitySet="TeacherRequests" />
+    </AssociationSet>
+    <EntitySet Name="semesters" EntityType="StudentTrackingDBModel.semesters" />
+    <EntitySet Name="teachers" EntityType="StudentTrackingDBModel.teachers" />
+    <AssociationSet Name="FK__program__semeste__3D5E1FD2" Association="StudentTrackingDBModel.FK__program__semeste__3D5E1FD2">
+      <End Role="semesters" EntitySet="semesters" />
+      <End Role="program" EntitySet="program" />
+    </AssociationSet>
+    <AssociationSet Name="FK__program__teacher__3F466844" Association="StudentTrackingDBModel.FK__program__teacher__3F466844">
+      <End Role="teachers" EntitySet="teachers" />
+      <End Role="program" EntitySet="program" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TeacherRequests_Teachers" Association="StudentTrackingDBModel.FK_TeacherRequests_Teachers">
+      <End Role="teachers" EntitySet="teachers" />
+      <End Role="TeacherRequests" EntitySet="TeacherRequests" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="TeacherRequests">
+    <Key>
+      <PropertyRef Name="RequestId" />
+    </Key>
+    <Property Name="RequestId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StudentId" Type="Int32" />
+    <Property Name="TeacherId" Type="Int32" />
+    <Property Name="CourseId" Type="Int32" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="RequestDate" Type="DateTime" Precision="3" />
+    <Property Name="JoinMessage" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="RejectReason" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="students" Relationship="StudentTrackingDBModel.FK_TeacherRequests_Students" FromRole="TeacherRequests" ToRole="students" />
+    <NavigationProperty Name="courses" Relationship="StudentTrackingDBModel.FK_TeacherRequests_Courses" FromRole="TeacherRequests" ToRole="courses" />
+    <NavigationProperty Name="teachers" Relationship="StudentTrackingDBModel.FK_TeacherRequests_Teachers" FromRole="TeacherRequests" ToRole="teachers" />
+  </EntityType>
+  <Association Name="FK_TeacherRequests_Students">
+    <End Type="StudentTrackingDBModel.students" Role="students" Multiplicity="0..1" />
+    <End Type="StudentTrackingDBModel.TeacherRequests" Role="TeacherRequests" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="students">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="TeacherRequests">
+        <PropertyRef Name="StudentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="courses">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="course_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="is_group_enabled" Type="Boolean" />
+    <Property Name="semester_id" Type="Int32" />
+    <Property Name="is_visible" Type="Boolean" />
+    <Property Name="is_alone_enabled" Type="Boolean" />
+    <NavigationProperty Name="ders_kayıt" Relationship="StudentTrackingDBModel.FK__enrollmen__cours__70DDC3D8" FromRole="courses" ToRole="ders_kayıt" />
+    <NavigationProperty Name="groups" Relationship="StudentTrackingDBModel.FK__groups__course_i__4316F928" FromRole="courses" ToRole="groups" />
+    <NavigationProperty Name="program" Relationship="StudentTrackingDBModel.FK__program__course___3E52440B" FromRole="courses" ToRole="program" />
+    <NavigationProperty Name="group_requests" Relationship="StudentTrackingDBModel.FK_group_requests_courses" FromRole="courses" ToRole="group_requests" />
+    <NavigationProperty Name="TeacherRequests" Relationship="StudentTrackingDBModel.FK_TeacherRequests_Courses" FromRole="courses" ToRole="TeacherRequests" />
+  </EntityType>
+  <Association Name="FK__enrollmen__cours__70DDC3D8">
+    <End Type="StudentTrackingDBModel.courses" Role="courses" Multiplicity="0..1" />
+    <End Type="StudentTrackingDBModel.ders_kayıt" Role="ders_kayıt" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="courses">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ders_kayıt">
+        <PropertyRef Name="course_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__groups__course_i__4316F928">
+    <End Type="StudentTrackingDBModel.courses" Role="courses" Multiplicity="0..1" />
+    <End Type="StudentTrackingDBModel.groups" Role="groups" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="courses">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="groups">
+        <PropertyRef Name="course_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__program__course___3E52440B">
+    <End Type="StudentTrackingDBModel.courses" Role="courses" Multiplicity="1" />
+    <End Type="StudentTrackingDBModel.program" Role="program" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="courses">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="program">
+        <PropertyRef Name="course_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_group_requests_courses">
+    <End Type="StudentTrackingDBModel.courses" Role="courses" Multiplicity="1" />
+    <End Type="StudentTrackingDBModel.group_requests" Role="group_requests" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="courses">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="group_requests">
+        <PropertyRef Name="course_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TeacherRequests_Courses">
+    <End Type="StudentTrackingDBModel.courses" Role="courses" Multiplicity="0..1" />
+    <End Type="StudentTrackingDBModel.TeacherRequests" Role="TeacherRequests" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="courses">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="TeacherRequests">
+        <PropertyRef Name="CourseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="semesters">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="academic_year" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="is_visible" Type="Boolean" />
+    <Property Name="start_date" Type="DateTime" Precision="0" />
+    <Property Name="end_date" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="program" Relationship="StudentTrackingDBModel.FK__program__semeste__3D5E1FD2" FromRole="semesters" ToRole="program" />
+  </EntityType>
+  <EntityType Name="teachers">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="surname" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="is_admin" Type="Boolean" />
+    <Property Name="is_visible" Type="Boolean" />
+    <NavigationProperty Name="program" Relationship="StudentTrackingDBModel.FK__program__teacher__3F466844" FromRole="teachers" ToRole="program" />
+    <NavigationProperty Name="TeacherRequests" Relationship="StudentTrackingDBModel.FK_TeacherRequests_Teachers" FromRole="teachers" ToRole="TeacherRequests" />
+  </EntityType>
+  <Association Name="FK__program__semeste__3D5E1FD2">
+    <End Type="StudentTrackingDBModel.semesters" Role="semesters" Multiplicity="1" />
+    <End Type="StudentTrackingDBModel.program" Role="program" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="semesters">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="program">
+        <PropertyRef Name="semester_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__program__teacher__3F466844">
+    <End Type="StudentTrackingDBModel.teachers" Role="teachers" Multiplicity="1" />
+    <End Type="StudentTrackingDBModel.program" Role="program" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="teachers">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="program">
+        <PropertyRef Name="teachers_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TeacherRequests_Teachers">
+    <End Type="StudentTrackingDBModel.teachers" Role="teachers" Multiplicity="0..1" />
+    <End Type="StudentTrackingDBModel.TeacherRequests" Role="TeacherRequests" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="teachers">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="TeacherRequests">
+        <PropertyRef Name="TeacherId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

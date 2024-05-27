@@ -12,7 +12,7 @@ namespace StudentTracking.Program
             int TeacherId = Convert.ToInt32(txtNewteacher_id.Text);
             int SemesterId = Convert.ToInt32( txtNewsemester_id.Text);
 
-            using (var db = new StudentTrackingEntitiesDB()) // Veritabanı bağlantısı
+            using (var db = new StudentTrackingDBEntities()) // Veritabanı bağlantısı
             {
                 // Yeni öğrenci oluştur
                 var newProgram = new program

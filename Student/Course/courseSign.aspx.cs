@@ -19,7 +19,7 @@ namespace StudentTracking.Course
             if (Session["UserId"] != null) // Kullanıcı giriş yapmışsa
             {
                 int userId = Convert.ToInt32(Session["UserId"]);
-                using (var db = new StudentTrackingEntitiesDB())
+                using (var db = new StudentTrackingDBEntities())
                 {
                     // Kullanıcının kaydolduğu dersleri al
                     var courses = db.ders_kayıt.Where(en => en.student_id == userId && en.enrollment_status == "Aktif")

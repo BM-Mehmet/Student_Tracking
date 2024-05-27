@@ -13,7 +13,7 @@ namespace StudentTracking.Student
             {
                 int studentId = Convert.ToInt32(Request.QueryString["id"]);
 
-                using (var db = new StudentTrackingEntitiesDB())
+                using (var db = new StudentTrackingDBEntities())
                 {
                     var student = db.students.Find(studentId);
 
@@ -31,7 +31,7 @@ namespace StudentTracking.Student
         {
             int studentId = Convert.ToInt32(Request.QueryString["id"]);
 
-            using (var db = new StudentTrackingEntitiesDB())
+            using (var db = new StudentTrackingDBEntities())
             {
                 var student = db.students.Find(studentId);
 

@@ -5,7 +5,7 @@
 <head runat="server">
     <title>Kayıt Olunan Dersler</title>
     <!-- Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"/>
 </head>
 <body>
     <form id="form1" runat="server" class="container mt-5">

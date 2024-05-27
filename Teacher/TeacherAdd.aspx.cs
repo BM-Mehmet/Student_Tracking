@@ -21,7 +21,7 @@ namespace StudentTracking.Teacher
             string email = txtEmail.Text;
             string password = txtPassword.Text;
 
-            using (var db = new StudentTrackingEntitiesDB())
+            using (var db = new StudentTrackingDBEntities())
             {
                 bool emailExists = db.teachers.Any(t => t.email == email);
                 if (emailExists)
@@ -43,7 +43,7 @@ namespace StudentTracking.Teacher
             };
 
             // Veritabanına yeni öğretmeni ekle
-            using (var db = new StudentTrackingEntitiesDB())
+            using (var db = new StudentTrackingDBEntities())
             {
                 db.teachers.Add(newTeacher);
                 db.SaveChanges();

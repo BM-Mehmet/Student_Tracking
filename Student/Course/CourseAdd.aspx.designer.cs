@@ -24,6 +24,15 @@ namespace StudentTracking.Student.Course
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
+        /// Navbar1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::StudentTracking.WebUserControl1 Navbar1;
+
+        /// <summary>
         /// txtNewcourse_name control.
         /// </summary>
         /// <remarks>
@@ -51,13 +60,13 @@ namespace StudentTracking.Student.Course
         protected global::System.Web.UI.WebControls.CheckBox chkIsAloneEnabled;
 
         /// <summary>
-        /// txtNewsemester_id control.
+        /// ddlAcademicYear control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNewsemester_id;
+        protected global::System.Web.UI.WebControls.DropDownList ddlAcademicYear;
 
         /// <summary>
         /// btnAddCourse control.
@@ -67,5 +76,14 @@ namespace StudentTracking.Student.Course
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnAddCourse;
+
+        /// <summary>
+        /// lblError control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblError;
     }
 }

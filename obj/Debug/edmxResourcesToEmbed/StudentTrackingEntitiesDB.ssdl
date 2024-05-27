@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="StudentTrackingEntities.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="StudentTrackingDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="courses">
     <Key>
       <PropertyRef Name="id" />
@@ -36,14 +36,14 @@
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="student_id" Type="int" Nullable="false" />
     <Property Name="group_id" Type="int" Nullable="false" />
-    <Property Name="request_date" Type="datetime" />
+    <Property Name="student_id" Type="int" Nullable="false" />
+    <Property Name="course_id" Type="int" Nullable="false" />
+    <Property Name="status" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="is_visible" Type="bit" />
-    <Property Name="status" Type="varchar" MaxLength="255" />
-    <Property Name="join_message" Type="nvarchar(max)" />
-    <Property Name="reject_reason" Type="nvarchar(max)" />
-    <Property Name="course_id" Type="int" />
+    <Property Name="request_date" Type="datetime" Nullable="false" />
+    <Property Name="join_message" Type="nvarchar" MaxLength="255" />
+    <Property Name="reject_reason" Type="nvarchar" MaxLength="255" />
   </EntityType>
   <EntityType Name="groups">
     <Key>
@@ -72,7 +72,6 @@
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="academic_year" Type="varchar" MaxLength="255" />
-    <Property Name="semester" Type="int" />
     <Property Name="is_visible" Type="bit" />
     <Property Name="start_date" Type="date" />
     <Property Name="end_date" Type="date" />
@@ -88,6 +87,30 @@
     <Property Name="group_id" Type="int" />
     <Property Name="password" Type="varchar" MaxLength="255" />
     <Property Name="is_visible" Type="bit" />
+    <Property Name="student_no" Type="int" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="TeacherRequests">
+    <Key>
+      <PropertyRef Name="RequestId" />
+    </Key>
+    <Property Name="RequestId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StudentId" Type="int" />
+    <Property Name="TeacherId" Type="int" />
+    <Property Name="CourseId" Type="int" />
+    <Property Name="Status" Type="varchar" MaxLength="50" />
+    <Property Name="RequestDate" Type="datetime" />
+    <Property Name="JoinMessage" Type="nvarchar" MaxLength="500" />
+    <Property Name="RejectReason" Type="nvarchar" MaxLength="500" />
   </EntityType>
   <EntityType Name="teachers">
     <Key>
@@ -101,7 +124,7 @@
     <Property Name="is_admin" Type="bit" />
     <Property Name="is_visible" Type="bit" />
   </EntityType>
-  <Association Name="FK__ders_kayı__cours__6C190EBB">
+  <Association Name="FK__enrollmen__cours__70DDC3D8">
     <End Role="courses" Type="Self.courses" Multiplicity="0..1" />
     <End Role="ders_kayıt" Type="Self.ders_kayıt" Multiplicity="*" />
     <ReferentialConstraint>
@@ -113,7 +136,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__ders_kayı__stude__6B24EA82">
+  <Association Name="FK__enrollmen__stude__6FE99F9F">
     <End Role="students" Type="Self.students" Multiplicity="0..1" />
     <End Role="ders_kayıt" Type="Self.ders_kayıt" Multiplicity="*" />
     <ReferentialConstraint>
@@ -125,7 +148,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__group_mem__group__6FE99F9F">
+  <Association Name="FK__group_mem__group__02FC7413">
     <End Role="groups" Type="Self.groups" Multiplicity="0..1" />
     <End Role="group_memberships" Type="Self.group_memberships" Multiplicity="*" />
     <ReferentialConstraint>
@@ -137,7 +160,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__group_mem__stude__70DDC3D8">
+  <Association Name="FK__group_mem__stude__03F0984C">
     <End Role="students" Type="Self.students" Multiplicity="0..1" />
     <End Role="group_memberships" Type="Self.group_memberships" Multiplicity="*" />
     <ReferentialConstraint>
@@ -222,7 +245,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_group_requests_courses">
-    <End Role="courses" Type="Self.courses" Multiplicity="0..1" />
+    <End Role="courses" Type="Self.courses" Multiplicity="1" />
     <End Role="group_requests" Type="Self.group_requests" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="courses">
@@ -269,7 +292,43 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="StudentTrackingEntitiesStoreContainer">
+  <Association Name="FK_TeacherRequests_Courses">
+    <End Role="courses" Type="Self.courses" Multiplicity="0..1" />
+    <End Role="TeacherRequests" Type="Self.TeacherRequests" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="courses">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="TeacherRequests">
+        <PropertyRef Name="CourseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TeacherRequests_Students">
+    <End Role="students" Type="Self.students" Multiplicity="0..1" />
+    <End Role="TeacherRequests" Type="Self.TeacherRequests" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="students">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="TeacherRequests">
+        <PropertyRef Name="StudentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TeacherRequests_Teachers">
+    <End Role="teachers" Type="Self.teachers" Multiplicity="0..1" />
+    <End Role="TeacherRequests" Type="Self.TeacherRequests" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="teachers">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="TeacherRequests">
+        <PropertyRef Name="TeacherId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="StudentTrackingDBModelStoreContainer">
     <EntitySet Name="courses" EntityType="Self.courses" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ders_kayıt" EntityType="Self.ders_kayıt" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="group_memberships" EntityType="Self.group_memberships" Schema="dbo" store:Type="Tables" />
@@ -278,20 +337,22 @@
     <EntitySet Name="program" EntityType="Self.program" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="semesters" EntityType="Self.semesters" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="students" EntityType="Self.students" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TeacherRequests" EntityType="Self.TeacherRequests" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="teachers" EntityType="Self.teachers" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__ders_kayı__cours__6C190EBB" Association="Self.FK__ders_kayı__cours__6C190EBB">
+    <AssociationSet Name="FK__enrollmen__cours__70DDC3D8" Association="Self.FK__enrollmen__cours__70DDC3D8">
       <End Role="courses" EntitySet="courses" />
       <End Role="ders_kayıt" EntitySet="ders_kayıt" />
     </AssociationSet>
-    <AssociationSet Name="FK__ders_kayı__stude__6B24EA82" Association="Self.FK__ders_kayı__stude__6B24EA82">
+    <AssociationSet Name="FK__enrollmen__stude__6FE99F9F" Association="Self.FK__enrollmen__stude__6FE99F9F">
       <End Role="students" EntitySet="students" />
       <End Role="ders_kayıt" EntitySet="ders_kayıt" />
     </AssociationSet>
-    <AssociationSet Name="FK__group_mem__group__6FE99F9F" Association="Self.FK__group_mem__group__6FE99F9F">
+    <AssociationSet Name="FK__group_mem__group__02FC7413" Association="Self.FK__group_mem__group__02FC7413">
       <End Role="groups" EntitySet="groups" />
       <End Role="group_memberships" EntitySet="group_memberships" />
     </AssociationSet>
-    <AssociationSet Name="FK__group_mem__stude__70DDC3D8" Association="Self.FK__group_mem__stude__70DDC3D8">
+    <AssociationSet Name="FK__group_mem__stude__03F0984C" Association="Self.FK__group_mem__stude__03F0984C">
       <End Role="students" EntitySet="students" />
       <End Role="group_memberships" EntitySet="group_memberships" />
     </AssociationSet>
@@ -334,6 +395,18 @@
     <AssociationSet Name="FK_loader_student_id" Association="Self.FK_loader_student_id">
       <End Role="students" EntitySet="students" />
       <End Role="groups" EntitySet="groups" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TeacherRequests_Courses" Association="Self.FK_TeacherRequests_Courses">
+      <End Role="courses" EntitySet="courses" />
+      <End Role="TeacherRequests" EntitySet="TeacherRequests" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TeacherRequests_Students" Association="Self.FK_TeacherRequests_Students">
+      <End Role="students" EntitySet="students" />
+      <End Role="TeacherRequests" EntitySet="TeacherRequests" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TeacherRequests_Teachers" Association="Self.FK_TeacherRequests_Teachers">
+      <End Role="teachers" EntitySet="teachers" />
+      <End Role="TeacherRequests" EntitySet="TeacherRequests" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

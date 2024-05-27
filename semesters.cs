@@ -22,7 +22,6 @@ namespace StudentTracking
     
         public int id { get; set; }
         public string academic_year { get; set; }
-        public Nullable<int> semester { get; set; }
         public Nullable<bool> is_visible { get; set; }
         public Nullable<System.DateTime> start_date { get; set; }
         public Nullable<System.DateTime> end_date { get; set; }

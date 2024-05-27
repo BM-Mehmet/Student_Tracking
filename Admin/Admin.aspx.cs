@@ -11,7 +11,17 @@ namespace StudentTracking.Admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            //if (!IsPostBack)
+            //{
+            //    if (Session["UserId"] != null && Session["UserRole"].ToString() == "admin") // Session kontrolü
+            //    {
 
+            //    }
+            //    else
+            //    {
+            //        Response.Redirect("~/Teacher/TeacherLogin.aspx"); // Öğrenci değilse veya oturum yoksa giriş sayfasına yönlendir.
+            //    }
+            //}
         }
     }
 }

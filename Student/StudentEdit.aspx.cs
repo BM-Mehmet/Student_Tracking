@@ -32,7 +32,7 @@ namespace StudentTracking.Student
 
         private void PopulateStudentData(int studentId)
         {
-            using (var db = new StudentTrackingEntitiesDB())
+            using (var db = new StudentTrackingDBEntities())
             {
                 var student = db.students.FirstOrDefault(s => s.id == studentId);
                 if (student != null)
@@ -67,7 +67,7 @@ namespace StudentTracking.Student
 
         private void UpdateStudentData(int studentId)
         {
-            using (var db = new StudentTrackingEntitiesDB())
+            using (var db = new StudentTrackingDBEntities())
             {
                 var student = db.students.FirstOrDefault(s => s.id == studentId);
                 if (student != null)

@@ -21,7 +21,7 @@ namespace StudentTracking.Student
 
         private void BindGrid()
         {
-            using (var db = new StudentTrackingEntitiesDB()) // Veritabanı bağlantısı
+            using (var db = new StudentTrackingDBEntities()) // Veritabanı bağlantısı
             {
                 var visibleStudents = db.students.Where(s => s.is_visible == true).ToList(); // Görünür öğrencileri alır
                 GridViewStudents.DataSource = visibleStudents; // Verileri GridView'e bağlar

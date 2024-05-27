@@ -13,20 +13,20 @@ namespace StudentTracking.Student.Course
         {
             if (!IsPostBack)
             {
-                if (Session["UserId"] != null && Session["UserRole"].ToString() == "öğrenci") // Session kontrolü
-                {
+                //if (Session["UserId"] != null && Session["UserRole"].ToString() == "öğrenci" || Session["UserRole"].ToString() == "admin") // Session kontrolü
+                //{
                     BindGrid(); 
-                }
-                else
-                {
-                    Response.Redirect("~/Student/StudentLogin.aspx"); // Öğrenci değilse veya oturum yoksa giriş sayfasına yönlendir.
-                }
+                //}
+                //else
+                //{
+                //    Response.Redirect("~/Student/StudentLogin.aspx"); // Öğrenci değilse veya oturum yoksa giriş sayfasına yönlendir.
+                //}
             }
         }
 
         private void BindGrid()
         {
-            using (var db = new StudentTrackingEntitiesDB()) // Veritabanı bağlantısı
+            using (var db = new StudentTrackingDBEntities()) // Veritabanı bağlantısı
             {
                 var visibleCourses = db.courses.Where(s => s.is_visible == true).ToList(); // Görünür dersleri alır
                 GridViewCourses.DataSource = visibleCourses; // Verileri GridView'e bağlar
@@ -41,7 +41,7 @@ namespace StudentTracking.Student.Course
         }
         private void AddCourseToEnrollment(int courseId)
         {
-            using (var db = new StudentTrackingEntitiesDB())
+            using (var db = new StudentTrackingDBEntities())
             {
                 int studentId = Convert.ToInt32(Session["UserId"]); // Session'dan öğrenci ID'sini alır
 

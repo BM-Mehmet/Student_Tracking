@@ -21,7 +21,7 @@ namespace StudentTracking.Teacher
             {
                 // isAdmin null ise veya false ise "teacher", true ise "admin" olarak atayın
                 Session["UserRole"] = loginResult.Item2 ?? false ? "admin" : "teacher";
-                Response.Redirect(Page.ResolveClientUrl("~/Teacher/TeacherList.aspx"));
+                Response.Redirect(Page.ResolveClientUrl("~/Admin/Admin.aspx"));
             }
             else
             {
@@ -39,7 +39,7 @@ namespace StudentTracking.Teacher
                 return Tuple.Create(false, (bool?)null);
             }
 
-            using (var db = new StudentTrackingEntitiesDB())
+            using (var db = new StudentTrackingDBEntities())
             {
                 var teacher = db.teachers.SingleOrDefault(t => t.email == email);
 

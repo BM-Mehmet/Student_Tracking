@@ -1,16 +1,17 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="CourseList.aspx.cs" Inherits="StudentTracking.Student.Course.CourseList" %>
-
+<%@ Register Src="~/Navbar.ascx" TagName="Navbar" TagPrefix="uc" %>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Course Page</title>
     <!-- Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"/>
 </head>
 <body>
     <form id="form1" runat="server" class="container mt-5">
         <div>
-            <h1 class="mb-4">Courses List</h1>
+            <uc:Navbar ID="Navbar1" runat="server" />
+            <h5 class="mb-4">Courses List</h5>
             <asp:Label ID="lblStatus" runat="server" Text="" ForeColor="Green" CssClass="mb-3"></asp:Label>
             <div class="table-responsive">
                 <asp:GridView ID="GridViewCourses" runat="server" AutoGenerateColumns="False" DataKeyNames="id" 
@@ -23,7 +24,7 @@
                         <asp:BoundField DataField="is_alone_enabled" HeaderText="Is Alone Enabled" />
                         <asp:TemplateField HeaderText="Actions">
                             <ItemTemplate>
-                                <asp:Button ID="btnSelect" runat="server" CommandName="SelectCourse" CommandArgument='<%# Eval("id") %>' Text="Select" CssClass="btn btn-sm btn-primary" />
+<%--                                <asp:Button ID="btnSelect" runat="server" CommandName="SelectCourse" CommandArgument='<%# Eval("id") %>' Text="Select" CssClass="btn btn-sm btn-primary" />--%>
                                 <asp:Button ID="btnEdit" runat="server" CommandName="Edit" CommandArgument='<%# Eval("id") %>' Text="Edit" CssClass="btn btn-sm btn-primary" />
                                 <asp:Button ID="btnDelete" runat="server" CommandName="Delete" CommandArgument='<%# Eval("id") %>' Text="Delete" CssClass="btn btn-sm btn-danger" />
                             </ItemTemplate>
@@ -40,7 +41,7 @@
                     <SortedDescendingHeaderStyle BackColor="#4870BE" />
                 </asp:GridView>
             </div>
-            <asp:Button ID="btnViewEnrolledCourses" runat="server" Text="View Enrolled Courses" OnClick="btnViewEnrolledCourses_Click" CssClass="btn btn-secondary mt-3" />
+<%--            <asp:Button ID="btnViewEnrolledCourses" runat="server" Text="View Enrolled Courses" OnClick="btnViewEnrolledCourses_Click" CssClass="btn btn-secondary mt-3" />--%>
             <asp:Button ID="btnAddCourses" runat="server" Text="Ders Ekle" OnClick="btnAddStudent_Click" CssClass="btn btn-primary mt-3" />
         </div>
     </form>

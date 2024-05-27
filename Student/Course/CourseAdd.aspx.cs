@@ -1,45 +1,62 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace StudentTracking.Student.Course
 {
-    public partial class CourseAdd : System.Web.UI.Page
+    public partial class CourseAdd : Page
     {
-        StudentTrackingEntitiesDB db = new StudentTrackingEntitiesDB();
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                BindAcademicYears();
+            }
+        }
 
         protected void btnAddCourse_Click(object sender, EventArgs e)
         {
-            // Yeni öğrenci eklemek için kullanılan metot
-            string CourseName = txtNewcourse_name.Text;
-            bool IsGroupEnabled = chkIsGroupEnabled.Checked;
-            bool IsAloneEnabled = chkIsAloneEnabled.Checked;
-            int SemesterId = Convert.ToInt32(txtNewsemester_id.Text);
-
-            using (var db = new StudentTrackingEntitiesDB()) // Veritabanı bağlantısı
+            try
             {
-                // Yeni öğrenci oluştur
-                var newCourses = new courses
+                string CourseName = txtNewcourse_name.Text;
+                bool IsGroupEnabled = chkIsGroupEnabled.Checked;
+                bool IsAloneEnabled = chkIsAloneEnabled.Checked;
+
+                using (var db = new StudentTrackingDBEntities())
                 {
-                    course_name = CourseName,
-                    is_group_enabled = IsGroupEnabled,
-                    is_alone_enabled = IsAloneEnabled,
-                    semester_id = SemesterId,
-                    is_visible = true
-                };
+                    var newCourse = new courses
+                    {
+                        course_name = CourseName,
+                        is_group_enabled = IsGroupEnabled,
+                        is_alone_enabled = IsAloneEnabled,
+                        semester_id = Convert.ToInt32(ddlAcademicYear.SelectedValue),
+                        is_visible = true
+                    };
+                    db.courses.Add(newCourse);
+                    db.SaveChanges();
+                }
 
-                db.courses.Add(newCourses); 
-                db.SaveChanges(); 
-
+                txtNewcourse_name.Text = "";
+                lblError.Text = "Kurs başarıyla eklendi.";
+                lblError.CssClass = "text-success";
             }
+            catch (Exception ex)
+            {
+                lblError.Text = "Hata: " + ex.Message;
+            }
+        }
 
-            txtNewcourse_name.Text = ""; // TextBox'ları temizle
-            txtNewsemester_id.Text = "";
-
-            Response.Redirect(Page.ResolveClientUrl("CourseSign.aspx"));
+        protected void BindAcademicYears()
+        {
+            using (var db = new StudentTrackingDBEntities())
+            {
+                var academicYears = db.semesters.Where(s => s.is_visible == true).ToList();
+                ddlAcademicYear.DataSource = academicYears;
+                ddlAcademicYear.DataTextField = "academic_year";
+                ddlAcademicYear.DataValueField = "id";
+                ddlAcademicYear.DataBind();
+            }
         }
     }
 }
+
