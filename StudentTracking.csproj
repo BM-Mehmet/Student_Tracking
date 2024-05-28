@@ -243,7 +243,6 @@
     <Content Include="Student\StudentEdit.aspx" />
     <Content Include="Student\StudentList.aspx" />
     <Content Include="Student\StudentLogin.aspx" />
-    <Content Include="Student\StudentRegister.aspx" />
     <Content Include="Teacher\TeacherAdd.aspx" />
     <Content Include="Teacher\TeacherList.aspx" />
     <Content Include="Teacher\TeacherLogin.aspx" />
@@ -488,13 +487,6 @@
     </Compile>
     <Compile Include="Student\StudentLogin.aspx.designer.cs">
       <DependentUpon>StudentLogin.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Student\StudentRegister.aspx.cs">
-      <DependentUpon>StudentRegister.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Student\StudentRegister.aspx.designer.cs">
-      <DependentUpon>StudentRegister.aspx</DependentUpon>
     </Compile>
     <Compile Include="sysdiagrams.cs">
       <DependentUpon>StudentTrackingEntitiesDB.tt</DependentUpon>
