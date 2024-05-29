@@ -44,7 +44,7 @@ namespace StudentTracking.Student.Course
                 txtNewDonem.Text = "";
                 txtStartDate.Text = "";
                 txtEndDate.Text = "";
-                lblError.Text = "Kurs başarıyla eklendi.";
+                lblError.Text = "Semester başarıyla eklendi.";
                 lblError.CssClass = "text-success";
             }
             catch (Exception ex)

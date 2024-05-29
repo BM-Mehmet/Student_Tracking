@@ -15,6 +15,15 @@ namespace StudentTracking.Teacher
     {
 
         /// <summary>
+        /// Navbar2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::StudentTracking.WebUserControl1 Navbar2;
+
+        /// <summary>
         /// form1 control.
         /// </summary>
         /// <remarks>
@@ -24,13 +33,13 @@ namespace StudentTracking.Teacher
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// Navbar1 control.
+        /// GridViewTeachers control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::StudentTracking.WebUserControl1 Navbar1;
+        protected global::System.Web.UI.WebControls.GridView GridViewTeachers;
 
         /// <summary>
         /// btnAddTeacher control.
@@ -40,14 +49,5 @@ namespace StudentTracking.Teacher
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnAddTeacher;
-
-        /// <summary>
-        /// GridViewTeachers control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridViewTeachers;
     }
 }

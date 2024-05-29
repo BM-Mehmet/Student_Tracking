@@ -13,6 +13,9 @@ namespace StudentTracking.Student.Course
         {
             if (!IsPostBack)
             {
+                // Akademik yılları dropdown listesine ekle
+                PopulateSemestersDropdown();
+
                 if (Request.QueryString["id"] != null)
                 {
                     int courseId;
@@ -31,7 +34,17 @@ namespace StudentTracking.Student.Course
                 }
             }
         }
-
+        private void PopulateSemestersDropdown()
+        {
+            using (var db = new StudentTrackingDBEntities())
+            {
+                var semesters = db.semesters.ToList();
+                semester_id.DataSource = semesters;
+                semester_id.DataTextField = "academic_year"; // Dropdown'da göstermek istediğiniz alan
+                semester_id.DataValueField = "id"; // Seçilen değeri almak için kullanılan alan
+                semester_id.DataBind();
+            }
+        }
         private void PopulateUpdateData(int courseId)
         {
             using (var db = new StudentTrackingDBEntities())
@@ -54,7 +67,18 @@ namespace StudentTracking.Student.Course
                 int courseId;
                 if (int.TryParse(Request.QueryString["id"], out courseId))
                 {
-                    UpdateCoursesData(courseId);
+                    // İki checkbox'un da işaretli olup olmadığını kontrol et
+                    if (is_group_enabled.Checked || is_alone_enabled.Checked)
+                    {
+                        UpdateCoursesData(courseId);
+                    }
+                    else
+                    {
+                        // Hata mesajı ekrana yazdır
+                        lblMessage.Text = "Lütfen en az birini seçin.";
+                        lblMessage.Visible = true;
+                        lblMessage.ForeColor = System.Drawing.Color.Red;
+                    }
                 }
                 else
                 {
@@ -66,6 +90,7 @@ namespace StudentTracking.Student.Course
                 // Hata işlemleri buraya eklenebilir
             }
         }
+
 
         private void UpdateCoursesData(int courseId)
         {

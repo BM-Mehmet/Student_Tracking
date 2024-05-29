@@ -24,7 +24,7 @@ namespace StudentTracking
             string emailPassword = ConfigurationManager.AppSettings["EmailPassword"];
             string recipient = txtRecipient.Text;
             // E-posta adresinin @ksu.edu.tr ile bitip bitmediğini kontrol et
-            if (!recipient.EndsWith("@ksu.edu.tr") && !recipient.EndsWith("@ogr.ksu.edu.tr"))
+            if (!recipient.EndsWith("@ogr.ksu.edu.tr"))
             {
                 lblMessage.Text = "Lütfen geçerli bir KSU e-posta adresi giriniz.";
                 lblMessage.ForeColor = System.Drawing.Color.Red;

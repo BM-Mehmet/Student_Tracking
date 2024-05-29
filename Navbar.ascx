@@ -20,9 +20,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href='<%= ResolveUrl("~/Student/StudentList.aspx") %>'>Students</a>
                 </li>
-                <li class="nav-item">
+<%--                <li class="nav-item">
                     <a class="nav-link" href='<%= ResolveUrl("~/Program/ProgramAdd.aspx") %>'>Programs</a>
-                </li>
+                </li>--%>
                 <li class="nav-item">
                     <a class="nav-link" href='<%= ResolveUrl("~/Group/GroupList.aspx") %>'>Groups</a>
                 </li>

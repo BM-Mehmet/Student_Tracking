@@ -1,43 +1,4 @@
-﻿<%--<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Register.aspx.cs" Inherits="StudentTracking.Register" Async="true" %>
-
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title>Student Register</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
-</head>
-<body>
-    <form id="form1" runat="server" class="container mt-5">
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">E-posta Gönderme Formu</h5>
-                <div class="form-group row">
-                    <label for="txtNewName" class="col-md-2 col-form-label">Name:</label>
-                    <div class="col-md-10">
-                        <asp:TextBox ID="txtNewName" runat="server" CssClass="form-control" placeholder="Name"></asp:TextBox>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="txtNewSurname" class="col-md-2 col-form-label">Surname:</label>
-                    <div class="col-md-10">
-                        <asp:TextBox ID="txtNewSurname" runat="server" CssClass="form-control" placeholder="Surname"></asp:TextBox>
-                    </div>
-                </div>
-                <asp:Label ID="lblMessage" runat="server" Text="" ForeColor="Red"></asp:Label>
-                <div class="form-group">
-                    <label for="txtRecipient">Alıcı E-posta Adresi</label>
-                    <asp:TextBox ID="txtRecipient" runat="server" CssClass="form-control" placeholder="Alıcı E-posta Adresi"></asp:TextBox>
-                </div>
-                <asp:Button ID="btnSendEmail" runat="server" Text="Gönder" OnClick="btnSendEmail_Click" CssClass="btn btn-primary" />
-            </div>
-        </div>
-    </form>
-</body>--%>
-<%--</html>--%>
-
-
-<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Register.aspx.cs" Inherits="StudentTracking.Register" Async="true" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Register.aspx.cs" Inherits="StudentTracking.Register" Async="true" %>
 
 <!DOCTYPE html>
 

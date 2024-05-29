@@ -14,9 +14,18 @@ namespace StudentTracking.Student
         protected void btnAddStudent_Click(object sender, EventArgs e)
         {
             // Yeni öğrenci eklemek için kullanılan metot
-            string name = txtNewName.Text;
-            string surname = txtNewSurname.Text;
-            string email = txtNewEmail.Text;
+            string name = txtNewName.Text.Trim();
+            string surname = txtNewSurname.Text.Trim();
+            string email = txtNewEmail.Text.Trim();
+            // Gerekli girdilerin boş olup olmadığını kontrol et
+            if (string.IsNullOrWhiteSpace(name) || string.IsNullOrWhiteSpace(surname) || string.IsNullOrWhiteSpace(email))
+            {
+                // Hata mesajını göster
+                lblMessage.Text = "Lütfen tüm alanları doldurun.";
+                lblMessage.Visible = true;
+                lblMessage.ForeColor = System.Drawing.Color.Red;
+                return; // Metodu sonlandır
+            }
 
             using (var db = new StudentTrackingDBEntities()) // Veritabanı bağlantısı
             {

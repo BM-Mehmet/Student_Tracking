@@ -1,5 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="TeacherUpdate.aspx.cs" Inherits="StudentTracking.Teacher.TeacherUpdate" %>
 
+<%@ Register Src="~/Navbar.ascx" TagName="Navbar" TagPrefix="uc" %>
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -11,6 +12,7 @@
     <link rel="stylesheet" type="text/css" href="../Css/TeacherUpdate.css" />
 </head>
 <body>
+    <uc:Navbar ID="Navbar1" runat="server" />
     <form id="form1" runat="server" class="container mt-5">
         <div class="row">
             <div class="col-md-6 offset-md-3">

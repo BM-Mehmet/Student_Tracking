@@ -16,6 +16,18 @@ namespace StudentTracking.Teacher
 
         protected void btnAdd_Click(object sender, EventArgs e)
         {
+            // Boş alan kontrolü
+            if (string.IsNullOrWhiteSpace(txtName.Text) ||
+                string.IsNullOrWhiteSpace(txtSurname.Text) ||
+                string.IsNullOrWhiteSpace(txtEmail.Text) ||
+                string.IsNullOrWhiteSpace(txtPassword.Text))
+            {
+                // Eksik bilgi var, kırmızı mesajı göster
+                lblMessage.Text = "Lütfen tüm alanları doldurunuz!";
+                lblMessage.Visible = true;
+                return; // Ekleme işleminden çık
+            }
+
             string name = txtName.Text;
             string surname = txtSurname.Text;
             string email = txtEmail.Text;
@@ -26,8 +38,10 @@ namespace StudentTracking.Teacher
                 bool emailExists = db.teachers.Any(t => t.email == email);
                 if (emailExists)
                 {
-                    // E-posta adresi zaten mevcut, kullanıcıya hata mesajı göster
-                    Response.Write("<script>alert('Aynı e-postaya sahip bir öğretmen zaten var!');</script>");
+                    // E-posta adresi zaten mevcut, kırmızı mesajı göster
+                    lblMessage.Text = "Aynı e-postaya sahip bir öğretmen zaten var!";
+                    lblMessage.ForeColor = System.Drawing.Color.Red;
+                    lblMessage.Visible = true;
                     return; // Ekleme işleminden çık
                 }
             }
@@ -49,9 +63,17 @@ namespace StudentTracking.Teacher
                 db.SaveChanges();
             }
 
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "redirect",
-         "alert('Öğretmen ekleme işlemi başarıyla sonuçlandı!'); window.location='" +
-         Request.ApplicationPath + "Teacher/TeacherManagement.aspx';", true);
+            // İşlem başarıyla tamamlandı, kullanıcıya mesajı göster ve yönlendir
+            lblMessage.Text = "Öğretmen ekleme işlemi başarıyla sonuçlandı!";
+            lblMessage.ForeColor = System.Drawing.Color.Green; // Yeşil renk kullanabilirsiniz
+            lblMessage.Visible = true;
+
+            // Diğer işlemleri yapmak için buraya kod ekleyebilirsiniz
+            txtName.Text = "";
+            txtSurname.Text = "";
+            txtEmail.Text = "";
+            txtPassword.Text = "";
         }
+
     }
 }
