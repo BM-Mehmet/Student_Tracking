@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c784be73057e4288a45baed76c14410b" Name="Diagram1">
+        <EntityTypeShape EntityType="StudentTrackingModel.courses" Width="1.5" PointX="0.75" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="StudentTrackingModel.CourseTeachers" Width="1.5" PointX="3" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="StudentTrackingModel.ders_kayıt" Width="1.5" PointX="3" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="StudentTrackingModel.group_memberships" Width="1.5" PointX="10.5" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="StudentTrackingModel.group_requests" Width="1.5" PointX="13.5" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="StudentTrackingModel.groups" Width="1.5" PointX="6" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="StudentTrackingModel.program" Width="1.5" PointX="3" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="StudentTrackingModel.semesters" Width="1.5" PointX="0.75" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="StudentTrackingModel.students" Width="1.5" PointX="8.25" PointY="17.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="StudentTrackingModel.TeacherRequests" Width="1.5" PointX="10.5" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="StudentTrackingModel.teachers" Width="1.5" PointX="0.75" PointY="18" IsExpanded="true" />
+        <AssociationConnector Association="StudentTrackingModel.FK__CourseTea__Cours__09A971A2" ManuallyRouted="false" />
+        <AssociationConnector Association="StudentTrackingModel.FK__ders_kayı__cours__6C190EBB" ManuallyRouted="false" />
+        <AssociationConnector Association="StudentTrackingModel.FK__groups__course_i__4316F928" ManuallyRouted="false" />
+        <AssociationConnector Association="StudentTrackingModel.FK__program__course___3E52440B" ManuallyRouted="false" />
+        <AssociationConnector Association="StudentTrackingModel.FK_CourseTeachers_Courses" ManuallyRouted="false" />
+        <AssociationConnector Association="StudentTrackingModel.FK_group_requests_courses" ManuallyRouted="false" />
+        <AssociationConnector Association="StudentTrackingModel.FK_TeacherRequests_Courses" ManuallyRouted="false" />
+        <AssociationConnector Association="StudentTrackingModel.FK__CourseTea__Teach__0A9D95DB" ManuallyRouted="false" />
+        <AssociationConnector Association="StudentTrackingModel.FK__ders_kayı__stude__6B24EA82" ManuallyRouted="false" />
+        <AssociationConnector Association="StudentTrackingModel.FK__group_mem__group__6FE99F9F" ManuallyRouted="false" />
+        <AssociationConnector Association="StudentTrackingModel.FK__group_mem__stude__70DDC3D8" ManuallyRouted="false" />
+        <AssociationConnector Association="StudentTrackingModel.FK_group_requests_groups" ManuallyRouted="false" />
+        <AssociationConnector Association="StudentTrackingModel.FK_group_requests_students" ManuallyRouted="false" />
+        <AssociationConnector Association="StudentTrackingModel.FK__groups__program___4222D4EF" ManuallyRouted="false" />
+        <AssociationConnector Association="StudentTrackingModel.FK__students__group___45F365D3" ManuallyRouted="false" />
+        <AssociationConnector Association="StudentTrackingModel.FK_loader_student_id" ManuallyRouted="false" />
+        <AssociationConnector Association="StudentTrackingModel.FK_TeacherRequests_Groups" ManuallyRouted="false" />
+        <AssociationConnector Association="StudentTrackingModel.FK__program__semeste__3D5E1FD2" ManuallyRouted="false" />
+        <AssociationConnector Association="StudentTrackingModel.FK__program__teacher__3F466844" ManuallyRouted="false" />
+        <AssociationConnector Association="StudentTrackingModel.FK_TeacherRequests_Students" ManuallyRouted="false" />
+        <AssociationConnector Association="StudentTrackingModel.FK_TeacherRequests_Teachers" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="StudentTrackingModelStoreContainer" CdmEntityContainer="StudentTrackingEntitiesDb">
+    <EntitySetMapping Name="courses">
+      <EntityTypeMapping TypeName="StudentTrackingModel.courses">
+        <MappingFragment StoreEntitySet="courses">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="course_name" ColumnName="course_name" />
+          <ScalarProperty Name="is_group_enabled" ColumnName="is_group_enabled" />
+          <ScalarProperty Name="semester_id" ColumnName="semester_id" />
+          <ScalarProperty Name="is_visible" ColumnName="is_visible" />
+          <ScalarProperty Name="is_alone_enabled" ColumnName="is_alone_enabled" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CourseTeachers">
+      <EntityTypeMapping TypeName="StudentTrackingModel.CourseTeachers">
+        <MappingFragment StoreEntitySet="CourseTeachers">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+          <ScalarProperty Name="TeacherId" ColumnName="TeacherId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ders_kayıt">
+      <EntityTypeMapping TypeName="StudentTrackingModel.ders_kayıt">
+        <MappingFragment StoreEntitySet="ders_kayıt">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="student_id" ColumnName="student_id" />
+          <ScalarProperty Name="course_id" ColumnName="course_id" />
+          <ScalarProperty Name="enrollment_status" ColumnName="enrollment_status" />
+          <ScalarProperty Name="enrollment_date" ColumnName="enrollment_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="group_memberships">
+      <EntityTypeMapping TypeName="StudentTrackingModel.group_memberships">
+        <MappingFragment StoreEntitySet="group_memberships">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="group_id" ColumnName="group_id" />
+          <ScalarProperty Name="student_id" ColumnName="student_id" />
+          <ScalarProperty Name="join_date" ColumnName="join_date" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="group_requests">
+      <EntityTypeMapping TypeName="StudentTrackingModel.group_requests">
+        <MappingFragment StoreEntitySet="group_requests">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="student_id" ColumnName="student_id" />
+          <ScalarProperty Name="group_id" ColumnName="group_id" />
+          <ScalarProperty Name="request_date" ColumnName="request_date" />
+          <ScalarProperty Name="is_visible" ColumnName="is_visible" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="join_message" ColumnName="join_message" />
+          <ScalarProperty Name="reject_reason" ColumnName="reject_reason" />
+          <ScalarProperty Name="course_id" ColumnName="course_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="groups">
+      <EntityTypeMapping TypeName="StudentTrackingModel.groups">
+        <MappingFragment StoreEntitySet="groups">
+          <ScalarProperty Name="is_single_member" ColumnName="is_single_member" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="group_name" ColumnName="group_name" />
+          <ScalarProperty Name="program_id" ColumnName="program_id" />
+          <ScalarProperty Name="course_id" ColumnName="course_id" />
+          <ScalarProperty Name="leader_student_id" ColumnName="leader_student_id" />
+          <ScalarProperty Name="is_visible" ColumnName="is_visible" />
+          <ScalarProperty Name="description" ColumnName="description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="program">
+      <EntityTypeMapping TypeName="StudentTrackingModel.program">
+        <MappingFragment StoreEntitySet="program">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="semester_id" ColumnName="semester_id" />
+          <ScalarProperty Name="course_id" ColumnName="course_id" />
+          <ScalarProperty Name="teachers_id" ColumnName="teachers_id" />
+          <ScalarProperty Name="is_visible" ColumnName="is_visible" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="semesters">
+      <EntityTypeMapping TypeName="StudentTrackingModel.semesters">
+        <MappingFragment StoreEntitySet="semesters">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="academic_year" ColumnName="academic_year" />
+          <ScalarProperty Name="is_visible" ColumnName="is_visible" />
+          <ScalarProperty Name="start_date" ColumnName="start_date" />
+          <ScalarProperty Name="end_date" ColumnName="end_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="students">
+      <EntityTypeMapping TypeName="StudentTrackingModel.students">
+        <MappingFragment StoreEntitySet="students">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="surname" ColumnName="surname" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="group_id" ColumnName="group_id" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="is_visible" ColumnName="is_visible" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TeacherRequests">
+      <EntityTypeMapping TypeName="StudentTrackingModel.TeacherRequests">
+        <MappingFragment StoreEntitySet="TeacherRequests">
+          <ScalarProperty Name="RequestId" ColumnName="RequestId" />
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+          <ScalarProperty Name="TeacherId" ColumnName="TeacherId" />
+          <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="RequestDate" ColumnName="RequestDate" />
+          <ScalarProperty Name="JoinMessage" ColumnName="JoinMessage" />
+          <ScalarProperty Name="RejectReason" ColumnName="RejectReason" />
+          <ScalarProperty Name="is_visible" ColumnName="is_visible" />
+          <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="teachers">
+      <EntityTypeMapping TypeName="StudentTrackingModel.teachers">
+        <MappingFragment StoreEntitySet="teachers">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="surname" ColumnName="surname" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="is_admin" ColumnName="is_admin" />
+          <ScalarProperty Name="is_visible" ColumnName="is_visible" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
