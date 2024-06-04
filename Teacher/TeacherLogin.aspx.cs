@@ -8,7 +8,6 @@ namespace StudentTracking.Teacher
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            // Sayfa yüklendiğinde yapılacak işlemler buraya yazılabilir
         }
 
         protected void LoginButton_Click(object sender, EventArgs e)
@@ -19,9 +18,9 @@ namespace StudentTracking.Teacher
             var loginResult = ValidateLogin(teacherEmail, password);
             if (loginResult.Item1)  // Eğer giriş başarılı ise
             {
-                // isAdmin null ise veya false ise "teacher", true ise "admin" olarak atayın
-                Session["UserRole"] = loginResult.Item2 ?? false ? "admin" : "teacher";
-                Response.Redirect(Page.ResolveClientUrl("~/Admin/Admin.aspx"));
+                Session["UserRole"] = loginResult.Item3.is_admin == true ? "admin" : "teacher";
+                Session["UserId"] = loginResult.Item3.id;
+                Response.Redirect(Page.ResolveClientUrl("~/Teacher/ManageTeacherRequest.aspx"));
             }
             else
             {
@@ -29,27 +28,24 @@ namespace StudentTracking.Teacher
             }
         }
 
-        // Kullanıcı giriş bilgilerini kontrol etmek için bir fonksiyon
-        // Geri dönüş tipi Tuple<bool, bool?>, burada ilk bool giriş başarılı olup olmadığını,
-        // ikinci bool? ise kullanıcının admin olup olmadığını (veya bilinmiyor ise null olabileceğini) belirtir
-        private Tuple<bool, bool?> ValidateLogin(string email, string password)
+        private Tuple<bool, bool?, teachers> ValidateLogin(string email, string password)
         {
             if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
             {
-                return Tuple.Create(false, (bool?)null);
+                return Tuple.Create(false, (bool?)null, (teachers)null);
             }
 
-            using (var db = new StudentTrackingDBEntities())
+            using (var db = new StudentTrackingEntitiesDb())
             {
                 var teacher = db.teachers.SingleOrDefault(t => t.email == email);
 
                 if (teacher == null || teacher.password != password)
                 {
-                    return Tuple.Create(false, (bool?)null);
+                    return Tuple.Create(false, (bool?)null, (teachers)null);
                 }
 
-                // Kullanıcı bulundu ve şifre doğru ise, admin olup olmadığını kontrol et
-                return Tuple.Create(true, teacher.is_admin);
+                // Kullanıcı bulundu ve şifre doğru ise, admin olup olmadığını ve kullanıcıyı döndür
+                return Tuple.Create(true, teacher.is_admin, teacher);
             }
         }
     }

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Linq;
-using System.Web;
+using System.Web.Caching;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -8,7 +8,7 @@ namespace StudentTracking.Group
 {
     public partial class ManageGroupRequests : System.Web.UI.Page
     {
-        StudentTrackingDBEntities db = new StudentTrackingDBEntities();
+        StudentTrackingEntitiesDb db = new StudentTrackingEntitiesDb();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -20,8 +20,6 @@ namespace StudentTracking.Group
             {
                 int courseId = Convert.ToInt32(Session["SelectedCourseId"]);
                 LoadRequests(courseId);
-                
-                   
             }
         }
 
@@ -29,12 +27,10 @@ namespace StudentTracking.Group
         {
             try
             {
-                int userId = Convert.ToInt32(Session["UserId"]);  // Lider ID olarak oturumdan alınan UserID kullan
+                int userId = Convert.ToInt32(Session["UserId"]);
 
-                // Kullanıcıya ait lider olduğu grupların ID'lerini çek
                 var leaderGroupIds = db.groups.Where(g => g.leader_student_id == userId && g.course_id == courseId).Select(g => g.id).ToList();
 
-                // Sadece kullanıcı lider olduğu gruplara gelen istekleri yükle
                 var groupRequests = db.group_requests
                     .Where(gr => leaderGroupIds.Contains(gr.group_id) && gr.is_visible == true)
                     .Select(gr => new
@@ -42,6 +38,7 @@ namespace StudentTracking.Group
                         request_id = gr.id,
                         student_name = db.students.FirstOrDefault(s => s.id == gr.student_id).name,
                         group_name = gr.groups.group_name,
+                        course_name = gr.groups.courses.course_name, // Ders adını ekleyin
                         join_message = gr.join_message,
                         status = gr.status
                     })
@@ -87,6 +84,7 @@ namespace StudentTracking.Group
 
             int courseId = Convert.ToInt32(Session["SelectedCourseId"]);
             LoadRequests(courseId);  // Yeniden yükleme
+
         }
 
         protected void ApproveRequest(int requestId)
@@ -119,10 +117,10 @@ namespace StudentTracking.Group
 
                     // Veritabanı değişikliklerini kaydet
                     db.SaveChanges();
+                    Response.Redirect("ManageGroupRequests.aspx");
                 }
             }
         }
-
 
         protected void RejectRequest(int requestId, string rejectReason)
         {
@@ -133,6 +131,7 @@ namespace StudentTracking.Group
                 request.is_visible = false;
                 request.reject_reason = rejectReason; // Reddedilme nedenini kaydet
                 db.SaveChanges();
+                Response.Redirect("ManageGroupRequests.aspx");
             }
         }
     }

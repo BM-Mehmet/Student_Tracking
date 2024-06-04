@@ -21,7 +21,7 @@ namespace StudentTracking.Student.Course
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::StudentTracking.WebUserControl1 Navbar1;
+        protected global::StudentTracking.Navbar Navbar1;
 
         /// <summary>
         /// form1 control.
@@ -49,6 +49,15 @@ namespace StudentTracking.Student.Course
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GridViewCourses;
+
+        /// <summary>
+        /// btnViewEnrolledCourses control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnViewEnrolledCourses;
 
         /// <summary>
         /// btnAddCourses control.

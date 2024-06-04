@@ -13,39 +13,39 @@ namespace StudentTracking.Student.Course
         {
             if (!IsPostBack)
             {
-                //if (Session["UserId"] != null && Session["UserRole"].ToString() == "öğrenci" || Session["UserRole"].ToString() == "admin") // Session kontrolü
-                //{
+                if (Session["UserId"] != null )
+                {
                     BindGrid(); 
-                //}
-                //else
-                //{
-                //    Response.Redirect("~/Student/StudentLogin.aspx"); // Öğrenci değilse veya oturum yoksa giriş sayfasına yönlendir.
-                //}
+                }
+                else
+                {
+                    Response.Redirect("~/Teacher/TeacherLogin.aspx"); 
+                }
             }
+
         }
 
         private void BindGrid()
         {
-            using (var db = new StudentTrackingDBEntities()) // Veritabanı bağlantısı
+            using (var db = new StudentTrackingEntitiesDb()) 
             {
-                var visibleCourses = db.courses.Where(s => s.is_visible == true).ToList(); // Görünür dersleri alır
-                GridViewCourses.DataSource = visibleCourses; // Verileri GridView'e bağlar
-                GridViewCourses.DataBind(); // Verileri görüntüler
+                var visibleCourses = db.courses.Where(s => s.is_visible == true).ToList();
+                GridViewCourses.DataSource = visibleCourses; 
+                GridViewCourses.DataBind();
             }
         }
 
         protected void btnAddStudent_Click(object sender, EventArgs e)
         {
             Response.Redirect(Page.ResolveClientUrl("CourseAdd.aspx"));
-            BindGrid(); // GridView'i tekrar bağla
+            BindGrid();
         }
         private void AddCourseToEnrollment(int courseId)
         {
-            using (var db = new StudentTrackingDBEntities())
+            using (var db = new StudentTrackingEntitiesDb())
             {
-                int studentId = Convert.ToInt32(Session["UserId"]); // Session'dan öğrenci ID'sini alır
+                int studentId = Convert.ToInt32(Session["UserId"]); 
 
-                // Öğrencinin bu kursa zaten kaydolup kaydolmadığını kontrol et
                 var existingEnrollment = db.ders_kayıt.FirstOrDefault(en => en.student_id == studentId && en.course_id == courseId);
                 if (existingEnrollment == null)
                 {
@@ -88,7 +88,7 @@ namespace StudentTracking.Student.Course
         }
         protected void btnViewEnrolledCourses_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Student/Course/CourseSign.aspx");  // Kullanıcıyı CourseSign sayfasına yönlendir
+            Response.Redirect("~/Student/Course/CourseSign.aspx"); 
         }
 
     }

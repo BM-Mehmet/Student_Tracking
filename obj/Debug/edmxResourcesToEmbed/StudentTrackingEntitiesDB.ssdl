@@ -11,6 +11,14 @@
     <Property Name="is_visible" Type="bit" />
     <Property Name="is_alone_enabled" Type="bit" />
   </EntityType>
+  <EntityType Name="CourseTeachers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CourseId" Type="int" />
+    <Property Name="TeacherId" Type="int" />
+  </EntityType>
   <EntityType Name="ders_kayıt">
     <Key>
       <PropertyRef Name="id" />
@@ -55,6 +63,8 @@
     <Property Name="course_id" Type="int" />
     <Property Name="leader_student_id" Type="int" />
     <Property Name="is_visible" Type="bit" />
+    <Property Name="description" Type="varchar" MaxLength="255" />
+    <Property Name="is_single_member" Type="bit" />
   </EntityType>
   <EntityType Name="program">
     <Key>
@@ -89,16 +99,6 @@
     <Property Name="is_visible" Type="bit" />
     <Property Name="student_no" Type="int" />
   </EntityType>
-  <EntityType Name="sysdiagrams">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-    <Property Name="principal_id" Type="int" Nullable="false" />
-    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="version" Type="int" />
-    <Property Name="definition" Type="varbinary(max)" />
-  </EntityType>
   <EntityType Name="TeacherRequests">
     <Key>
       <PropertyRef Name="RequestId" />
@@ -111,6 +111,8 @@
     <Property Name="RequestDate" Type="datetime" />
     <Property Name="JoinMessage" Type="nvarchar" MaxLength="500" />
     <Property Name="RejectReason" Type="nvarchar" MaxLength="500" />
+    <Property Name="is_visible" Type="bit" />
+    <Property Name="GroupId" Type="int" />
   </EntityType>
   <EntityType Name="teachers">
     <Key>
@@ -124,6 +126,30 @@
     <Property Name="is_admin" Type="bit" />
     <Property Name="is_visible" Type="bit" />
   </EntityType>
+  <Association Name="FK__CourseTea__Cours__29221CFB">
+    <End Role="courses" Type="Self.courses" Multiplicity="0..1" />
+    <End Role="CourseTeachers" Type="Self.CourseTeachers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="courses">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="CourseTeachers">
+        <PropertyRef Name="CourseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CourseTea__Teach__2A164134">
+    <End Role="teachers" Type="Self.teachers" Multiplicity="0..1" />
+    <End Role="CourseTeachers" Type="Self.CourseTeachers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="teachers">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="CourseTeachers">
+        <PropertyRef Name="TeacherId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK__enrollmen__cours__70DDC3D8">
     <End Role="courses" Type="Self.courses" Multiplicity="0..1" />
     <End Role="ders_kayıt" Type="Self.ders_kayıt" Multiplicity="*" />
@@ -304,6 +330,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_TeacherRequests_Groups">
+    <End Role="groups" Type="Self.groups" Multiplicity="0..1" />
+    <End Role="TeacherRequests" Type="Self.TeacherRequests" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="groups">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="TeacherRequests">
+        <PropertyRef Name="GroupId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_TeacherRequests_Students">
     <End Role="students" Type="Self.students" Multiplicity="0..1" />
     <End Role="TeacherRequests" Type="Self.TeacherRequests" Multiplicity="*" />
@@ -330,6 +368,7 @@
   </Association>
   <EntityContainer Name="StudentTrackingDBModelStoreContainer">
     <EntitySet Name="courses" EntityType="Self.courses" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CourseTeachers" EntityType="Self.CourseTeachers" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ders_kayıt" EntityType="Self.ders_kayıt" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="group_memberships" EntityType="Self.group_memberships" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="group_requests" EntityType="Self.group_requests" Schema="dbo" store:Type="Tables" />
@@ -337,9 +376,16 @@
     <EntitySet Name="program" EntityType="Self.program" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="semesters" EntityType="Self.semesters" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="students" EntityType="Self.students" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TeacherRequests" EntityType="Self.TeacherRequests" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="teachers" EntityType="Self.teachers" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__CourseTea__Cours__29221CFB" Association="Self.FK__CourseTea__Cours__29221CFB">
+      <End Role="courses" EntitySet="courses" />
+      <End Role="CourseTeachers" EntitySet="CourseTeachers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CourseTea__Teach__2A164134" Association="Self.FK__CourseTea__Teach__2A164134">
+      <End Role="teachers" EntitySet="teachers" />
+      <End Role="CourseTeachers" EntitySet="CourseTeachers" />
+    </AssociationSet>
     <AssociationSet Name="FK__enrollmen__cours__70DDC3D8" Association="Self.FK__enrollmen__cours__70DDC3D8">
       <End Role="courses" EntitySet="courses" />
       <End Role="ders_kayıt" EntitySet="ders_kayıt" />
@@ -398,6 +444,10 @@
     </AssociationSet>
     <AssociationSet Name="FK_TeacherRequests_Courses" Association="Self.FK_TeacherRequests_Courses">
       <End Role="courses" EntitySet="courses" />
+      <End Role="TeacherRequests" EntitySet="TeacherRequests" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TeacherRequests_Groups" Association="Self.FK_TeacherRequests_Groups">
+      <End Role="groups" EntitySet="groups" />
       <End Role="TeacherRequests" EntitySet="TeacherRequests" />
     </AssociationSet>
     <AssociationSet Name="FK_TeacherRequests_Students" Association="Self.FK_TeacherRequests_Students">

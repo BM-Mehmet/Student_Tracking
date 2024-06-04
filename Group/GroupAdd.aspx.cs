@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -9,7 +7,7 @@ namespace StudentTracking.Group
 {
     public partial class GroupAdd : System.Web.UI.Page
     {
-        StudentTrackingDBEntities db = new StudentTrackingDBEntities();
+        StudentTrackingEntitiesDb db = new StudentTrackingEntitiesDb();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["UserId"] == null)
@@ -18,65 +16,67 @@ namespace StudentTracking.Group
             }
             else if (!IsPostBack)
             {
-                int studentId = Convert.ToInt32(Session["UserId"]);
-                ddlLeaderStudent.Items.Insert(0, new ListItem { Text = "You", Value = studentId.ToString() });
-                ddlLeaderStudent.SelectedIndex = 0; // Oturumda olan kullanıcıyı lider olarak set et
-
-                int courseId = Convert.ToInt32(Session["SelectedCourseId"]); // Seçilen ders ID'sini al
-                ddlCourse.DataSource = db.courses.Where(c => c.id == courseId).Select(x => new { CourseName = x.course_name, CourseId = x.id }).ToList();
-                ddlCourse.DataTextField = "CourseName";
-                ddlCourse.DataValueField = "CourseId";
-                ddlCourse.DataBind();
-
-                ddlProgram.DataSource = db.program.Select(x => new { ProgramId = x.id }).ToList();
-                ddlProgram.DataValueField = "ProgramId";
-                ddlProgram.DataBind();
+                InitializeFormData();
             }
         }
 
+        private void InitializeFormData()
+        {
+            int studentId = Convert.ToInt32(Session["UserId"]);
+            int courseId = Convert.ToInt32(Session["SelectedCourseId"]); 
+            int programId = 1; 
 
-
+            // Lider öğrenci ve kurs bilgilerini arka planda ayarla
+            Session["LeaderStudentId"] = studentId;
+            Session["SelectedProgramId"] = programId;
+            Session["SelectedCourseId"] = courseId;
+        }
 
         protected void btnAddGroup_Click(object sender, EventArgs e)
         {
             string groupName = txtGroupName.Text;
+            string groupDescription = txtDescription.Text;
+
             if (string.IsNullOrEmpty(groupName))
             {
-                lblMessage.Text = "Please enter a group name.";
+                lblMessage.Text = "Grup ismi giriniz.";
                 return;
             }
 
-            // Lider olarak oturumda olan öğrenci atanır.
-            int leaderStudentId = Convert.ToInt32(Session["UserId"]);
-            int programId = Convert.ToInt32(ddlProgram.SelectedValue);
+            int leaderStudentId = Convert.ToInt32(Session["LeaderStudentId"]);
+            int programId = Convert.ToInt32(Session["SelectedProgramId"]);
+            int courseId = Convert.ToInt32(Session["SelectedCourseId"]);
 
-           
-
-            // Grup isminin zaten var olup olmadığını kontrol et
             bool groupExists = db.groups.Any(g => g.group_name == groupName);
             if (groupExists)
             {
-                lblMessage.Text = "Bu grup ismi daha önce kullanılmış. Lütfen farklı bir grup ismi deneyiniz.";
+                lblMessage.Text = "Bu grup adı zaten kullanılmış. Lütfen farklı bir isim deneyin.";
                 return;
             }
 
-            // Yeni grup oluştur
             groups newGroup = new groups
             {
                 group_name = groupName,
                 leader_student_id = leaderStudentId,
                 program_id = programId,
-                course_id = Convert.ToInt32(Session["SelectedCourseId"]),
+                description = groupDescription,
+                course_id = courseId,
                 is_visible = true
             };
             db.groups.Add(newGroup);
             db.SaveChanges();
 
-            // Başarılı grup ekleme mesajı
-            Response.Write("<script>alert('Group added successfully!');</script>");
-            // Kullanıcıyı başka bir sayfaya yönlendir
-            Response.Redirect("GroupList.aspx");
-        }
+            group_memberships leaderMembership = new group_memberships
+            {
+                group_id = newGroup.id, 
+                student_id = leaderStudentId,
+                join_date = DateTime.Now,
+                status = "Active" 
+            };
+            db.group_memberships.Add(leaderMembership);
+            db.SaveChanges();
 
+            Response.Redirect("~/Student/Course/courseSign.aspx"); 
+        }
     }
 }

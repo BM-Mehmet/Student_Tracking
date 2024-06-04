@@ -27,7 +27,7 @@ namespace StudentTracking.Student
                 return; // Metodu sonlandır
             }
 
-            using (var db = new StudentTrackingDBEntities()) // Veritabanı bağlantısı
+            using (var db = new StudentTrackingEntitiesDb()) // Veritabanı bağlantısı
             {
                 // Yeni öğrenci oluştur
                 var newStudent = new students

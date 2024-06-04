@@ -13,17 +13,9 @@ namespace StudentTracking.Student.Course
         {
             if (!IsPostBack)
             {
-                // Session control
-                if (Session["UserId"] == null ||
-                    (Session["UserRole"].ToString() != "öğrenci" && Session["UserRole"].ToString() != "admin"))
-                {
-                    Response.Redirect("~/Student/StudentLogin.aspx"); // Redirect to login if not student or admin
-                    return;
-                }
-
                 int courseId = Convert.ToInt32(Request.QueryString["id"]);
 
-                using (var db = new StudentTrackingDBEntities())
+                using (var db = new StudentTrackingEntitiesDb())
                 {
                     var course = db.courses.Find(courseId);
 
@@ -33,6 +25,7 @@ namespace StudentTracking.Student.Course
                         semester_id.Text = Convert.ToString(course.semester_id);
                         is_group_enabled.Checked = Convert.ToBoolean(course.is_group_enabled);
                         is_alone_enabled.Checked = Convert.ToBoolean(course.is_alone_enabled);
+
                     }
                 }
             }
@@ -42,13 +35,13 @@ namespace StudentTracking.Student.Course
         {
             int courseId = Convert.ToInt32(Request.QueryString["id"]);
 
-            using (var db = new StudentTrackingDBEntities())
+            using (var db = new StudentTrackingEntitiesDb())
             {
                 var course = db.courses.Find(courseId);
 
                 if (course != null)
                 {
-                    course.is_visible = false; // Soft delete by setting is_visible to false
+                    course.is_visible = false;
                     db.SaveChanges();
                 }
             }

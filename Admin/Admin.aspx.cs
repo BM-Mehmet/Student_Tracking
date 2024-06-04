@@ -9,19 +9,9 @@ namespace StudentTracking.Admin
 {
     public partial class Admin : System.Web.UI.Page
     {
-        //protected void Page_Load(object sender, EventArgs e)
-        //{
-        //    if (!IsPostBack)
-        //    {
-        //        if (Session["UserId"] != null && Session["UserRole"].ToString() == "admin") // Session kontrolü
-        //        {
+        protected void Page_Load(object sender, EventArgs e)
+        {
 
-        //        }
-        //        else
-        //        {
-        //            Response.Redirect("~/Teacher/TeacherLogin.aspx"); // Öğrenci değilse veya oturum yoksa giriş sayfasına yönlendir.
-        //        }
-        //    }
-        //}
+        }
     }
 }

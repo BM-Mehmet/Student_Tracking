@@ -13,10 +13,10 @@ namespace StudentTracking
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class StudentTrackingDBEntities : DbContext
+    public partial class StudentTrackingEntitiesDb : DbContext
     {
-        public StudentTrackingDBEntities()
-            : base("name=StudentTrackingDBEntities")
+        public StudentTrackingEntitiesDb()
+            : base("name=StudentTrackingEntitiesDb")
         {
         }
     
@@ -25,16 +25,16 @@ namespace StudentTracking
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<courses> courses { get; set; }
         public virtual DbSet<ders_kayıt> ders_kayıt { get; set; }
         public virtual DbSet<group_memberships> group_memberships { get; set; }
         public virtual DbSet<group_requests> group_requests { get; set; }
         public virtual DbSet<groups> groups { get; set; }
         public virtual DbSet<program> program { get; set; }
-        public virtual DbSet<students> students { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
-        public virtual DbSet<TeacherRequests> TeacherRequests { get; set; }
-        public virtual DbSet<courses> courses { get; set; }
         public virtual DbSet<semesters> semesters { get; set; }
+        public virtual DbSet<students> students { get; set; }
+        public virtual DbSet<TeacherRequests> TeacherRequests { get; set; }
         public virtual DbSet<teachers> teachers { get; set; }
+        public virtual DbSet<CourseTeachers> CourseTeachers { get; set; }
     }
 }

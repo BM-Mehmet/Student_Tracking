@@ -22,9 +22,12 @@ namespace StudentTracking
         public Nullable<System.DateTime> RequestDate { get; set; }
         public string JoinMessage { get; set; }
         public string RejectReason { get; set; }
+        public Nullable<bool> is_visible { get; set; }
+        public Nullable<int> GroupId { get; set; }
     
-        public virtual students students { get; set; }
         public virtual courses courses { get; set; }
+        public virtual students students { get; set; }
         public virtual teachers teachers { get; set; }
+        public virtual groups groups { get; set; }
     }
 }

@@ -9,7 +9,7 @@ namespace StudentTracking.Teacher
 {
     public partial class TeacherManagement : System.Web.UI.Page
     {
-        private StudentTrackingDBEntities db = new StudentTrackingDBEntities();
+        private StudentTrackingEntitiesDb db = new StudentTrackingEntitiesDb();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)

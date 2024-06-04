@@ -20,6 +20,7 @@ namespace StudentTracking
             this.group_memberships = new HashSet<group_memberships>();
             this.group_requests = new HashSet<group_requests>();
             this.students = new HashSet<students>();
+            this.TeacherRequests = new HashSet<TeacherRequests>();
         }
     
         public int id { get; set; }
@@ -28,7 +29,10 @@ namespace StudentTracking
         public Nullable<int> course_id { get; set; }
         public Nullable<int> leader_student_id { get; set; }
         public Nullable<bool> is_visible { get; set; }
+        public string description { get; set; }
+        public Nullable<bool> is_single_member { get; set; }
     
+        public virtual courses courses { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<group_memberships> group_memberships { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -37,6 +41,7 @@ namespace StudentTracking
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<students> students { get; set; }
         public virtual students students1 { get; set; }
-        public virtual courses courses { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TeacherRequests> TeacherRequests { get; set; }
     }
 }

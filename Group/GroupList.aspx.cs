@@ -9,7 +9,7 @@ namespace StudentTracking.Group
 {
     public partial class GroupList : System.Web.UI.Page
     {
-        StudentTrackingDBEntities db = new StudentTrackingDBEntities();
+        StudentTrackingEntitiesDb db = new  StudentTrackingEntitiesDb();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -53,7 +53,7 @@ namespace StudentTracking.Group
             // Silme işlemi için kod
             int groupId = Convert.ToInt32(GridViewGroups.DataKeys[e.RowIndex].Value);
             groups group = db.groups.FirstOrDefault(c => c.id == groupId);
-            group.is_visible=false;
+            group.is_visible = false;
             db.SaveChanges();
 
             BindGroupList();
@@ -61,7 +61,7 @@ namespace StudentTracking.Group
 
         protected void GridViewGroups_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-            
+
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
                 int groupId = Convert.ToInt32(GridViewGroups.DataKeys[e.Row.RowIndex].Value);

@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace StudentTracking
 {
-    public partial class WebUserControl1 : System.Web.UI.UserControl
+    public partial class Navbar : System.Web.UI.UserControl
     {
         protected void Page_Load(object sender, EventArgs e)
         {

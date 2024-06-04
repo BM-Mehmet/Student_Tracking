@@ -1,5 +1,4 @@
-﻿<%--<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Navbar.ascx.cs" Inherits="WebApplication.UserControls.Navbar" %>--%>
-<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Navbar.ascx.cs" Inherits="StudentTracking.WebUserControl1" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Navbar.ascx.cs" Inherits="StudentTracking.Navbar" %>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
         <a class="navbar-brand" href='<%= ResolveUrl("~/Admin/Admin.aspx") %>'>KSÜ Admin</a>
@@ -25,6 +24,12 @@
                 </li>--%>
                 <li class="nav-item">
                     <a class="nav-link" href='<%= ResolveUrl("~/Group/GroupList.aspx") %>'>Groups</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href='<%= ResolveUrl("~/Teacher/ManageTeacherRequest.aspx") %>'>Öğretmen İstekleri</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href='<%= ResolveUrl("~/Teacher/TeacherCourse.aspx") %>'>Öğretmen Ders Eşleştirmesi</a>
                 </li>
             </ul>
         </div>

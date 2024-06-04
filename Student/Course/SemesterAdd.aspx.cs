@@ -9,7 +9,7 @@ namespace StudentTracking.Student.Course
 {
     public partial class SemesterAdd : System.Web.UI.Page
     {
-        StudentTrackingDBEntities db = new StudentTrackingDBEntities();
+        StudentTrackingEntitiesDb db = new StudentTrackingEntitiesDb();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -23,7 +23,7 @@ namespace StudentTracking.Student.Course
                 // Yeni kurs eklemek için kullanılan metot
                 DateTime StartDate = DateTime.ParseExact(txtStartDate.Text, "dd-MM-yyyy", null);
                 DateTime EndDate = DateTime.ParseExact(txtEndDate.Text, "dd-MM-yyyy", null);
-                using (var db = new StudentTrackingDBEntities()) // Veritabanı bağlantısı
+                using (var db = new StudentTrackingEntitiesDb()) // Veritabanı bağlantısı
                 {
 
                     // Yeni semester oluştur
@@ -33,7 +33,7 @@ namespace StudentTracking.Student.Course
                         is_visible = true,
                         start_date = StartDate,
                         end_date = EndDate,
-                        
+
 
                     };
                     db.semesters.Add(newSemester);
@@ -44,7 +44,7 @@ namespace StudentTracking.Student.Course
                 txtNewDonem.Text = "";
                 txtStartDate.Text = "";
                 txtEndDate.Text = "";
-                lblError.Text = "Semester başarıyla eklendi.";
+                lblError.Text = "Kurs başarıyla eklendi.";
                 lblError.CssClass = "text-success";
             }
             catch (Exception ex)
@@ -53,6 +53,5 @@ namespace StudentTracking.Student.Course
                 lblError.Text = "Hata: " + ex.Message;
             }
         }
-
     }
 }

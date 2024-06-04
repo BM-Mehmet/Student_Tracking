@@ -21,7 +21,7 @@ namespace StudentTracking.Student
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::StudentTracking.WebUserControl1 Navbar1;
+        protected global::StudentTracking.Navbar Navbar1;
 
         /// <summary>
         /// form1 control.

@@ -1,18 +1,17 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="CourseDelete.aspx.cs" Inherits="StudentTracking.Student.Course.CourseDelete" %>
-<%@ Register Src="~/Navbar.ascx" TagName="Navbar" TagPrefix="uc" %>
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Delete Course</title>
     <!-- Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
     <form id="form1" runat="server" class="container mt-5">
         <div>
-               <uc:Navbar ID="Navbar1" runat="server" />
-            <h5>Delete Course</h5>
+            <h2>Delete Course</h2>
             <div class="form-group row">
                 <label for="course_name" class="col-md-2 col-form-label">Course Name:</label>
                 <div class="col-md-10">

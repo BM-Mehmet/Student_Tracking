@@ -15,40 +15,13 @@ namespace StudentTracking.Group
     {
 
         /// <summary>
-        /// form1 control.
+        /// GridViewGroups control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-
-        /// <summary>
-        /// ddlGroups control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlGroups;
-
-        /// <summary>
-        /// txtJoinMessage control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtJoinMessage;
-
-        /// <summary>
-        /// RequestJoinButton control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button RequestJoinButton;
+        protected global::System.Web.UI.WebControls.GridView GridViewGroups;
 
         /// <summary>
         /// lblStatus control.
