@@ -9,24 +9,34 @@ namespace StudentTracking.Student
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            // Oturum kontrolü - öğretmen olarak giriş yapılmış mı kontrol et
+            if (Session["UserRole"] != null && Session["UserRole"].ToString() == "admin")
             {
-                if (Request.QueryString["id"] != null)
+                if (!IsPostBack)
                 {
-                    int studentId;
-                    if (int.TryParse(Request.QueryString["id"], out studentId))
+                    if (Request.QueryString["id"] != null)
                     {
-                        PopulateStudentData(studentId);
+                        int studentId;
+                        if (int.TryParse(Request.QueryString["id"], out studentId))
+                        {
+                            PopulateStudentData(studentId);
+                        }
+                        else
+                        {
+                            // Hata işlemleri buraya eklenebilir
+                        }
                     }
                     else
                     {
                         // Hata işlemleri buraya eklenebilir
                     }
                 }
-                else
-                {
-                    // Hata işlemleri buraya eklenebilir
-                }
+
+            }
+            else
+            {
+                // Öğretmen olarak giriş yapılmamışsa kullanıcıyı login sayfasına yönlendir
+                Response.Redirect("~/Teacher/TeacherLogin.aspx"); // Giriş sayfasının URL'sini doğru yola göre ayarlayın
             }
         }
 

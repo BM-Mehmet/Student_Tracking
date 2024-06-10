@@ -15,15 +15,6 @@ namespace StudentTracking.Group
     {
 
         /// <summary>
-        /// form1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-
-        /// <summary>
         /// Navbar1 control.
         /// </summary>
         /// <remarks>
@@ -31,6 +22,15 @@ namespace StudentTracking.Group
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::StudentTracking.Navbar Navbar1;
+
+        /// <summary>
+        /// form1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
         /// GridViewGroups control.

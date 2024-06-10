@@ -9,17 +9,25 @@ namespace StudentTracking.Teacher
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            if (Session["UserRole"] != null && (Session["UserRole"].ToString() == "teacher" || Session["UserRole"].ToString() == "admin"))
             {
-                if (Session["UserId"] == null || Session["UserRole"] == null )
+                if (!IsPostBack)
                 {
-                    Response.Redirect("~/Teacher/TeacherLogin.aspx");
-                    return;
+                    if (Session["UserId"] == null || Session["UserRole"] == null)
+                    {
+                        Response.Redirect("~/Teacher/TeacherLogin.aspx");
+                        return;
+                    }
+                    else
+                    {
+                        BindTeacherRequests();
+                    }
                 }
-                else
-                {
-                    BindTeacherRequests();
-                }
+            }
+            else
+            {
+                // Öğretmen olarak giriş yapılmamışsa kullanıcıyı login sayfasına yönlendir
+                Response.Redirect("~/Teacher/TeacherLogin.aspx"); // Giriş sayfasının URL'sini doğru yola göre ayarlayın
             }
         }
 
@@ -65,7 +73,7 @@ namespace StudentTracking.Teacher
                 }
                 db.SaveChanges();
             }
-            BindTeacherRequests();  
+            BindTeacherRequests();
         }
     }
 }

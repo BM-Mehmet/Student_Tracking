@@ -11,16 +11,24 @@ namespace StudentTracking.Student.Course
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            if (Session["UserRole"] != null && Session["UserRole"].ToString() == "admin")
             {
-                if (Session["UserId"] != null )
+                if (!IsPostBack)
                 {
-                    BindGrid(); 
+                    if (Session["UserId"] != null)
+                    {
+                        BindGrid();
+                    }
+                    else
+                    {
+                        Response.Redirect("~/Teacher/TeacherLogin.aspx");
+                    }
                 }
-                else
-                {
-                    Response.Redirect("~/Teacher/TeacherLogin.aspx"); 
-                }
+            }
+            else
+            {
+                // Öğretmen olarak giriş yapılmamışsa kullanıcıyı login sayfasına yönlendir
+                Response.Redirect("~/Teacher/TeacherLogin.aspx"); // Giriş sayfasının URL'sini doğru yola göre ayarlayın
             }
 
         }

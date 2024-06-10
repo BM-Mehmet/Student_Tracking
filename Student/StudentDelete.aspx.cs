@@ -9,22 +9,32 @@ namespace StudentTracking.Student
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            // Oturum kontrolü - öğretmen olarak giriş yapılmış mı kontrol et
+            if (Session["UserRole"] != null && Session["UserRole"].ToString() == "admin")
             {
-                int studentId = Convert.ToInt32(Request.QueryString["id"]);
-
-                using (var db = new StudentTrackingEntitiesDb())
+                if (!IsPostBack)
                 {
-                    var student = db.students.Find(studentId);
+                    int studentId = Convert.ToInt32(Request.QueryString["id"]);
 
-                    if (student != null)
+                    using (var db = new StudentTrackingEntitiesDb())
                     {
-                        txtName.Text = student.name;
-                        txtSurname.Text = student.surname;
-                        txtEmail.Text = student.email;
+                        var student = db.students.Find(studentId);
+
+                        if (student != null)
+                        {
+                            txtName.Text = student.name;
+                            txtSurname.Text = student.surname;
+                            txtEmail.Text = student.email;
+                        }
                     }
                 }
             }
+            else
+            {
+                // Öğretmen olarak giriş yapılmamışsa kullanıcıyı login sayfasına yönlendir
+                Response.Redirect("~/Teacher/TeacherLogin.aspx"); // Giriş sayfasının URL'sini doğru yola göre ayarlayın
+            }
+
         }
 
         protected void btnDelete_Click(object sender, EventArgs e)

@@ -13,7 +13,7 @@
     <uc:Navbar ID="Navbar1" runat="server" />
     <form id="form1" runat="server" class="container mt-5">
         <div>
-            <h1 class="mb-4">Courses List</h1>
+            <h1 class="mb-4">Ders Listesi</h1>
             <asp:Label ID="lblStatus" runat="server" Text="" ForeColor="Green" CssClass="mb-3"></asp:Label>
             <div class="table-responsive">
                 <asp:GridView ID="GridViewCourses" runat="server" AutoGenerateColumns="False" DataKeyNames="id"
@@ -21,14 +21,13 @@
                     CellPadding="4" ForeColor="#333333" GridLines="None" CssClass="table">
                     <Columns>
                         <asp:BoundField DataField="id" HeaderText="ID" ReadOnly="true" />
-                        <asp:BoundField DataField="course_name" HeaderText="Course Name" />
-                        <asp:BoundField DataField="is_group_enabled" HeaderText="Is Group Enabled" />
-                        <asp:BoundField DataField="is_alone_enabled" HeaderText="Is Alone Enabled" />
-                        <asp:TemplateField HeaderText="Actions">
+                        <asp:BoundField DataField="course_name" HeaderText="Ders Adı" />
+                        <asp:BoundField DataField="is_group_enabled" HeaderText="Gruplu Çalışmaya İzin Ver" />
+                        <asp:BoundField DataField="is_alone_enabled" HeaderText="Tekli Çalışmaya İzin Ver" />
+                        <asp:TemplateField HeaderText="İşlemler">
                             <ItemTemplate>
-                                <asp:Button ID="btnSelect" runat="server" CommandName="SelectCourse" CommandArgument='<%# Eval("id") %>' Text="Select" CssClass="btn btn-sm btn-primary" />
-                                <asp:Button ID="btnEdit" runat="server" CommandName="Edit" CommandArgument='<%# Eval("id") %>' Text="Edit" CssClass="btn btn-sm btn-primary" />
-                                <asp:Button ID="btnDelete" runat="server" CommandName="Delete" CommandArgument='<%# Eval("id") %>' Text="Delete" CssClass="btn btn-sm btn-danger" />
+                                <asp:Button ID="btnEdit" runat="server" CommandName="Edit" CommandArgument='<%# Eval("id") %>' Text="Düzenle" CssClass="btn btn-sm btn-primary" />
+                                <asp:Button ID="btnDelete" runat="server" CommandName="Delete" CommandArgument='<%# Eval("id") %>' Text="Sil" CssClass="btn btn-sm btn-danger" />
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>
@@ -43,7 +42,6 @@
                     <SortedDescendingHeaderStyle BackColor="#4870BE" />
                 </asp:GridView>
             </div>
-            <asp:Button ID="btnViewEnrolledCourses" runat="server" Text="View Enrolled Courses" OnClick="btnViewEnrolledCourses_Click" CssClass="btn btn-secondary mt-3" />
             <asp:Button ID="btnAddCourses" runat="server" Text="Ders Ekle" OnClick="btnAddStudent_Click" CssClass="btn btn-primary mt-3" />
         </div>
     </form>

@@ -44,6 +44,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AspNet.ScriptManager.jQuery, Version=3.7.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\AspNet.ScriptManager.jQuery.3.7.0\lib\net45\AspNet.ScriptManager.jQuery.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -72,9 +75,6 @@
     <Reference Include="Microsoft.Web.Infrastructure, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>packages\Microsoft.Web.Infrastructure.2.0.1\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
-    </Reference>
-    <Reference Include="AspNet.ScriptManager.jQuery">
-      <HintPath>packages\AspNet.ScriptManager.jQuery.3.4.1\lib\net45\AspNet.ScriptManager.jQuery.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.ScriptManager.MSAjax">
       <HintPath>packages\Microsoft.AspNet.ScriptManager.MSAjax.5.0.0\lib\net45\Microsoft.ScriptManager.MSAjax.dll</HintPath>
@@ -171,10 +171,11 @@
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
-    <Content Include="Scripts\jquery-3.4.1.js" />
-    <Content Include="Scripts\jquery-3.4.1.min.js" />
-    <Content Include="Scripts\jquery-3.4.1.slim.js" />
-    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <None Include="Scripts\jquery-3.7.0.intellisense.js" />
+    <Content Include="Scripts\jquery-3.7.0.js" />
+    <Content Include="Scripts\jquery-3.7.0.min.js" />
+    <Content Include="Scripts\jquery-3.7.0.slim.js" />
+    <Content Include="Scripts\jquery-3.7.0.slim.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\WebForms\DetailsView.js" />
     <Content Include="Scripts\WebForms\Focus.js" />
@@ -220,12 +221,13 @@
     <Content Include="Student\StudentList.aspx" />
     <Content Include="Student\StudentLogin.aspx" />
     <Content Include="Student\StudentRegister.aspx" />
+    <Content Include="Teacher\TManageTeacherRequests.aspx" />
+    <Content Include="Teacher\Teacher.aspx" />
     <Content Include="Teacher\ManageTeacherRequest.aspx" />
     <Content Include="Teacher\TeacherAdd.aspx" />
     <Content Include="Teacher\TeacherCourse.aspx" />
     <Content Include="Teacher\TeacherList.aspx" />
     <Content Include="Teacher\TeacherLogin.aspx" />
-    <Content Include="Teacher\TeacherManagement.aspx" />
     <Content Include="Teacher\TeacherRequest.aspx" />
     <Content Include="Teacher\TeacherUpdate.aspx" />
     <Content Include="ViewSwitcher.ascx" />
@@ -484,6 +486,20 @@
     <Compile Include="teachers.cs">
       <DependentUpon>StudentTrackingEntitiesDb.tt</DependentUpon>
     </Compile>
+    <Compile Include="Teacher\TManageTeacherRequests.aspx.cs">
+      <DependentUpon>TManageTeacherRequests.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Teacher\TManageTeacherRequests.aspx.designer.cs">
+      <DependentUpon>TManageTeacherRequests.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\Teacher.aspx.cs">
+      <DependentUpon>Teacher.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Teacher\Teacher.aspx.designer.cs">
+      <DependentUpon>Teacher.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Teacher\ManageTeacherRequest.aspx.cs">
       <DependentUpon>ManageTeacherRequest.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -519,13 +535,6 @@
     <Compile Include="Teacher\TeacherLogin.aspx.designer.cs">
       <DependentUpon>TeacherLogin.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Teacher\TeacherManagement.aspx.cs">
-      <DependentUpon>TeacherManagement.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Teacher\TeacherManagement.aspx.designer.cs">
-      <DependentUpon>TeacherManagement.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Teacher\TeacherRequest.aspx.cs">
       <DependentUpon>TeacherRequest.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -553,8 +562,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
-    <Content Include="Scripts\jquery-3.4.1.min.map" />
     <Content Include="StudentMaster.Master" />
     <EntityDeploy Include="StudentTrackingEntitiesDb.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -563,6 +570,8 @@
     <Content Include="StudentTrackingEntitiesDb.edmx.diagram">
       <DependentUpon>StudentTrackingEntitiesDb.edmx</DependentUpon>
     </Content>
+    <Content Include="Scripts\jquery-3.7.0.slim.min.map" />
+    <Content Include="Scripts\jquery-3.7.0.min.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -572,6 +581,9 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

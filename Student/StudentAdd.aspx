@@ -13,19 +13,19 @@
     <uc:Navbar ID="Navbar1" runat="server" />
     <form id="form1" runat="server" class="container mt-5">
         <div style="text-align: center">
-            <h2>Add New Student</h2>
+            <h2>Yeni öğreci ekle</h2>
         </div>
 
         <div class="form-group row">
-            <label for="txtNewName" class="col-md-2 col-form-label">Name:</label>
+            <label for="txtNewName" class="col-md-2 col-form-label">Ad:</label>
             <div class="col-md-10">
-                <asp:TextBox ID="txtNewName" runat="server" CssClass="form-control" placeholder="Name"></asp:TextBox>
+                <asp:TextBox ID="txtNewName" runat="server" CssClass="form-control" placeholder="Ad"></asp:TextBox>
             </div>
         </div>
         <div class="form-group row">
-            <label for="txtNewSurname" class="col-md-2 col-form-label">Surname:</label>
+            <label for="txtNewSurname" class="col-md-2 col-form-label">Soyad:</label>
             <div class="col-md-10">
-                <asp:TextBox ID="txtNewSurname" runat="server" CssClass="form-control" placeholder="Surname"></asp:TextBox>
+                <asp:TextBox ID="txtNewSurname" runat="server" CssClass="form-control" placeholder="Soyad"></asp:TextBox>
             </div>
         </div>
         <div class="form-group row">
@@ -36,7 +36,7 @@
         </div>
         <div class="form-group row">
             <div class="offset-md-2 col-md-10">
-                <asp:Button ID="btnAddStudent" runat="server" Text="Add Student" OnClick="btnAddStudent_Click" CssClass="btn btn-success" />
+                <asp:Button ID="btnAddStudent" runat="server" Text="Öğrenciyi Ekle" OnClick="btnAddStudent_Click" CssClass="btn btn-success" />
             </div>
         </div>
         <div class="form-group row">

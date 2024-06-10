@@ -13,24 +13,24 @@
     <uc:Navbar ID="Navbar1" runat="server" />
     <form id="form1" runat="server" class="container mt-5">
         <div>
-            <h5 class="mb-4">Students List</h5>
+            <h5 class="mb-4">Öğrenci Listesi</h5>
             <div class="table-responsive">
                 <asp:GridView ID="GridViewStudents" runat="server" AutoGenerateColumns="False" DataKeyNames="id"
                     OnRowEditing="GridViewStudents_RowEditing" OnRowDeleting="GridViewStudents_RowDeleting" CellPadding="4" ForeColor="#333333" GridLines="None" CssClass="table">
                     <AlternatingRowStyle BackColor="White" />
                     <Columns>
-                        <asp:BoundField DataField="id" HeaderText="ID" ReadOnly="true" />
-                        <asp:BoundField DataField="name" HeaderText="Name" />
-                        <asp:BoundField DataField="surname" HeaderText="Surname" />
+                        <asp:BoundField DataField="id" HeaderText="Id" ReadOnly="true" />
+                        <asp:BoundField DataField="name" HeaderText="Ad" />
+                        <asp:BoundField DataField="surname" HeaderText="Soyad" />
                         <asp:BoundField DataField="email" HeaderText="Email" />
-                        <asp:TemplateField HeaderText="Actions">
+                        <asp:TemplateField HeaderText="İşlemler">
                             <ItemTemplate>
-                                <asp:Button ID="btnEdit" runat="server" Text="Edit" CommandName="Edit" CssClass="btn btn-sm btn-primary" />
-                                <asp:Button ID="btnDelete" runat="server" Text="Delete" CommandName="Delete" CssClass="btn btn-sm btn-danger" />
+                                <asp:Button ID="btnEdit" runat="server" Text="Düzenle" CommandName="Edit" CssClass="btn btn-sm btn-primary" />
+                                <asp:Button ID="btnDelete" runat="server" Text="Sil" CommandName="Delete" CssClass="btn btn-sm btn-danger" />
                             </ItemTemplate>
                             <EditItemTemplate>
-                                <asp:Button ID="btnUpdate" runat="server" Text="Update" CommandName="Update" CssClass="btn btn-sm btn-success" />
-                                <asp:Button ID="btnCancel" runat="server" Text="Cancel" CommandName="Cancel" CssClass="btn btn-sm btn-secondary" />
+                                <asp:Button ID="btnUpdate" runat="server" Text="Güncelle" CommandName="Update" CssClass="btn btn-sm btn-success" />
+                                <asp:Button ID="btnCancel" runat="server" Text="İptal Et" CommandName="Cancel" CssClass="btn btn-sm btn-secondary" />
                             </EditItemTemplate>
                         </asp:TemplateField>
                     </Columns>
@@ -46,7 +46,7 @@
                     <SortedDescendingHeaderStyle BackColor="#4870BE" />
                 </asp:GridView>
             </div>
-            <asp:Button ID="btnAddStudent" runat="server" Text="Add Student" OnClick="btnAddStudent_Click" CssClass="btn btn-success mt-3" />
+            <asp:Button ID="btnAddStudent" runat="server" Text="Yeni Öğrenci ekle" OnClick="btnAddStudent_Click" CssClass="btn btn-success mt-3" />
         </div>
     </form>
 

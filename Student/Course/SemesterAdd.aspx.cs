@@ -13,7 +13,14 @@ namespace StudentTracking.Student.Course
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["UserRole"] != null && Session["UserRole"].ToString() == "admin")
+            {
+            }
+            else
+            {
+                // Öğretmen olarak giriş yapılmamışsa kullanıcıyı login sayfasına yönlendir
+                Response.Redirect("~/Teacher/TeacherLogin.aspx"); // Giriş sayfasının URL'sini doğru yola göre ayarlayın
+            }
         }
 
         protected void btnAddCourse_Click(object sender, EventArgs e)

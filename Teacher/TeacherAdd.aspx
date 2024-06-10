@@ -18,24 +18,24 @@
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-body">
-                        <h1 class="card-title text-center">Add Teacher</h1>
+                        <h1 class="card-title text-center">Öğretmen Ekle</h1>
                         <div class="form-group">
-                            <label for="txtName">Name:</label>
+                            <label for="txtName">Ad:</label>
                             <asp:TextBox ID="txtName" runat="server" CssClass="form-control"></asp:TextBox>
                         </div>
                         <div class="form-group">
-                            <label for="txtSurname">Surname:</label>
+                            <label for="txtSurname">Soyad:</label>
                             <asp:TextBox ID="txtSurname" runat="server" CssClass="form-control"></asp:TextBox>
                         </div>
                         <div class="form-group">
-                            <label for="txtEmail">Email:</label>
+                            <label for="txtEmail">Mail:</label>
                             <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control"></asp:TextBox>
                         </div>
                         <div class="form-group">
-                            <label for="txtPassword">Password:</label>
+                            <label for="txtPassword">Şifre:</label>
                             <asp:TextBox ID="txtPassword" runat="server" CssClass="form-control"></asp:TextBox>
                         </div>
-                        <asp:Button ID="btnAdd" runat="server" Text="Add" OnClick="btnAdd_Click" CssClass="btn btn-primary btn-block" />
+                        <asp:Button ID="btnAdd" runat="server" Text="Kaydet" OnClick="btnAdd_Click" CssClass="btn btn-primary btn-block" />
                         <asp:Label ID="lblMessage" runat="server" ForeColor="Red" Visible="false"></asp:Label>
                     </div>
                 </div>

@@ -11,23 +11,31 @@ namespace StudentTracking.Student.Course
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            if (Session["UserRole"] != null && Session["UserRole"].ToString() == "admin")
             {
-                int courseId = Convert.ToInt32(Request.QueryString["id"]);
-
-                using (var db = new StudentTrackingEntitiesDb())
+                if (!IsPostBack)
                 {
-                    var course = db.courses.Find(courseId);
+                    int courseId = Convert.ToInt32(Request.QueryString["id"]);
 
-                    if (course != null)
+                    using (var db = new StudentTrackingEntitiesDb())
                     {
-                        course_name.Text = course.course_name;
-                        semester_id.Text = Convert.ToString(course.semester_id);
-                        is_group_enabled.Checked = Convert.ToBoolean(course.is_group_enabled);
-                        is_alone_enabled.Checked = Convert.ToBoolean(course.is_alone_enabled);
+                        var course = db.courses.Find(courseId);
 
+                        if (course != null)
+                        {
+                            course_name.Text = course.course_name;
+                            semester_id.Text = Convert.ToString(course.semester_id);
+                            is_group_enabled.Checked = Convert.ToBoolean(course.is_group_enabled);
+                            is_alone_enabled.Checked = Convert.ToBoolean(course.is_alone_enabled);
+
+                        }
                     }
                 }
+            }
+            else
+            {
+                // Öğretmen olarak giriş yapılmamışsa kullanıcıyı login sayfasına yönlendir
+                Response.Redirect("~/Teacher/TeacherLogin.aspx"); // Giriş sayfasının URL'sini doğru yola göre ayarlayın
             }
         }
 

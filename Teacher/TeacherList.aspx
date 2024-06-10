@@ -13,7 +13,7 @@
     <uc:Navbar ID="Navbar2" runat="server" />
     <form id="form1" runat="server" class="container mt-5">
         <div>
-            <h5 class="my-4">Teachers List</h5>
+            <h5 class="my-4">Öğretmen Listesi</h5>
             <!-- Add Button -->
             <div class="table-responsive">
                 <asp:GridView ID="GridViewTeachers" runat="server" AutoGenerateColumns="False" OnRowEditing="GridViewTeachers_RowEditing" OnRowDeleting="GridViewTeachers_RowDeleting"
@@ -21,13 +21,13 @@
                     CellPadding="4" ForeColor="#333333" GridLines="None" CssClass="table">
                     <Columns>
                         <asp:BoundField DataField="ID" HeaderText="ID" ReadOnly="True" />
-                        <asp:BoundField DataField="Name" HeaderText="Name" />
-                        <asp:BoundField DataField="Surname" HeaderText="Surname" />
+                        <asp:BoundField DataField="Name" HeaderText="Ad" />
+                        <asp:BoundField DataField="Surname" HeaderText="Soyad" />
                         <asp:BoundField DataField="Email" HeaderText="Email" />
-                        <asp:TemplateField HeaderText="Actions">
+                        <asp:TemplateField HeaderText="İşlemler">
                             <ItemTemplate>
-                                <asp:LinkButton ID="EditButton" runat="server" CommandName="Edit" Text="Edit" CssClass="btn btn-primary" />
-                                <asp:LinkButton ID="DeleteButton" runat="server" CommandName="Delete" Text="Delete" CssClass="btn btn-danger" OnClientClick="return confirm('Are you sure you want to delete this teacher?');" />
+                                <asp:LinkButton ID="EditButton" runat="server" CommandName="Edit" Text="Düzenle" CssClass="btn btn-primary" />
+                                <asp:LinkButton ID="DeleteButton" runat="server" CommandName="Sil" Text="Sil" CssClass="btn btn-danger" OnClientClick="return confirm('Are you sure you want to delete this teacher?');" />
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>
@@ -42,7 +42,7 @@
                     <SortedDescendingHeaderStyle BackColor="#4870BE" />
                 </asp:GridView>
             </div>
-            <asp:Button ID="btnAddTeacher" runat="server" Text=" Teacher Add" CssClass="btn btn-success mb-3" OnClick="btnAddTeacher_Click" />
+            <asp:Button ID="btnAddTeacher" runat="server" Text="Öğretmen Ekle" CssClass="btn btn-success mb-3" OnClick="btnAddTeacher_Click" />
         </div>
     </form>
 

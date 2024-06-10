@@ -11,7 +11,7 @@ namespace StudentTracking.Teacher
 {
 
 
-    public partial class TeacherManagement
+    public partial class TManageTeacherRequests
     {
 
         /// <summary>
@@ -24,21 +24,12 @@ namespace StudentTracking.Teacher
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// btnAddTeacher control.
+        /// gvTeacherRequests control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAddTeacher;
-
-        /// <summary>
-        /// GridViewTeachers control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridViewTeachers;
+        protected global::System.Web.UI.WebControls.GridView gvTeacherRequests;
     }
 }

@@ -6,15 +6,15 @@
 <head runat="server">
     <title>Welcome</title>
     <!-- Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"/>
 </head>
 <body>
     <form id="form1" runat="server">
         <div class="container d-flex flex-column justify-content-center align-items-center" style="height: 100vh;">
-            <h1 class="text-primary mb-5">Welcome</h1>
+            <h1 class="text-primary mb-5">Hoş geldiniz</h1>
             <div class="button-container">
-                <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Student Login" CssClass="btn btn-primary" />
-                <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="Teacher Login" CssClass="btn btn-primary" />
+                <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Öğrengi Girişi" CssClass="btn btn-primary" />
+                <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="Öğretmen Girişi" CssClass="btn btn-primary" />
             </div>
         </div>
     </form>

@@ -8,22 +8,19 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href='<%= ResolveUrl("~/Teacher/TeacherList.aspx") %>'>Teachers</a>
+                    <a class="nav-link" href='<%= ResolveUrl("~/Teacher/TeacherList.aspx") %>'>Öğretmenler</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href='<%= ResolveUrl("~/Student/Course/CourseList.aspx") %>'>Courses</a>
+                    <a class="nav-link" href='<%= ResolveUrl("~/Student/Course/CourseList.aspx") %>'>Dersler</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href='<%= ResolveUrl("~/Student/Course/SemesterAdd.aspx") %>'>Semesters</a>
+                    <a class="nav-link" href='<%= ResolveUrl("~/Student/Course/SemesterAdd.aspx") %>'>Dönemler</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href='<%= ResolveUrl("~/Student/StudentList.aspx") %>'>Students</a>
+                    <a class="nav-link" href='<%= ResolveUrl("~/Student/StudentList.aspx") %>'>Öğrenciler</a>
                 </li>
-<%--                <li class="nav-item">
-                    <a class="nav-link" href='<%= ResolveUrl("~/Program/ProgramAdd.aspx") %>'>Programs</a>
-                </li>--%>
                 <li class="nav-item">
-                    <a class="nav-link" href='<%= ResolveUrl("~/Group/GroupList.aspx") %>'>Groups</a>
+                    <a class="nav-link" href='<%= ResolveUrl("~/Group/GroupList.aspx") %>'>Gruplar</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href='<%= ResolveUrl("~/Teacher/ManageTeacherRequest.aspx") %>'>Öğretmen İstekleri</a>

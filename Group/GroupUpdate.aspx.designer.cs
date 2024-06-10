@@ -15,6 +15,15 @@ namespace StudentTracking.Group
     {
 
         /// <summary>
+        /// Navbar1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::StudentTracking.Navbar Navbar1;
+
+        /// <summary>
         /// form1 control.
         /// </summary>
         /// <remarks>
@@ -49,15 +58,6 @@ namespace StudentTracking.Group
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlLeaderStudent;
-
-        /// <summary>
-        /// ddlProgram control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlProgram;
 
         /// <summary>
         /// ddlCourse control.

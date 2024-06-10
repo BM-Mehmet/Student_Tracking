@@ -12,14 +12,19 @@ namespace StudentTracking.Group
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["UserId"] == null)
+            // Oturum kontrolü - öğretmen olarak giriş yapılmış mı kontrol et
+            if (Session["UserRole"] != null && Session["UserRole"].ToString() == "admin")
             {
-                Response.Redirect("~/Student/StudentLogin.aspx");
+                if (!IsPostBack)
+                {
+                    int courseId = Convert.ToInt32(Session["SelectedCourseId"]);
+                    LoadRequests(courseId);
+                }
             }
-            else if (!IsPostBack)
+            else
             {
-                int courseId = Convert.ToInt32(Session["SelectedCourseId"]);
-                LoadRequests(courseId);
+                // Öğretmen olarak giriş yapılmamışsa kullanıcıyı login sayfasına yönlendir
+                Response.Redirect("~/Teacher/TeacherLogin.aspx"); // Giriş sayfasının URL'sini doğru yola göre ayarlayın
             }
         }
 

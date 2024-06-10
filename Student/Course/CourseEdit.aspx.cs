@@ -11,25 +11,37 @@ namespace StudentTracking.Student.Course
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+
+            // Oturum kontrolü - öğretmen olarak giriş yapılmış mı kontrol et
+            if (Session["UserRole"] != null && Session["UserRole"].ToString() == "admin")
             {
-                if (Request.QueryString["id"] != null)
+                if (!IsPostBack)
                 {
-                    int courseId;
-                    if (int.TryParse(Request.QueryString["id"], out courseId))
+                    if (Request.QueryString["id"] != null)
                     {
-                        PopulateUpdateData(courseId);
+                        int courseId;
+                        if (int.TryParse(Request.QueryString["id"], out courseId))
+                        {
+                            PopulateUpdateData(courseId);
+                        }
+                        else
+                        {
+                            // Hata işlemleri buraya eklenebilir
+                        }
                     }
                     else
                     {
                         // Hata işlemleri buraya eklenebilir
                     }
                 }
-                else
-                {
-                    // Hata işlemleri buraya eklenebilir
-                }
             }
+            else
+            {
+                // Öğretmen olarak giriş yapılmamışsa kullanıcıyı login sayfasına yönlendir
+                Response.Redirect("~/Teacher/TeacherLogin.aspx"); // Giriş sayfasının URL'sini doğru yola göre ayarlayın
+            }
+
+
         }
 
         private void PopulateUpdateData(int courseId)
@@ -79,7 +91,7 @@ namespace StudentTracking.Student.Course
                     courses.is_alone_enabled = is_alone_enabled.Checked; // CheckBox'tan Checked özelliğini alın
                     courses.semester_id = Convert.ToInt32(semester_id.Text);
                     db.SaveChanges();
-                    Response.Redirect("CourseList.aspx");
+                    Response.Redirect("CourseEdit.aspx");
                 }
                 else
                 {

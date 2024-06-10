@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Web.UI;
 
 namespace StudentTracking.Teacher
@@ -9,18 +11,40 @@ namespace StudentTracking.Teacher
         protected void Page_Load(object sender, EventArgs e)
         {
         }
+        private string ComputeSHA256Hash(string input)
+        {
+            using (SHA256 sha256Hash = SHA256.Create())
+            {
+                // Giriş dizesini SHA256 hash'e dönüştür
+                byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(input));
 
+                // Diziyi bir string olarak formatla
+                StringBuilder builder = new StringBuilder();
+                foreach (byte b in bytes)
+                {
+                    builder.Append(b.ToString("x2")); // x2, her byte'ı iki haneli onaltılık formata dönüştürür
+                }
+                return builder.ToString();
+            }
+        }
         protected void LoginButton_Click(object sender, EventArgs e)
         {
             string teacherEmail = EmailTextBox.Text;
             string password = PasswordTextBox.Text;
-
-            var loginResult = ValidateLogin(teacherEmail, password);
+            string sifreliIfade = ComputeSHA256Hash(password);
+            var loginResult = ValidateLogin(teacherEmail, sifreliIfade);
             if (loginResult.Item1)  // Eğer giriş başarılı ise
             {
                 Session["UserRole"] = loginResult.Item3.is_admin == true ? "admin" : "teacher";
                 Session["UserId"] = loginResult.Item3.id;
+                if (loginResult.Item3.is_admin == true)
+                {
                 Response.Redirect(Page.ResolveClientUrl("~/Teacher/ManageTeacherRequest.aspx"));
+                }
+                else
+                {
+                    Response.Redirect(Page.ResolveClientUrl("~/Teacher/Teacher.aspx"));
+                }
             }
             else
             {

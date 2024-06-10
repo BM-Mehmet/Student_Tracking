@@ -6,33 +6,33 @@
 <head runat="server">
     <title>Delete Course</title>
     <!-- Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"/>
 </head>
 <body>
     <form id="form1" runat="server" class="container mt-5">
         <div>
             <h2>Delete Course</h2>
             <div class="form-group row">
-                <label for="course_name" class="col-md-2 col-form-label">Course Name:</label>
+                <label for="course_name" class="col-md-2 col-form-label">Ders Adı:</label>
                 <div class="col-md-10">
                     <asp:TextBox ID="course_name" runat="server" CssClass="form-control"></asp:TextBox>
                 </div>
             </div>
             <div class="form-group row">
-                <label for="is_group_enabled" class="col-md-2 col-form-label">Is Group Enabled:</label>
+                <label for="is_group_enabled" class="col-md-2 col-form-label">Gruplu Çalışmaya İzin Ver:</label>
                 <div class="col-md-10">
                     <asp:CheckBox ID="is_group_enabled" runat="server" Checked="True" />
                 </div>
             </div>
             <div class="form-group row">
-                <label for="is_alone_enabled" class="col-md-2 col-form-label">Is Alone Enabled:</label>
+                <label for="is_alone_enabled" class="col-md-2 col-form-label">Tekli Çalışmaya İzin Ver:</label>
                 <div class="col-md-10">
                     <asp:CheckBox ID="is_alone_enabled" runat="server" Checked="True" />
                 </div>
             </div>
 
             <div class="form-group row">
-                <label for="semester_id" class="col-md-2 col-form-label">Semester id: </label>
+                <label for="semester_id" class="col-md-2 col-form-label">Sömester İd: </label>
                 <div class="col-md-10">
                     <asp:TextBox ID="semester_id" runat="server" CssClass="form-control"></asp:TextBox>
                 </div>

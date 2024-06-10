@@ -7,14 +7,23 @@ namespace StudentTracking.Student.Course
     public partial class CourseAdd : System.Web.UI.Page
     {
         StudentTrackingEntitiesDb db = new StudentTrackingEntitiesDb();
-
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            // Oturum kontrolü - öğretmen olarak giriş yapılmış mı kontrol et
+            if (Session["UserRole"] != null && Session["UserRole"].ToString() == "admin")
             {
-                BindAcademicYears();
+                if (!IsPostBack)
+                {
+                    BindAcademicYears();
+                }
+            }
+            else
+            {
+                // Öğretmen olarak giriş yapılmamışsa kullanıcıyı login sayfasına yönlendir
+                Response.Redirect("~/Teacher/TeacherLogin.aspx"); // Giriş sayfasının URL'sini doğru yola göre ayarlayın
             }
         }
+ 
 
         protected void btnAddCourse_Click(object sender, EventArgs e)
         {

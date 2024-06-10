@@ -10,13 +10,22 @@ namespace StudentTracking.Group
         StudentTrackingEntitiesDb db = new StudentTrackingEntitiesDb();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["UserId"] == null)
+            if (Session["UserRole"] != null && Session["UserRole"].ToString() == "admin")
             {
-                Response.Redirect("~/Student/StudentLogin.aspx");
+
+                if (Session["UserId"] == null)
+                {
+                    Response.Redirect("~/Student/StudentLogin.aspx");
+                }
+                else if (!IsPostBack)
+                {
+                    InitializeFormData();
+                }
             }
-            else if (!IsPostBack)
+            else
             {
-                InitializeFormData();
+                // Öğretmen olarak giriş yapılmamışsa kullanıcıyı login sayfasına yönlendir
+                Response.Redirect("~/Teacher/TeacherLogin.aspx"); // Giriş sayfasının URL'sini doğru yola göre ayarlayın
             }
         }
 

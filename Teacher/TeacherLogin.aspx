@@ -6,8 +6,8 @@
 <head runat="server">
     <title>Teacher Login</title>
     <!-- Bootstrap ve Font Awesome CSS kısmını aynı bırakabilirsiniz -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet"/>
     <script>
         function togglePassword() {
             var passwordField = document.getElementById('<%= PasswordTextBox.ClientID %>');
@@ -30,13 +30,13 @@
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title text-center">Teacher Login</h5>
+                        <h5 class="card-title text-center">Öğretmen Girişi</h5>
                         <div class="form-group">
-                            <label for="EmailTextBox">Teacher Email:</label>
-                            <asp:TextBox ID="EmailTextBox" runat="server" CssClass="form-control" placeholder="Example@uni.edu.tr"></asp:TextBox>
+                            <label for="EmailTextBox">Öğretmen Maili: </label>
+                            <asp:TextBox ID="EmailTextBox" runat="server" CssClass="form-control" placeholder="12345678901@ogr.ksu.edu.tr"></asp:TextBox>
                         </div>
                         <div class="form-group">
-                            <label for="PasswordTextBox">Password:</label>
+                            <label for="PasswordTextBox">Şifre: </label>
                             <div class="input-group">
                                 <asp:TextBox ID="PasswordTextBox" runat="server" TextMode="Password" CssClass="form-control"></asp:TextBox>
                                 <div class="input-group-append">
@@ -48,12 +48,12 @@
                         </div>
                         <div class="form-group">
                             <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="showPassword" onchange="togglePassword()">
-                                <label class="custom-control-label" for="showPassword">Show Password</label>
+                                <input type="checkbox" class="custom-control-input" id="showPassword" onchange="togglePassword()"/>
+                                <label class="custom-control-label" for="showPassword">Şifreyi Göster</label>
                             </div>
                         </div>
                         <div class="text-center">
-                            <asp:Button ID="LoginButton" runat="server" OnClick="LoginButton_Click" Text="Login" CssClass="btn btn-primary" />
+                            <asp:Button ID="LoginButton" runat="server" OnClick="LoginButton_Click" Text="Giriş Yap" CssClass="btn btn-primary" />
                         </div>
                     </div>
                 </div>

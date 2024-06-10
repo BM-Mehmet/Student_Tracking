@@ -29,12 +29,6 @@ namespace StudentTracking.Group
                 ddlLeaderStudent.DataBind();
 
 
-
-
-                ddlProgram.DataSource = db.program.Select(x => new { ProgramId = x.id}).ToList();
-                ddlProgram.DataValueField = "ProgramId";
-                ddlProgram.DataBind();
-
                 ddlCourse.DataSource = db.courses.Select(x => new { CourseId = x.id, CourseName = x.course_name }).ToList();
                 ddlCourse.DataTextField = "CourseName";
                 ddlCourse.DataValueField = "CourseId";
@@ -57,7 +51,6 @@ namespace StudentTracking.Group
                         txtGroupName.Text = group.group_name;
                         ddlLeaderStudent.SelectedValue = group.leader_student_id.ToString();
                         ddlCourse.SelectedValue = group.course_id.ToString();
-                        ddlProgram.SelectedValue = group.program_id.ToString();
                         // Diğer alanları da grup verileriyle doldurun
                     }
                 }
@@ -78,7 +71,6 @@ namespace StudentTracking.Group
                         groupToUpdate.group_name = txtGroupName.Text;
                         groupToUpdate.leader_student_id = Convert.ToInt32(ddlLeaderStudent.SelectedValue);
                         groupToUpdate.course_id = Convert.ToInt32(ddlCourse.SelectedValue);
-                        groupToUpdate.program_id = Convert.ToInt32(ddlProgram.SelectedValue);
 
                         // Değişiklikleri veritabanına kaydet
                         db.SaveChanges();

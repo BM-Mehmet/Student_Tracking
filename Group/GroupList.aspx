@@ -10,39 +10,51 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
 </head>
 <body>
-    <form id="form1" runat="server" class="container mt-5">
-        <div class="card">
-            <div class="card-header">
-                <h5 class="text-center">Group List</h5>
-                <uc:Navbar ID="Navbar1" runat="server" />
-            </div>
-            <div class="card-body">
-                <div class="table-responsive">
-                    <asp:GridView ID="GridViewGroups" runat="server" AutoGenerateColumns="False"
-                        OnRowDeleting="GridViewGroups_RowDeleting" OnRowEditing="GridViewGroups_RowEditing"
-                        OnRowDataBound="GridViewGroups_RowDataBound" DataKeyNames="id" CssClass="table table-hover">
-                        <Columns>
-                            <asp:BoundField DataField="group_name" HeaderText="Group Name" />
-                            <asp:BoundField DataField="LeaderStudentName" HeaderText="Leader Student Name" />
-                            <asp:BoundField DataField="CourseName" HeaderText="Course Name" />
-                            <asp:CommandField ShowEditButton="True" ButtonType="Button" ControlStyle-CssClass="btn btn-primary" />
-                            <asp:CommandField ShowDeleteButton="True" ButtonType="Button" ControlStyle-CssClass="btn btn-danger" />
-                            <asp:TemplateField HeaderText="Members">
-                                <ItemTemplate>
-                                    <asp:GridView ID="GridViewMembers" runat="server" AutoGenerateColumns="False" CssClass="table table-sm">
-                                        <Columns>
-                                            <asp:BoundField DataField="student_name" HeaderText="Student Name" />
-                                            <asp:BoundField DataField="join_date" HeaderText="Join Date" DataFormatString="{0:yyyy-MM-dd}" />
-                                            <asp:BoundField DataField="status" HeaderText="Status" />
-                                        </Columns>
-                                    </asp:GridView>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                        </Columns>
-                    </asp:GridView>
-                </div>
-            </div>
-        </div>
+    <uc:Navbar ID="Navbar1" runat="server" />
+    <form id="form1" runat="server" class="container mt-5  ">
+        <h5 class="text-center">Grup Listesi</h5>
+
+        <asp:GridView ID="GridViewGroups" runat="server" AutoGenerateColumns="False"
+            OnRowDeleting="GridViewGroups_RowDeleting" OnRowEditing="GridViewGroups_RowEditing"
+            OnRowDataBound="GridViewGroups_RowDataBound" DataKeyNames="id" CssClass="table table-hover">
+            <Columns>
+                <asp:BoundField DataField="group_name" HeaderText="Grup adı" />
+                <asp:BoundField DataField="LeaderStudentName" HeaderText="Lider Öğrenci Adı" />
+                <asp:BoundField DataField="CourseName" HeaderText="Ders Adı" />
+                <asp:CommandField ShowEditButton="True" ButtonType="Button" ControlStyle-CssClass="btn btn-primary" />
+                <asp:CommandField ShowDeleteButton="True" ButtonType="Button" ControlStyle-CssClass="btn btn-danger" />
+                <asp:TemplateField HeaderText="Üyeler">
+                    <ItemTemplate>
+                        <asp:GridView ID="GridViewMembers" runat="server" AutoGenerateColumns="False" CssClass="table table-sm">
+                            <Columns>
+                                <asp:BoundField DataField="student_name" HeaderText="Öğrenci adı" />
+                                <asp:BoundField DataField="join_date" HeaderText="Kayıt Tarihi" DataFormatString="{0:yyyy-MM-dd}" />
+                                <asp:BoundField DataField="status" HeaderText="Durumu" />
+                            </Columns>
+                            <EditRowStyle BackColor="#2461BF" />
+                            <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                            <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                            <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+                            <RowStyle BackColor="#EFF3FB" />
+                            <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                            <SortedAscendingCellStyle BackColor="#F5F7FB" />
+                            <SortedDescendingCellStyle BackColor="#E9EBEF" />
+                            <SortedDescendingHeaderStyle BackColor="#4870BE" />
+                        </asp:GridView>
+                    </ItemTemplate>
+                </asp:TemplateField>
+            </Columns>
+            <EditRowStyle BackColor="#2461BF" />
+            <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+            <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+            <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+            <RowStyle BackColor="#EFF3FB" />
+            <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+            <SortedAscendingCellStyle BackColor="#F5F7FB" />
+            <SortedDescendingCellStyle BackColor="#E9EBEF" />
+            <SortedDescendingHeaderStyle BackColor="#4870BE" />
+        </asp:GridView>
+
     </form>
 
     <!-- Bootstrap JS -->

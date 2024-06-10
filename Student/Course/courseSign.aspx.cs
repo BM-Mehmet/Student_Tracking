@@ -7,11 +7,20 @@ namespace StudentTracking.Course
 {
     public partial class courseSign : System.Web.UI.Page
     {
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["UserRole"] != null && Session["UserRole"].ToString() == "admin")
+            {
             if (!IsPostBack)
             {
                 BindDropDownList();
+            }
+            }
+            else
+            {
+                // Öğretmen olarak giriş yapılmamışsa kullanıcıyı login sayfasına yönlendir
+                Response.Redirect("~/Teacher/TeacherLogin.aspx"); // Giriş sayfasının URL'sini doğru yola göre ayarlayın
             }
         }
 

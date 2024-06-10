@@ -11,26 +11,35 @@ namespace StudentTracking.Teacher
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            // Oturum kontrolü - öğretmen olarak giriş yapılmış mı kontrol et
+            if (Session["UserRole"] != null && Session["UserRole"].ToString() == "admin")
             {
-                // Sayfa yüklendiğinde, öğretmenin bilgilerini göster
-                string teacherId = Request.QueryString["id"];
-                if (!string.IsNullOrEmpty(teacherId))
+                if (!IsPostBack)
                 {
-                    using (var db = new StudentTrackingEntitiesDb())
+                    // Sayfa yüklendiğinde, öğretmenin bilgilerini göster
+                    string teacherId = Request.QueryString["id"];
+                    if (!string.IsNullOrEmpty(teacherId))
                     {
-                        int id = int.Parse(teacherId);
-                        var teacher = db.teachers.FirstOrDefault(t => t.id == id);
-                        if (teacher != null)
+                        using (var db = new StudentTrackingEntitiesDb())
                         {
-                            txtName.Text = teacher.name;
-                            txtSurname.Text = teacher.surname;
-                            txtEmail.Text = teacher.email;
-                            // Şifre alanını boş bırak
-                            txtPassword.Text = "";
+                            int id = int.Parse(teacherId);
+                            var teacher = db.teachers.FirstOrDefault(t => t.id == id);
+                            if (teacher != null)
+                            {
+                                txtName.Text = teacher.name;
+                                txtSurname.Text = teacher.surname;
+                                txtEmail.Text = teacher.email;
+                                // Şifre alanını boş bırak
+                                txtPassword.Text = "";
+                            }
                         }
                     }
                 }
+            }
+            else
+            {
+                // Öğretmen olarak giriş yapılmamışsa kullanıcıyı login sayfasına yönlendir
+                Response.Redirect("~/Teacher/TeacherLogin.aspx"); // Giriş sayfasının URL'sini doğru yola göre ayarlayın
             }
         }
         protected void btnUpdate_Click(object sender, EventArgs e)
@@ -56,10 +65,8 @@ namespace StudentTracking.Teacher
                         }
                         db.SaveChanges();
 
-                        // Alert göster
-                        ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Teacher information updated successfully.');", true);
                         // Sayfayı yeniden yönlendir
-                        Response.Redirect("TeacherManagement.aspx");
+                        Response.Redirect("TeacherList.aspx");
                     }
                 }
             }

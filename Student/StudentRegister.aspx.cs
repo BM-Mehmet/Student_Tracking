@@ -3,6 +3,8 @@ using System.Configuration;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace StudentTracking.Student
 {
@@ -12,7 +14,22 @@ namespace StudentTracking.Student
         {
 
         }
+        private string ComputeSHA256Hash(string input)
+        {
+            using (SHA256 sha256Hash = SHA256.Create())
+            {
+                // Giriş dizesini SHA256 hash'e dönüştür
+                byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(input));
 
+                // Diziyi bir string olarak formatla
+                StringBuilder builder = new StringBuilder();
+                foreach (byte b in bytes)
+                {
+                    builder.Append(b.ToString("x2")); // x2, her byte'ı iki haneli onaltılık formata dönüştürür
+                }
+                return builder.ToString();
+            }
+        }
         protected void btnSendEmail_Click(object sender, EventArgs e)
         {
             string emailPassword = ConfigurationManager.AppSettings["EmailPassword"];
@@ -45,7 +62,7 @@ namespace StudentTracking.Student
 
                 // E-postayı gönderme
                 smtpClient.Send(mailMessage);
-
+                string sifreliIfade =  ComputeSHA256Hash(Convert.ToString(randomNumber));
                 string name = txtNewName.Text;
                 string surname = txtNewSurname.Text;
 
@@ -61,7 +78,7 @@ namespace StudentTracking.Student
                             name = name,
                             surname = surname,
                             email = recipient,
-                            password = randomNumber.ToString(),
+                            password = sifreliIfade,
                             is_visible = true,
                         };
 
@@ -90,6 +107,7 @@ namespace StudentTracking.Student
                 lblMessage.Text = "E-posta gönderirken bir hata oluştu: " + ex.Message;
                 lblMessage.ForeColor = System.Drawing.Color.Red;
             }
+
         }
     }
 }

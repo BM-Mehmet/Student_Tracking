@@ -14,18 +14,18 @@ namespace StudentTracking.Teacher
         protected void Page_Load(object sender, EventArgs e)
         {
             // Oturum kontrolü - öğretmen olarak giriş yapılmış mı kontrol et
-            //if (Session["UserRole"] != null && Session["UserRole"].ToString() == "admin")
-            //{
-            if (!IsPostBack)
+            if (Session["UserRole"] != null && Session["UserRole"].ToString() == "admin")
+            {
+                if (!IsPostBack)
             {
                 BindTeachers();
             }
-            //}
-            //else
-            //{
-            //    // Öğretmen olarak giriş yapılmamışsa kullanıcıyı login sayfasına yönlendir
-            //    Response.Redirect("~/Teacher/TeacherLogin.aspx"); // Giriş sayfasının URL'sini doğru yola göre ayarlayın
-            //}
+            }
+            else
+            {
+                // Öğretmen olarak giriş yapılmamışsa kullanıcıyı login sayfasına yönlendir
+                Response.Redirect("~/Teacher/TeacherLogin.aspx"); // Giriş sayfasının URL'sini doğru yola göre ayarlayın
+            }
         }
 
         private void BindTeachers()
@@ -43,10 +43,9 @@ namespace StudentTracking.Teacher
         protected void btnAddTeacher_Click(object sender, EventArgs e)
         {
             // Yeni öğretmen ekleme işlemleri burada yapılacak
-            // Örneğin, yeni bir sayfaya yönlendirme yapabilirsiniz:
             Response.Redirect("~/Teacher/TeacherAdd.aspx");
 
-            // Ya da doğrudan burada veri tabanına yeni bir öğretmen ekleyebilirsiniz.
+          
         }
 
         protected void GridViewTeachers_RowDeleting(object sender, GridViewDeleteEventArgs e)

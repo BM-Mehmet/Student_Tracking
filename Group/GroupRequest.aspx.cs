@@ -11,22 +11,30 @@ namespace StudentTracking.Group
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["UserId"] == null)
+            if (Session["UserRole"] != null && Session["UserRole"].ToString() == "admin" && Session["UserRole"].ToString() == "teacher")
             {
-                Response.Redirect("~/Student/StudentLogin.aspx");
+                if (Session["UserId"] == null)
+                {
+                    Response.Redirect("~/Student/StudentLogin.aspx");
+                }
+                else if (!IsPostBack)
+                {
+                    string courseId = Request.QueryString["courseId"];
+                    if (int.TryParse(courseId, out int parsedCourseId))
+                    {
+                        BindGroups(parsedCourseId);
+                    }
+                    else
+                    {
+                        lblStatus.Text = "Invalid course ID.";
+                        lblStatus.Visible = true;
+                    }
+                }
             }
-            else if (!IsPostBack)
+            else
             {
-                string courseId = Request.QueryString["courseId"];
-                if (int.TryParse(courseId, out int parsedCourseId))
-                {
-                    BindGroups(parsedCourseId);
-                }
-                else
-                {
-                    lblStatus.Text = "Invalid course ID.";
-                    lblStatus.Visible = true;
-                }
+                // Öğretmen olarak giriş yapılmamışsa kullanıcıyı login sayfasına yönlendir
+                Response.Redirect("~/Teacher/TeacherLogin.aspx"); // Giriş sayfasının URL'sini doğru yola göre ayarlayın
             }
         }
 
