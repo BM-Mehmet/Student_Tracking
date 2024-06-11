@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -42,6 +44,22 @@ namespace StudentTracking.Teacher
                 Response.Redirect("~/Teacher/TeacherLogin.aspx"); // Giriş sayfasının URL'sini doğru yola göre ayarlayın
             }
         }
+        private string ComputeSHA256Hash(string input)
+        {
+            using (SHA256 sha256Hash = SHA256.Create())
+            {
+                // Giriş dizesini SHA256 hash'e dönüştür
+                byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(input));
+
+                // Diziyi bir string olarak formatla
+                StringBuilder builder = new StringBuilder();
+                foreach (byte b in bytes)
+                {
+                    builder.Append(b.ToString("x2")); // x2, her byte'ı iki haneli onaltılık formata dönüştürür
+                }
+                return builder.ToString();
+            }
+        }
         protected void btnUpdate_Click(object sender, EventArgs e)
         {
             string teacherId = Request.QueryString["id"];
@@ -57,11 +75,12 @@ namespace StudentTracking.Teacher
                         teacher.name = txtName.Text;
                         teacher.surname = txtSurname.Text;
                         teacher.email = txtEmail.Text;
+
                         // Şifre güncellenmişse
                         if (!string.IsNullOrEmpty(txtPassword.Text))
                         {
                             // Yeni şifreyi hashleyerek kaydetmek gerekebilir, bu sadece bir örnektir
-                            teacher.password = txtPassword.Text;
+                            teacher.password = ComputeSHA256Hash(txtPassword.Text); 
                         }
                         db.SaveChanges();
 

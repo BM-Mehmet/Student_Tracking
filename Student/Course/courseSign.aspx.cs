@@ -10,17 +10,17 @@ namespace StudentTracking.Course
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["UserRole"] != null && Session["UserRole"].ToString() == "admin")
+            if (Session["UserRole"] != null && (Session["UserRole"].ToString() == "admin" || Session["UserRole"].ToString() == "öğrenci"))
             {
-            if (!IsPostBack)
-            {
-                BindDropDownList();
-            }
+                if (!IsPostBack)
+                {
+                    BindDropDownList();
+                }
             }
             else
             {
                 // Öğretmen olarak giriş yapılmamışsa kullanıcıyı login sayfasına yönlendir
-                Response.Redirect("~/Teacher/TeacherLogin.aspx"); // Giriş sayfasının URL'sini doğru yola göre ayarlayın
+                Response.Redirect("~/Student/StudentLogin.aspx"); // Giriş sayfasının URL'sini doğru yola göre ayarlayın
             }
         }
 
