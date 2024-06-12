@@ -28,8 +28,8 @@
             <asp:GridView ID="GridViewGroups" runat="server" CssClass="table table-bordered table-hover" AutoGenerateColumns="false">
                 <Columns>
                     <asp:BoundField DataField="TeacherId" HeaderText="Grup Adı" />
-                    <asp:BoundField DataField="CourseId" />
                     <asp:BoundField DataField="course_id" HeaderText="Ders İd" />
+                    <asp:BoundField DataField="CourseId" />
                 </Columns>
             </asp:GridView>
         </div>

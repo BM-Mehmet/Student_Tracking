@@ -10,7 +10,7 @@ namespace StudentTracking.Group
         StudentTrackingEntitiesDb db = new StudentTrackingEntitiesDb();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["UserRole"] != null && Session["UserRole"].ToString() == "admin")
+            if (Session["UserRole"] != null && Session["UserRole"].ToString() == "öğrenci")
             {
 
                 if (Session["UserId"] == null)
@@ -25,20 +25,36 @@ namespace StudentTracking.Group
             else
             {
                 // Öğretmen olarak giriş yapılmamışsa kullanıcıyı login sayfasına yönlendir
-                Response.Redirect("~/Teacher/TeacherLogin.aspx"); // Giriş sayfasının URL'sini doğru yola göre ayarlayın
+                Response.Redirect("~/Student/StudentLogin.aspx"); // Giriş sayfasının URL'sini doğru yola göre ayarlayın
             }
         }
 
         private void InitializeFormData()
         {
-            int studentId = Convert.ToInt32(Session["UserId"]);
-            int courseId = Convert.ToInt32(Session["SelectedCourseId"]); 
-            int programId = 1; 
+            int studentId;
+            int courseId;
+            if (Session["UserId"] != null && int.TryParse(Session["UserId"].ToString(), out studentId))
+            {
+                if (Session["SelectedCourseId"] != null && int.TryParse(Session["SelectedCourseId"].ToString(), out courseId))
+                {
+                    studentId = Convert.ToInt32(Session["UserId"]);
+                    courseId = Convert.ToInt32(Session["SelectedCourseId"]);
 
-            // Lider öğrenci ve kurs bilgilerini arka planda ayarla
-            Session["LeaderStudentId"] = studentId;
-            Session["SelectedProgramId"] = programId;
-            Session["SelectedCourseId"] = courseId;
+                    // Lider öğrenci ve kurs bilgilerini arka planda ayarla
+                    Session["LeaderStudentId"] = studentId;
+                    Session["SelectedCourseId"] = courseId;
+
+                }
+                else
+                {
+                    Response.Redirect("~/Student/Course/CourseSign");
+                }
+            }
+            else
+            {
+                Response.Redirect("~/Student/Course/CourseSign");                     
+            }
+
         }
 
         protected void btnAddGroup_Click(object sender, EventArgs e)
@@ -77,15 +93,15 @@ namespace StudentTracking.Group
 
             group_memberships leaderMembership = new group_memberships
             {
-                group_id = newGroup.id, 
+                group_id = newGroup.id,
                 student_id = leaderStudentId,
                 join_date = DateTime.Now,
-                status = "Active" 
+                status = "Active"
             };
             db.group_memberships.Add(leaderMembership);
             db.SaveChanges();
 
-            Response.Redirect("~/Student/Course/courseSign.aspx"); 
+            Response.Redirect("~/Student/Course/courseSign.aspx");
         }
     }
 }

@@ -13,7 +13,7 @@ namespace StudentTracking.Group
         protected void Page_Load(object sender, EventArgs e)
         {
             // Oturum kontrolü - öğretmen olarak giriş yapılmış mı kontrol et
-            if (Session["UserRole"] != null && Session["UserRole"].ToString() == "admin")
+            if (Session["UserRole"] != null && ( Session["UserRole"].ToString() == "admin"|| Session["UserRole"].ToString() == "öğrenci"))
             {
                 if (!IsPostBack)
                 {

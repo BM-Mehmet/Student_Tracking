@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StudentTracking.Student.Course;
+using System;
 using System.Linq;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -102,15 +103,19 @@ namespace StudentTracking.Course
 
         protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int courseId = Convert.ToInt32(DropDownList1.SelectedValue);
-            using (var db = new StudentTrackingEntitiesDb())
+            int courseId;
+            if (int.TryParse(DropDownList1.SelectedValue, out courseId))
             {
-                var selectedCourse = db.courses.FirstOrDefault(c => c.id == courseId);
-                if (selectedCourse != null)
+             courseId = Convert.ToInt32(DropDownList1.SelectedValue);
+                using (var db = new StudentTrackingEntitiesDb())
                 {
-                    btnLeader.Enabled = selectedCourse.is_group_enabled ?? false;
-                    //btnMember.Enabled = selectedCourse.is_alone_enabled ?? false;
-                    btnSingleGroup.Enabled = selectedCourse.is_alone_enabled ?? false;
+                    var selectedCourse = db.courses.FirstOrDefault(c => c.id == courseId);
+                    if (selectedCourse != null)
+                    {
+                        btnLeader.Enabled = selectedCourse.is_group_enabled ?? false;
+                        //btnMember.Enabled = selectedCourse.is_alone_enabled ?? false;
+                        btnSingleGroup.Enabled = selectedCourse.is_alone_enabled ?? false;
+                    }
                 }
             }
         }
@@ -119,13 +124,17 @@ namespace StudentTracking.Course
         {
             // Grup istek sayfasına, seçili ders ID ile yönlendirv
             StudentTrackingEntitiesDb db = new StudentTrackingEntitiesDb();
-            int courseId = Convert.ToInt32(DropDownList1.SelectedValue);
-            var selectedCourse = db.courses.FirstOrDefault(c => c.id == courseId);
-            if (selectedCourse.is_group_enabled == true)
+            if (DropDownList1.SelectedValue != null)
             {
 
-                btnMember.Enabled = true;
-                Response.Redirect(Page.ResolveClientUrl($"~/Group/GroupRequest.aspx?courseId={courseId}"));
+                int courseId = Convert.ToInt32(DropDownList1.SelectedValue);
+                var selectedCourse = db.courses.FirstOrDefault(c => c.id == courseId);
+                if (selectedCourse.is_group_enabled == true)
+                {
+
+                    btnMember.Enabled = true;
+                    Response.Redirect(Page.ResolveClientUrl($"~/Group/GroupRequest.aspx?courseId={courseId}"));
+                }
             }
         }
         protected void btnManageRequests_Click(object sender, EventArgs e)

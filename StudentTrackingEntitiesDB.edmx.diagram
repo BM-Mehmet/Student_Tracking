@@ -4,17 +4,17 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="e4216ddfab4f4a2e890afeb31c842fcf" Name="Diagram1" ZoomLevel="62">
-        <EntityTypeShape EntityType="StudentTrackingDBModel.courses" Width="1.5" PointX="0.75" PointY="10.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="StudentTrackingDBModel.ders_kayıt" Width="1.5" PointX="3" PointY="10.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="StudentTrackingDBModel.group_memberships" Width="1.5" PointX="10.5" PointY="14.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="StudentTrackingDBModel.group_requests" Width="1.5" PointX="13.5" PointY="13.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="StudentTrackingDBModel.groups" Width="1.5" PointX="6" PointY="10" IsExpanded="true" />
-        <EntityTypeShape EntityType="StudentTrackingDBModel.program" Width="1.5" PointX="3" PointY="6.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="StudentTrackingDBModel.semesters" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="StudentTrackingDBModel.students" Width="1.5" PointX="8.25" PointY="17" IsExpanded="true" />
-        <EntityTypeShape EntityType="StudentTrackingDBModel.TeacherRequests" Width="1.5" PointX="10.5" PointY="9.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="StudentTrackingDBModel.teachers" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+      <Diagram DiagramId="e4216ddfab4f4a2e890afeb31c842fcf" Name="Diagram1" ZoomLevel="63">
+        <EntityTypeShape EntityType="StudentTrackingDBModel.courses" Width="1.5" PointX="3.125" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="StudentTrackingDBModel.ders_kayıt" Width="1.5" PointX="4.625" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="StudentTrackingDBModel.group_memberships" Width="1.5" PointX="11.125" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="StudentTrackingDBModel.group_requests" Width="1.5" PointX="13.5" PointY="14.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="StudentTrackingDBModel.groups" Width="1.5" PointX="6.375" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="StudentTrackingDBModel.program" Width="1.5" PointX="6.25" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="StudentTrackingDBModel.semesters" Width="1.5" PointX="0.875" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="StudentTrackingDBModel.students" Width="1.5" PointX="8.25" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="StudentTrackingDBModel.TeacherRequests" Width="1.5" PointX="10.5" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="StudentTrackingDBModel.teachers" Width="1.5" PointX="10.625" PointY="5.5" IsExpanded="true" />
         <AssociationConnector Association="StudentTrackingDBModel.FK__enrollmen__cours__70DDC3D8" ManuallyRouted="false" />
         <AssociationConnector Association="StudentTrackingDBModel.FK__groups__course_i__4316F928" ManuallyRouted="false" />
         <AssociationConnector Association="StudentTrackingDBModel.FK__program__course___3E52440B" ManuallyRouted="false" />
@@ -32,7 +32,7 @@
         <AssociationConnector Association="StudentTrackingDBModel.FK__program__teacher__3F466844" ManuallyRouted="false" />
         <AssociationConnector Association="StudentTrackingDBModel.FK_TeacherRequests_Students" ManuallyRouted="false" />
         <AssociationConnector Association="StudentTrackingDBModel.FK_TeacherRequests_Teachers" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="StudentTrackingDBModel.CourseTeachers" Width="1.5" PointX="3" PointY="3.125" />
+        <EntityTypeShape EntityType="StudentTrackingDBModel.CourseTeachers" Width="1.5" PointX="3.25" PointY="5.5" />
         <AssociationConnector Association="StudentTrackingDBModel.FK__CourseTea__Cours__29221CFB" />
         <AssociationConnector Association="StudentTrackingDBModel.FK__CourseTea__Teach__2A164134" />
         <AssociationConnector Association="StudentTrackingDBModel.FK_TeacherRequests_Groups" />

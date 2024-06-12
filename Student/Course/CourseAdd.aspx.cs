@@ -30,6 +30,9 @@ namespace StudentTracking.Student.Course
             try
             {
                 string CourseName = txtNewcourse_name.Text;
+                if (!string.IsNullOrEmpty(CourseName))
+                {
+              
                 bool IsGroupEnabled = chkIsGroupEnabled.Checked;
                 bool IsAloneEnabled = chkIsAloneEnabled.Checked;
                 int semesterId = Convert.ToInt32(ddlAcademicYear.SelectedValue);
@@ -60,6 +63,13 @@ namespace StudentTracking.Student.Course
                 txtNewcourse_name.Text = "";
                 lblError.Text = "Kurs başarıyla eklendi.";
                 lblError.CssClass = "text-success";
+                }
+                else
+                {
+                    txtNewcourse_name.Text = "";
+                    lblError.Text = "Ders adını yazın.";
+                    lblError.CssClass = "text-danger";
+                }
             }
             catch (Exception ex)
             {
