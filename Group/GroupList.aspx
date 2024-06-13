@@ -12,7 +12,10 @@
 <body>
     <uc:Navbar ID="Navbar1" runat="server" />
     <form id="form1" runat="server" class="container mt-5  ">
-        <h5 class="text-center">Grup Listesi</h5>
+
+        <div class="card-header">
+            <h2 class="text-center">Grup Listesi</h2>
+        </div>
 
         <asp:GridView ID="GridViewGroups" runat="server" AutoGenerateColumns="False"
             OnRowDeleting="GridViewGroups_RowDeleting" OnRowEditing="GridViewGroups_RowEditing"

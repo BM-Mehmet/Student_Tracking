@@ -12,7 +12,9 @@
 <body>
     <uc:Navbar ID="Navbar1" runat="server" />
     <form id="form2" runat="server" class="container mt-5">
-        <h2>Öğretmene Katılma İsteklerini Yönet</h2>
+        <div class="card-header">
+            <h2 class="text-center">Öğretmene Katılma İsteklerini Yönet</h2>
+            </div>
         <asp:GridView ID="GvTeacherRequests" runat="server" AutoGenerateColumns="False" CssClass="table table-bordered" OnRowCommand="gvTeacherRequests_RowCommand">
             <Columns>
                 <asp:BoundField DataField="StudentName" HeaderText="Öğrenci Adı" />

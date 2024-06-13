@@ -13,7 +13,9 @@
     <uc:Navbar ID="Navbar1" runat="server" />
     <form id="form1" runat="server" class="container mt-5">
         <div>
-            <h5>Yeni Dönem ekle</h5>
+            <div class="card-header">
+                <h2 class="text-center">Yeni Dönem ekle</h2>
+            </div>
 
             <div class="form-group row">
                 <label for="Donem" class="col-md-2 col-form-label">Akademik Yıl:</label>

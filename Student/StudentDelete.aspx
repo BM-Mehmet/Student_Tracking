@@ -11,7 +11,9 @@
 <body>
     <form id="form1" runat="server">
         <div class="container mt-5">
-            <h1 class="text-center">Öğrenci Silme</h1>
+            <div class="card-header">
+                <h2 class="text-center">Öğrenci Silme</h2>
+            </div>
             <hr />
 
             <div class="form-group">

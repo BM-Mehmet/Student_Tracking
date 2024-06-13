@@ -11,7 +11,9 @@
 <body>
     <form id="form1" runat="server" class="container mt-5">
         <div>
-            <h2>Edit Student</h2>
+            <div class="card-header">
+                <h2 class ="text-center">Edit Student</h2>
+            </div>
             <div class="form-group row">
                 <label for="txtName" class="col-md-2 col-form-label">Name:</label>
                 <div class="col-md-10">

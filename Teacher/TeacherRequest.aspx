@@ -8,7 +8,9 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container mt-5">
-        <h2>Öğretmene Katılma İsteği Gönder</h2>
+          <div class="card-header">
+        <h2 class="text-center">Öğretmene Katılma İsteği Gönder</h2>
+              </div>
         <asp:Label ID="lblStatus" runat="server" Text="" ForeColor="Red" CssClass="mb-3"></asp:Label>
         <div class="form-group">
             <label for="ddlCourses">Ders Seç:</label>

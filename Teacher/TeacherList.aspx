@@ -13,7 +13,9 @@
     <uc:Navbar ID="Navbar2" runat="server" />
     <form id="form1" runat="server" class="container mt-5">
         <div>
-            <h5 class="my-4">Öğretmen Listesi</h5>
+            <div class="card-header">
+                <h2 class="text-center">Öğretmen Listesi</h2>
+            </div>
             <!-- Add Button -->
             <div class="table-responsive">
                 <asp:GridView ID="GridViewTeachers" runat="server" AutoGenerateColumns="False" OnRowEditing="GridViewTeachers_RowEditing" OnRowDeleting="GridViewTeachers_RowDeleting"
@@ -47,6 +49,6 @@
     </form>
 
     <!-- Bootstrap JS -->
-   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

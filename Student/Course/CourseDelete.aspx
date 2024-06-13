@@ -6,12 +6,14 @@
 <head runat="server">
     <title>Delete Course</title>
     <!-- Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
 </head>
 <body>
     <form id="form1" runat="server" class="container mt-5">
         <div>
-            <h2>Delete Course</h2>
+            <div class="card-header">
+                <h2>Delete Course</h2>
+            </div>
             <div class="form-group row">
                 <label for="course_name" class="col-md-2 col-form-label">Ders Adı:</label>
                 <div class="col-md-10">

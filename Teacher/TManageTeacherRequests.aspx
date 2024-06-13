@@ -23,7 +23,9 @@
         </div>
     </nav>
     <form id="form1" runat="server" class="container mt-5">
-        <h2>Öğretmene Katılma İsteklerini Yönet</h2>
+        <div class="card-header">
+            <h2 class="text-center">Öğretmene Katılma İsteklerini Yönet</h2>
+        </div>
         <asp:GridView ID="gvTeacherRequests" runat="server" AutoGenerateColumns="False" CssClass="table table-bordered" OnRowCommand="gvTeacherRequests_RowCommand">
             <Columns>
                 <asp:BoundField DataField="StudentName" HeaderText="Öğrenci Adı" />

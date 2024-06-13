@@ -7,13 +7,15 @@
 <head runat="server">
     <title>Course Page</title>
     <!-- Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
 </head>
 <body>
     <uc:Navbar ID="Navbar1" runat="server" />
     <form id="form1" runat="server" class="container mt-5">
         <div>
-            <h1 class="mb-4">Ders Listesi</h1>
+            <div class="card-header">
+                <h2 class="text-center">Ders Listesi</h2>
+            </div>
             <asp:Label ID="lblStatus" runat="server" Text="" ForeColor="Green" CssClass="mb-3"></asp:Label>
             <div class="table-responsive">
                 <asp:GridView ID="GridViewCourses" runat="server" AutoGenerateColumns="False" DataKeyNames="id"

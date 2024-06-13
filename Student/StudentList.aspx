@@ -13,7 +13,9 @@
     <uc:Navbar ID="Navbar1" runat="server" />
     <form id="form1" runat="server" class="container mt-5">
         <div>
-            <h5 class="mb-4">Öğrenci Listesi</h5>
+            <div class="card-header">
+                <h2 class="text-center">Öğrenci Listesi</h2>
+            </div>
             <div class="table-responsive">
                 <asp:GridView ID="GridViewStudents" runat="server" AutoGenerateColumns="False" DataKeyNames="id"
                     OnRowEditing="GridViewStudents_RowEditing" OnRowDeleting="GridViewStudents_RowDeleting" CellPadding="4" ForeColor="#333333" GridLines="None" CssClass="table">

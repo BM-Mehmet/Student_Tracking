@@ -22,14 +22,24 @@
         </div>
         <asp:Button ID="btnAssign" runat="server" Text="Atama Yap" CssClass="btn btn-primary" OnClick="btnAssign_Click" />
         <asp:Label ID="lblStatus" runat="server" CssClass="mt-3"></asp:Label>
-
-        <h3 class="mt-5">Öğretmen Kurs Eşleşmeleri</h3>
+        <div class="card-header">
+            <h2 class="text-center">Öğretmen Kurs Eşleşmeleri</h2>
+        </div>
         <div class="table-responsive">
             <asp:GridView ID="GridViewCourseTeachers" runat="server" AutoGenerateColumns="False" CssClass="table table-bordered">
                 <Columns>
                     <asp:BoundField DataField="TeacherName" HeaderText="Öğretmen Adı" />
                     <asp:BoundField DataField="CourseName" HeaderText="Ders Adı" />
                 </Columns>
+                <EditRowStyle BackColor="#2461BF" />
+                <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+                <RowStyle BackColor="#EFF3FB" />
+                <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                <SortedAscendingCellStyle BackColor="#F5F7FB" />
+                <SortedDescendingCellStyle BackColor="#E9EBEF" />
+                <SortedDescendingHeaderStyle BackColor="#4870BE" />
             </asp:GridView>
         </div>
     </form>

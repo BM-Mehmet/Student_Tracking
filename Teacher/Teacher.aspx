@@ -23,6 +23,9 @@
     </nav>
     <form id="form1" runat="server">
         <div class="container mt-4">
+            <div class="card-header">
+                <h2 class="text-center">Kabul Edilen Gruplar </h2>
+            </div>
             <asp:GridView ID="GridViewGroups" runat="server" CssClass="table table-bordered table-hover" AutoGenerateColumns="false" OnRowDataBound="GridViewGroups_RowDataBound">
                 <Columns>
                     <asp:BoundField DataField="GroupName" HeaderText="Grup Adı" />

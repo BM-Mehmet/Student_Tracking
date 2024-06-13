@@ -13,7 +13,9 @@
     <uc:Navbar ID="Navbar1" runat="server" />
     <form id="form1" runat="server" class="container mt-5">
         <div style="text-align: center">
-            <h2>Yeni öğreci ekle</h2>
+            <div class="card-header">
+                <h2 class="text-center">Yeni öğreci ekle</h2>
+            </div>
         </div>
 
         <div class="form-group row">

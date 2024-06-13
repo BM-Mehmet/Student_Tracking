@@ -13,7 +13,9 @@
     <uc:Navbar ID="Navbar1" runat="server" />
     <form id="form1" runat="server" class="container mt-5">
         <div>
-            <h2>Edit Course</h2>
+            <div class="card-header">
+                <h2>Dersi Düzenle</h2>
+            </div>
             <div class="form-group row">
                 <label for="course_name" class="col-md-2 col-form-label">Ders Adı:</label>
                 <div class="col-md-10">
@@ -39,13 +41,13 @@
                     <asp:DropDownList ID="ddlAcademicYear" runat="server" CssClass="form-control"></asp:DropDownList>
                 </div>
             </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-10 offset-md-2">
+                <asp:Button ID="btnSave" runat="server" Text="Kaydet" OnClick="btnSave_Click" CssClass="btn btn-primary" />
+                <asp:Button ID="btnCancel" runat="server" Text="İptal Et" OnClick="btnCancel_Click" CssClass="btn btn-secondary" />
             </div>
-            <div class="form-group row">
-                <div class="col-md-10 offset-md-2">
-                    <asp:Button ID="btnSave" runat="server" Text="Kaydet" OnClick="btnSave_Click" CssClass="btn btn-primary" />
-                    <asp:Button ID="btnCancel" runat="server" Text="İptal Et" OnClick="btnCancel_Click" CssClass="btn btn-secondary" />
-                </div>
-            </div>
+        </div>
         </div>
     </form>
 

@@ -21,7 +21,9 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container mt-5">
-        <h2>Gruba Katıl</h2>
+        <div class="card-header">
+            <h2>Gruba Katıl</h2>
+        </div>
         <asp:GridView ID="GridViewGroups" runat="server" AutoGenerateColumns="False" CssClass="table table-striped" OnRowCommand="GridViewGroups_RowCommand">
             <Columns>
                 <asp:BoundField DataField="GroupName" HeaderText="Grup Adı" />

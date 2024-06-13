@@ -11,7 +11,7 @@
     <form id="form2" runat="server" class="container mt-5">
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Öğrenci Kayıt</h5>
+                <h2 class="text-center">Öğrenci Kayıt</h2>
                 <div class="form-group row">
                     <label for="txtNewName" class="col-md-2 col-form-label">Ad:</label>
                     <div class="col-md-10">

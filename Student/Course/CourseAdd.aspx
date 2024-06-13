@@ -12,7 +12,9 @@
     <uc:Navbar ID="Navbar1" runat="server" />
     <form id="form1" runat="server" class="container mt-5">
         <div>
-            <h5>Yeni Ders Ekle</h5>
+            <div class="card-header">
+                <h2 class ="text-center">Yeni Ders Ekle</h2>
+            </div>
 
             <div class="form-group row">
                 <label for="txtNewcourse_name" class="col-md-2 col-form-label">Ders Adı:</label>

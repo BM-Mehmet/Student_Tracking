@@ -31,7 +31,7 @@
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title text-center">Öğrenci Girişi</h5>
+                        <h2 class="card-title text-center">Öğrenci Girişi</h2>
                         <div class="form-group">
                             <label for="TextBox1">Öğrenci Maili:</label>
                             <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control"  placeholder="12345678901@ogr.ksu.edu.tr" ></asp:TextBox>

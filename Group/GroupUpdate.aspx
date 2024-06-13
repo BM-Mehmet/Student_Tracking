@@ -1,17 +1,20 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="GroupUpdate.aspx.cs" Inherits="StudentTracking.Group.GroupUpdate" %>
+
 <%@ Register Src="~/Navbar.ascx" TagName="Navbar" TagPrefix="uc" %>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Update Group</title>
     <!-- Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
 </head>
 <body>
     <uc:Navbar ID="Navbar1" runat="server" />
     <form id="form1" runat="server" class="container mt-5">
         <div>
-            <h1>Grubu Güncelle</h1>
+            <div class="card-header">
+                <h2>Grubu Güncelle</h2>
+            </div>
             <asp:Label ID="lblMessage" runat="server" ForeColor="Red" Visible="false"></asp:Label>
             <div class="form-group">
                 <asp:TextBox ID="txtGroupName" runat="server" CssClass="form-control" placeholder="Grup Adı" Text='<%# Eval("GroupName") %>'></asp:TextBox>

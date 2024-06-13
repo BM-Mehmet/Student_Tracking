@@ -7,7 +7,9 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container mt-5">
-        <h2>Grup Katılma İsteklerini Yönet</h2>
+        <div class="card-header">
+            <h2 class="text-center">Grup Katılma İsteklerini Yönet</h2>
+        </div>
         <asp:Label ID="lblStatus" runat="server" CssClass="alert alert-danger" Visible="false"></asp:Label>
         <div class="table-responsive">
             <asp:GridView ID="RequestsGridView" runat="server" AutoGenerateColumns="False" CssClass="table table-bordered" OnRowCommand="RequestsGridView_RowCommand">
