@@ -47,8 +47,8 @@ namespace StudentTracking.Teacher
                     RequestDate = r.RequestDate
                 }).ToList();
 
-                gvTeacherRequests.DataSource = requests;
-                gvTeacherRequests.DataBind();
+                GvTeacherRequests.DataSource = requests;
+                GvTeacherRequests.DataBind();
             }
         }
 
@@ -58,10 +58,24 @@ namespace StudentTracking.Teacher
             using (var db = new StudentTrackingEntitiesDb())
             {
                 var request = db.TeacherRequests.Find(requestId);
+                if (request == null)
+                {
+                    return;
+                }
+
                 if (e.CommandName == "Approve")
                 {
                     request.Status = "Approved";
                     request.is_visible = false;
+
+                    // GroupTeacherAssignments tablosuna ekleme
+                    var groupTeacherAssignment = new GroupTeacherAssignments
+                    {
+                        GroupId = Convert.ToInt32(request.GroupId),
+                        TeacherId = Convert.ToInt32(request.TeacherId),
+                        CourseId = Convert.ToInt32(request.CourseId)
+                    };
+                    db.GroupTeacherAssignments.Add(groupTeacherAssignment);
                 }
                 else if (e.CommandName == "Reject")
                 {
@@ -73,7 +87,7 @@ namespace StudentTracking.Teacher
                 }
                 db.SaveChanges();
             }
-            BindTeacherRequests();
+            BindTeacherRequests();  // İstek listesini yeniden yükle
         }
     }
 }

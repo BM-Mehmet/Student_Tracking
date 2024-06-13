@@ -5,7 +5,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Edit Course</title>
+    <title>Dersleri Düzenle</title>
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
 </head>
@@ -34,10 +34,11 @@
             </div>
 
             <div class="form-group row">
-                <label for="semester_id" class="col-md-2 col-form-label">Dönem İd: </label>
+                <label for="Donem" class="col-md-2 col-form-label">Akademik Yıl:</label>
                 <div class="col-md-10">
-                    <asp:TextBox ID="semester_id" runat="server" CssClass="form-control"></asp:TextBox>
+                    <asp:DropDownList ID="ddlAcademicYear" runat="server" CssClass="form-control"></asp:DropDownList>
                 </div>
+            </div>
             </div>
             <div class="form-group row">
                 <div class="col-md-10 offset-md-2">

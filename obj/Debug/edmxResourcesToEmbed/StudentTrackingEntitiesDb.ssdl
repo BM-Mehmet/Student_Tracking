@@ -66,6 +66,15 @@
     <Property Name="description" Type="varchar" MaxLength="255" />
     <Property Name="is_single_member" Type="bit" />
   </EntityType>
+  <EntityType Name="GroupTeacherAssignments">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GroupId" Type="int" Nullable="false" />
+    <Property Name="TeacherId" Type="int" Nullable="false" />
+    <Property Name="CourseId" Type="int" Nullable="false" />
+  </EntityType>
   <EntityType Name="program">
     <Key>
       <PropertyRef Name="id" />
@@ -97,7 +106,7 @@
     <Property Name="group_id" Type="int" />
     <Property Name="password" Type="varchar" MaxLength="255" />
     <Property Name="is_visible" Type="bit" />
-    <Property Name="student_no" Type="int" />
+    <Property Name="student_no" Type="varchar" MaxLength="255" />
   </EntityType>
   <EntityType Name="TeacherRequests">
     <Key>
@@ -219,6 +228,42 @@
       </Principal>
       <Dependent Role="groups">
         <PropertyRef Name="program_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__GroupTeac__Cours__3E1D39E1">
+    <End Role="courses" Type="Self.courses" Multiplicity="1" />
+    <End Role="GroupTeacherAssignments" Type="Self.GroupTeacherAssignments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="courses">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="GroupTeacherAssignments">
+        <PropertyRef Name="CourseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__GroupTeac__Group__3C34F16F">
+    <End Role="groups" Type="Self.groups" Multiplicity="1" />
+    <End Role="GroupTeacherAssignments" Type="Self.GroupTeacherAssignments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="groups">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="GroupTeacherAssignments">
+        <PropertyRef Name="GroupId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__GroupTeac__Teach__3D2915A8">
+    <End Role="teachers" Type="Self.teachers" Multiplicity="1" />
+    <End Role="GroupTeacherAssignments" Type="Self.GroupTeacherAssignments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="teachers">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="GroupTeacherAssignments">
+        <PropertyRef Name="TeacherId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -373,6 +418,7 @@
     <EntitySet Name="group_memberships" EntityType="Self.group_memberships" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="group_requests" EntityType="Self.group_requests" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="groups" EntityType="Self.groups" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GroupTeacherAssignments" EntityType="Self.GroupTeacherAssignments" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="program" EntityType="Self.program" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="semesters" EntityType="Self.semesters" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="students" EntityType="Self.students" Schema="dbo" store:Type="Tables" />
@@ -409,6 +455,18 @@
     <AssociationSet Name="FK__groups__program___4222D4EF" Association="Self.FK__groups__program___4222D4EF">
       <End Role="program" EntitySet="program" />
       <End Role="groups" EntitySet="groups" />
+    </AssociationSet>
+    <AssociationSet Name="FK__GroupTeac__Cours__3E1D39E1" Association="Self.FK__GroupTeac__Cours__3E1D39E1">
+      <End Role="courses" EntitySet="courses" />
+      <End Role="GroupTeacherAssignments" EntitySet="GroupTeacherAssignments" />
+    </AssociationSet>
+    <AssociationSet Name="FK__GroupTeac__Group__3C34F16F" Association="Self.FK__GroupTeac__Group__3C34F16F">
+      <End Role="groups" EntitySet="groups" />
+      <End Role="GroupTeacherAssignments" EntitySet="GroupTeacherAssignments" />
+    </AssociationSet>
+    <AssociationSet Name="FK__GroupTeac__Teach__3D2915A8" Association="Self.FK__GroupTeac__Teach__3D2915A8">
+      <End Role="teachers" EntitySet="teachers" />
+      <End Role="GroupTeacherAssignments" EntitySet="GroupTeacherAssignments" />
     </AssociationSet>
     <AssociationSet Name="FK__program__course___3E52440B" Association="Self.FK__program__course___3E52440B">
       <End Role="courses" EntitySet="courses" />

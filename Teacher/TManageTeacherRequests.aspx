@@ -1,9 +1,7 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="TManageTeacherRequests.aspx.cs" Inherits="StudentTracking.Teacher.ManageTeacherRequests" %>
-
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="TManageTeacherRequests.aspx.cs" Inherits="StudentTracking.Teacher.TManageTeacherRequests" %>
 
 <%@ Register Src="~/Navbar.ascx" TagName="Navbar" TagPrefix="uc" %>
 <!DOCTYPE html>
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Öğretmene Katılma İsteklerini Yönet</title>
@@ -11,9 +9,8 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
 </head>
 <body>
-
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href='<%= ResolveUrl("~/Teacher/Teacher.aspx") %>'>KSÜ Teacher</a>
+        <a class="navbar-brand" href='<%= ResolveUrl("~/Teacher/Teacher.aspx") %>'>KSÜ Öğretmen</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -41,8 +38,16 @@
                         <asp:Button ID="btnConfirmReject" runat="server" Text="Reddet Onayla" CommandName="Reject" CommandArgument='<%# Eval("RequestId") %>' CssClass="btn btn-danger" Style="display: none;" />
                     </ItemTemplate>
                 </asp:TemplateField>
-
             </Columns>
+            <EditRowStyle BackColor="#2461BF" />
+            <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+            <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+            <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+            <RowStyle BackColor="#EFF3FB" />
+            <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+            <SortedAscendingCellStyle BackColor="#F5F7FB" />
+            <SortedDescendingCellStyle BackColor="#E9EBEF" />
+            <SortedDescendingHeaderStyle BackColor="#4870BE" />
         </asp:GridView>
     </form>
 
@@ -60,7 +65,6 @@
             confirmRejectButton.style.display = 'block'; // Reddet Onayla düğmesini göster
             return false;  // Form submit'ini durdur
         }
-
     </script>
 </body>
 </html>

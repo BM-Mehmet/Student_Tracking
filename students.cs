@@ -31,7 +31,7 @@ namespace StudentTracking
         public Nullable<int> group_id { get; set; }
         public string password { get; set; }
         public Nullable<bool> is_visible { get; set; }
-        public Nullable<int> student_no { get; set; }
+        public string student_no { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ders_kayıt> ders_kayıt { get; set; }

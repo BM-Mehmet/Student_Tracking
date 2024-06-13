@@ -32,9 +32,10 @@ namespace StudentTracking
         public virtual DbSet<groups> groups { get; set; }
         public virtual DbSet<program> program { get; set; }
         public virtual DbSet<semesters> semesters { get; set; }
-        public virtual DbSet<students> students { get; set; }
         public virtual DbSet<TeacherRequests> TeacherRequests { get; set; }
         public virtual DbSet<teachers> teachers { get; set; }
         public virtual DbSet<CourseTeachers> CourseTeachers { get; set; }
+        public virtual DbSet<GroupTeacherAssignments> GroupTeacherAssignments { get; set; }
+        public virtual DbSet<students> students { get; set; }
     }
 }

@@ -13,7 +13,7 @@
         <div class="container d-flex flex-column justify-content-center align-items-center" style="height: 100vh;">
             <h1 class="text-primary mb-5">Hoş geldiniz</h1>
             <div class="button-container">
-                <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Öğrengi Girişi" CssClass="btn btn-primary" />
+                <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Öğrenci Girişi" CssClass="btn btn-primary" />
                 <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="Öğretmen Girişi" CssClass="btn btn-primary" />
             </div>
         </div>

@@ -26,8 +26,8 @@ namespace StudentTracking
         public Nullable<int> GroupId { get; set; }
     
         public virtual courses courses { get; set; }
-        public virtual students students { get; set; }
         public virtual teachers teachers { get; set; }
         public virtual groups groups { get; set; }
+        public virtual students students { get; set; }
     }
 }

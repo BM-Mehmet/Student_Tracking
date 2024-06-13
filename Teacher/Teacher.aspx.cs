@@ -8,10 +8,11 @@ namespace StudentTracking.Admin
 {
     public partial class Teachers : Page
     {
+        StudentTrackingEntitiesDb db = new StudentTrackingEntitiesDb();
         protected void Page_Load(object sender, EventArgs e)
         {
             // Oturum kontrolü - öğretmen olarak giriş yapılmış mı kontrol et
-            if (Session["UserRole"] != null && Session["UserRole"].ToString() == "teacher")
+            if (Session["UserRole"] != null && (Session["UserRole"].ToString() == "teacher" || Session["UserRole"].ToString() == "admin"))
             {
                 if (!IsPostBack)
                 {
@@ -24,33 +25,43 @@ namespace StudentTracking.Admin
                 Response.Redirect("~/Teacher/TeacherLogin.aspx"); // Giriş sayfasının URL'sini doğru yola göre ayarlayın
             }
         }
-
+        protected void GridViewGroups_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                var groupMembers = ((dynamic)e.Row.DataItem).GroupMembers;
+                var gridViewMembers = (GridView)e.Row.FindControl("GridViewMembers");
+                gridViewMembers.DataSource = groupMembers;
+                gridViewMembers.DataBind();
+            }
+        }
         private void LoadTeacherGroups()
         {
-            try
-            {
-                int teacherUserId = Convert.ToInt32(Session["UserId"]);
-                using (var db = new StudentTrackingEntitiesDb())
-                {
-                    var courseList = db.CourseTeachers
-                                        .Where(ct => ct.TeacherId == teacherUserId)
-                                        .Select(ct => ct.CourseId)
-                                        .ToList();
+            int teacherId = Convert.ToInt32(Session["UserId"]);
 
-                    var groups = db.groups
-                                   .Where(g => courseList.Contains(g.course_id))
-                                   .ToList();
-
-                    GridViewGroups.DataSource = groups;
-                    GridViewGroups.DataBind();
-                }
-            }
-            catch (Exception ex)
+            using (var db = new StudentTrackingEntitiesDb())
             {
-                // Hata yönetimi kodu
-                // Örneğin: Loglama veya hata mesajı gösterme
-                Console.WriteLine(ex.Message);
+                var groupsAndCourses = db.GroupTeacherAssignments
+                    .Where(gta => gta.TeacherId == teacherId)
+                    .Select(gta => new
+                    {
+                        GroupId = gta.GroupId,
+                        CourseName = gta.courses.course_name,
+                        GroupName = gta.groups.group_name,
+                        GroupMembers = db.group_memberships
+                                         .Where(gm => gm.group_id == gta.GroupId)
+                                         .Select(gm => new
+                                         {
+                                             StudentName = gm.students.name + " " + gm.students.surname,
+                                             JoinDate = gm.join_date,
+                                             Status = gm.status
+                                         }).ToList()
+                    }).ToList();
+
+                GridViewGroups.DataSource = groupsAndCourses;
+                GridViewGroups.DataBind();
             }
+        
         }
     }
 }

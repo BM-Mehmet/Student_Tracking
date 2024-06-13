@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Add New Course</title>
+    <title>Yeni Ders Ekleme</title>
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
 </head>
@@ -16,13 +16,13 @@
             <h5>Yeni Dönem ekle</h5>
 
             <div class="form-group row">
-                <label for="Donem" class="col-md-2 col-form-label">Academic Year:</label>
+                <label for="Donem" class="col-md-2 col-form-label">Akademik Yıl:</label>
                 <div class="col-md-10">
-                    <asp:TextBox ID="txtNewDonem" runat="server" CssClass="form-control" placeholder="Akademik Yıl"></asp:TextBox>
+                    <asp:TextBox ID="txtNewDonem" runat="server" CssClass="form-control" placeholder="Akademik Yıl (gg-AA-yyyy Dönem)"></asp:TextBox>
                 </div>
             </div>
             <div class="form-group row">
-                <label for="txtStartDate" class="col-md-2 col-form-label">Start Date:</label>
+                <label for="txtStartDate" class="col-md-2 col-form-label">Başlangış Zamanı:</label>
                 <div class="col-md-10">
                     <asp:TextBox ID="txtStartDate" runat="server" CssClass="form-control" placeholder="Başlagıç Zamanı (gg-AA-yyyy Dönem)"></asp:TextBox>
                 </div>

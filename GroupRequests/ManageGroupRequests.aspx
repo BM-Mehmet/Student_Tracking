@@ -20,12 +20,21 @@
                     <asp:TemplateField HeaderText="İşlemler">
                         <ItemTemplate>
                             <asp:Button ID="btnApprove" runat="server" CommandName="Approve" CommandArgument='<%# Eval("request_id") %>' Text="Onayla" CssClass="btn btn-success" />
-                            <asp:TextBox ID="txtRejectReason" runat="server" CssClass="form-control" TextMode="SingleLine" Style="display:none;"></asp:TextBox>
+                            <asp:TextBox ID="txtRejectReason" runat="server" CssClass="form-control" TextMode="SingleLine" Style="display: none;"></asp:TextBox>
                             <asp:Button ID="btnReject" runat="server" Text="Reddet" CommandName="InitialReject" CommandArgument='<%# Eval("request_id") %>' CssClass="btn btn-danger" OnClientClick="return showRejectReasonBox(this);" />
-                            <asp:Button ID="btnConfirmReject" runat="server" Text="Reddet Onayla" CommandName="Reject" CommandArgument='<%# Eval("request_id") %>' CssClass="btn btn-danger" Style="display:none;" />
+                            <asp:Button ID="btnConfirmReject" runat="server" Text="Reddet Onayla" CommandName="Reject" CommandArgument='<%# Eval("request_id") %>' CssClass="btn btn-danger" Style="display: none;" />
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>
+                <EditRowStyle BackColor="#2461BF" />
+                <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+                <RowStyle BackColor="#EFF3FB" />
+                <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                <SortedAscendingCellStyle BackColor="#F5F7FB" />
+                <SortedDescendingCellStyle BackColor="#E9EBEF" />
+                <SortedDescendingHeaderStyle BackColor="#4870BE" />
             </asp:GridView>
         </div>
     </div>

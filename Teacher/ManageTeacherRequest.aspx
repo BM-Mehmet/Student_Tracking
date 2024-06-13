@@ -1,6 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ManageTeacherRequest.aspx.cs" Inherits="StudentTracking.Teacher.ManageTeacherRequests" %>
 
-
 <%@ Register Src="~/Navbar.ascx" TagName="Navbar" TagPrefix="uc" %>
 <!DOCTYPE html>
 
@@ -12,9 +11,9 @@
 </head>
 <body>
     <uc:Navbar ID="Navbar1" runat="server" />
-    <form id="form1" runat="server" class="container mt-5">
+    <form id="form2" runat="server" class="container mt-5">
         <h2>Öğretmene Katılma İsteklerini Yönet</h2>
-        <asp:GridView ID="gvTeacherRequests" runat="server" AutoGenerateColumns="False" CssClass="table table-bordered" OnRowCommand="gvTeacherRequests_RowCommand">
+        <asp:GridView ID="GvTeacherRequests" runat="server" AutoGenerateColumns="False" CssClass="table table-bordered" OnRowCommand="gvTeacherRequests_RowCommand">
             <Columns>
                 <asp:BoundField DataField="StudentName" HeaderText="Öğrenci Adı" />
                 <asp:BoundField DataField="CourseName" HeaderText="Ders Adı" />
@@ -28,8 +27,16 @@
                         <asp:Button ID="btnConfirmReject" runat="server" Text="Reddet Onayla" CommandName="Reject" CommandArgument='<%# Eval("RequestId") %>' CssClass="btn btn-danger" Style="display: none;" />
                     </ItemTemplate>
                 </asp:TemplateField>
-
             </Columns>
+            <EditRowStyle BackColor="#2461BF" />
+            <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+            <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+            <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+            <RowStyle BackColor="#EFF3FB" />
+            <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+            <SortedAscendingCellStyle BackColor="#F5F7FB" />
+            <SortedDescendingCellStyle BackColor="#E9EBEF" />
+            <SortedDescendingHeaderStyle BackColor="#4870BE" />
         </asp:GridView>
     </form>
 
@@ -47,7 +54,6 @@
             confirmRejectButton.style.display = 'block'; // Reddet Onayla düğmesini göster
             return false;  // Form submit'ini durdur
         }
-
     </script>
 </body>
 </html>

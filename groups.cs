@@ -19,8 +19,9 @@ namespace StudentTracking
         {
             this.group_memberships = new HashSet<group_memberships>();
             this.group_requests = new HashSet<group_requests>();
-            this.students = new HashSet<students>();
             this.TeacherRequests = new HashSet<TeacherRequests>();
+            this.GroupTeacherAssignments = new HashSet<GroupTeacherAssignments>();
+            this.students = new HashSet<students>();
         }
     
         public int id { get; set; }
@@ -39,9 +40,11 @@ namespace StudentTracking
         public virtual ICollection<group_requests> group_requests { get; set; }
         public virtual program program { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TeacherRequests> TeacherRequests { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<GroupTeacherAssignments> GroupTeacherAssignments { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<students> students { get; set; }
         public virtual students students1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TeacherRequests> TeacherRequests { get; set; }
     }
 }

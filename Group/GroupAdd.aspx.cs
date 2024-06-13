@@ -83,7 +83,7 @@ namespace StudentTracking.Group
             {
                 group_name = groupName,
                 leader_student_id = leaderStudentId,
-                program_id = programId,
+                program_id = 1,
                 description = groupDescription,
                 course_id = courseId,
                 is_visible = true

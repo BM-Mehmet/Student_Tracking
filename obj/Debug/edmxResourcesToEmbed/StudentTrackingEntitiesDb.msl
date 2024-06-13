@@ -86,20 +86,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="students">
-      <EntityTypeMapping TypeName="StudentTrackingDBModel.students">
-        <MappingFragment StoreEntitySet="students">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="name" ColumnName="name" />
-          <ScalarProperty Name="surname" ColumnName="surname" />
-          <ScalarProperty Name="email" ColumnName="email" />
-          <ScalarProperty Name="group_id" ColumnName="group_id" />
-          <ScalarProperty Name="password" ColumnName="password" />
-          <ScalarProperty Name="is_visible" ColumnName="is_visible" />
-          <ScalarProperty Name="student_no" ColumnName="student_no" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="TeacherRequests">
       <EntityTypeMapping TypeName="StudentTrackingDBModel.TeacherRequests">
         <MappingFragment StoreEntitySet="TeacherRequests">
@@ -135,6 +121,30 @@
           <ScalarProperty Name="TeacherId" ColumnName="TeacherId" />
           <ScalarProperty Name="CourseId" ColumnName="CourseId" />
           <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GroupTeacherAssignments">
+      <EntityTypeMapping TypeName="StudentTrackingDBModel.GroupTeacherAssignments">
+        <MappingFragment StoreEntitySet="GroupTeacherAssignments">
+          <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+          <ScalarProperty Name="TeacherId" ColumnName="TeacherId" />
+          <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="students">
+      <EntityTypeMapping TypeName="StudentTrackingDBModel.students">
+        <MappingFragment StoreEntitySet="students">
+          <ScalarProperty Name="student_no" ColumnName="student_no" />
+          <ScalarProperty Name="is_visible" ColumnName="is_visible" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="group_id" ColumnName="group_id" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="surname" ColumnName="surname" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

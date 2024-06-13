@@ -11,7 +11,7 @@ namespace StudentTracking.Group
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["UserRole"] != null && Session["UserRole"].ToString() == "admin" && Session["UserRole"].ToString() == "teacher")
+            if (Session["UserRole"] != null && (Session["UserRole"].ToString() == "admin" || Session["UserRole"].ToString() == "teacher" || Session["UserRole"].ToString() == "öğrenci"))
             {
                 if (Session["UserId"] == null)
                 {
