@@ -13,44 +13,43 @@
 </head>
 <body>
     <uc:Navbar ID="Navbar1" runat="server" />
-    <form id="form1" runat="server">
-        <div class="container mt-4">
-            <asp:GridView ID="GridViewGroups" runat="server" CssClass="table table-bordered table-hover" AutoGenerateColumns="false">
-                <Columns>
-                    <asp:BoundField DataField="GroupName" HeaderText="Grup Adı" />
-                    <asp:BoundField DataField="CourseName" HeaderText="Ders Adı" />
-                    <asp:TemplateField HeaderText="Üyeler">
-                        <ItemTemplate>
-                            <asp:GridView ID="GridViewMembers" runat="server" AutoGenerateColumns="False" CssClass="table table-sm">
-                                <Columns>
-                                    <asp:BoundField DataField="StudentName" HeaderText="Öğrenci adı" />
-                                    <asp:BoundField DataField="JoinDate" HeaderText="Kayıt Tarihi" DataFormatString="{0:yyyy-MM-dd}" />
-                                    <asp:BoundField DataField="Status" HeaderText="Durumu" />
-                                </Columns>
-                                <EditRowStyle BackColor="#2461BF" />
-                                <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-                                <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-                                <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
-                                <RowStyle BackColor="#EFF3FB" />
-                                <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
-                                <SortedAscendingCellStyle BackColor="#F5F7FB" />
-                                <SortedDescendingCellStyle BackColor="#E9EBEF" />
-                                <SortedDescendingHeaderStyle BackColor="#4870BE" />
-                            </asp:GridView>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                </Columns>
-                <EditRowStyle BackColor="#2461BF" />
-                <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-                <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-                <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
-                <RowStyle BackColor="#EFF3FB" />
-                <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
-                <SortedAscendingCellStyle BackColor="#F5F7FB" />
-                <SortedDescendingCellStyle BackColor="#E9EBEF" />
-                <SortedDescendingHeaderStyle BackColor="#4870BE" />
-            </asp:GridView>
-        </div>
-    </form>
+   <form id="form1" runat="server">
+    <div class="container mt-4">
+        <asp:GridView ID="GridViewGroups" runat="server" CssClass="table table-bordered table-hover" AutoGenerateColumns="false" OnRowDataBound="GridViewGroups_RowDataBound">
+            <Columns>
+                <asp:BoundField DataField="GroupName" HeaderText="Grup Adı" />
+                <asp:BoundField DataField="CourseName" HeaderText="Ders Adı" />
+                <asp:TemplateField HeaderText="Üyeler">
+                    <ItemTemplate>
+                        <asp:GridView ID="GridViewMembers" runat="server" AutoGenerateColumns="False" CssClass="table table-sm">
+                            <Columns>
+                                <asp:BoundField DataField="StudentName" HeaderText="Öğrenci adı" />
+                                <asp:BoundField DataField="JoinDate" HeaderText="Kayıt Tarihi" DataFormatString="{0:yyyy-MM-dd}" />
+                            </Columns>
+                            <EditRowStyle BackColor="#2461BF" />
+                            <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                            <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                            <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+                            <RowStyle BackColor="#EFF3FB" />
+                            <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                            <SortedAscendingCellStyle BackColor="#F5F7FB" />
+                            <SortedDescendingCellStyle BackColor="#E9EBEF" />
+                            <SortedDescendingHeaderStyle BackColor="#4870BE" />
+                        </asp:GridView>
+                    </ItemTemplate>
+                </asp:TemplateField>
+            </Columns>
+            <EditRowStyle BackColor="#2461BF" />
+            <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+            <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+            <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+            <RowStyle BackColor="#EFF3FB" />
+            <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+            <SortedAscendingCellStyle BackColor="#F5F7FB" />
+            <SortedDescendingCellStyle BackColor="#E9EBEF" />
+            <SortedDescendingHeaderStyle BackColor="#4870BE" />
+        </asp:GridView>
+    </div>
+</form>
 </body>
 </html>

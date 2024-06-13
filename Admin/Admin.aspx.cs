@@ -9,11 +9,11 @@ namespace StudentTracking.Admin
 {
     public partial class Admin : System.Web.UI.Page
     {
+        StudentTrackingEntitiesDb db = new StudentTrackingEntitiesDb();
         protected void Page_Load(object sender, EventArgs e)
         {
-
             // Oturum kontrolü - öğretmen olarak giriş yapılmış mı kontrol et
-            if (Session["UserRole"] != null &&  Session["UserRole"].ToString() == "admin")
+            if (Session["UserRole"] != null && (Session["UserRole"].ToString() == "teacher" || Session["UserRole"].ToString() == "admin"))
             {
                 if (!IsPostBack)
                 {
@@ -26,21 +26,16 @@ namespace StudentTracking.Admin
                 Response.Redirect("~/Teacher/TeacherLogin.aspx"); // Giriş sayfasının URL'sini doğru yola göre ayarlayın
             }
         }
-protected void GridViewGroups_RowDataBound(object sender, GridViewRowEventArgs e)
-{
-    if (e.Row.RowType == DataControlRowType.DataRow)
-    {
-        var groupMembers = ((dynamic)e.Row.DataItem).GroupMembers;
-        var gridViewMembers = (GridView)e.Row.FindControl("GridViewMembers");
-
-        if (gridViewMembers != null)
+        protected void GridViewGroups_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-            gridViewMembers.DataSource = groupMembers;
-            gridViewMembers.DataBind();
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                var groupMembers = ((dynamic)e.Row.DataItem).GroupMembers;
+                var gridViewMembers = (GridView)e.Row.FindControl("GridViewMembers");
+                gridViewMembers.DataSource = groupMembers;
+                gridViewMembers.DataBind();
+            }
         }
-    }
-}
-
         private void LoadTeacherGroups()
         {
             int teacherId = Convert.ToInt32(Session["UserId"]);
@@ -67,6 +62,7 @@ protected void GridViewGroups_RowDataBound(object sender, GridViewRowEventArgs e
                 GridViewGroups.DataSource = groupsAndCourses;
                 GridViewGroups.DataBind();
             }
+
         }
 
     }

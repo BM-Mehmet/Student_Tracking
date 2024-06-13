@@ -44,7 +44,8 @@ namespace StudentTracking.Teacher
                     StudentName = r.students.name + " " + r.students.surname,
                     CourseName = r.courses.course_name,
                     JoinMessage = r.JoinMessage,
-                    RequestDate = r.RequestDate
+                    RequestDate = r.RequestDate,
+                    GroupName = db.groups.Where(g=>g.id == r.GroupId).Select(gr=>gr.group_name).FirstOrDefault().ToString() 
                 }).ToList();
 
                 GvTeacherRequests.DataSource = requests;

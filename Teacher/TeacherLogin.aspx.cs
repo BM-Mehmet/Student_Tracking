@@ -39,7 +39,7 @@ namespace StudentTracking.Teacher
                 Session["UserId"] = loginResult.Item3.id;
                 if (loginResult.Item3.is_admin == true)
                 {
-                Response.Redirect(Page.ResolveClientUrl("~/Teacher/ManageTeacherRequest.aspx"));
+                Response.Redirect(Page.ResolveClientUrl("~/Admin/Admin.aspx"));
                 }
                 else
                 {

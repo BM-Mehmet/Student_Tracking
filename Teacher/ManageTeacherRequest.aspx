@@ -19,6 +19,7 @@
                 <asp:BoundField DataField="CourseName" HeaderText="Ders Adı" />
                 <asp:BoundField DataField="JoinMessage" HeaderText="Katılma Mesajı" />
                 <asp:BoundField DataField="RequestDate" HeaderText="İstek Tarihi" DataFormatString="{0:dd/MM/yyyy}" HtmlEncode="False" />
+                <asp:BoundField DataField="GroupName" HeaderText="Grup Adı" />
                 <asp:TemplateField HeaderText="İşlemler">
                     <ItemTemplate>
                         <asp:Button ID="btnApprove" runat="server" CommandName="Approve" CommandArgument='<%# Eval("RequestId") %>' Text="Onayla" CssClass="btn btn-success" />

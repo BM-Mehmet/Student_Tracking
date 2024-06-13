@@ -7,24 +7,52 @@
       "RelativeMoniker": "D:0:0:{9479ECB3-5559-453A-B168-4CE54BA042BA}|StudentTracking.csproj|solutionrelative:teacher\\tmanageteacherrequests.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9479ECB3-5559-453A-B168-4CE54BA042BA}|StudentTracking.csproj|c:\\users\\bmmeh\\source\\repos\\student_tracking\\grouprequests\\managegrouprequests.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "AbsoluteMoniker": "D:0:0:{9479ECB3-5559-453A-B168-4CE54BA042BA}|StudentTracking.csproj|c:\\users\\bmmeh\\source\\repos\\student_tracking\\teacher\\tmanageteacherrequests.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9479ECB3-5559-453A-B168-4CE54BA042BA}|StudentTracking.csproj|solutionrelative:teacher\\tmanageteacherrequests.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9479ECB3-5559-453A-B168-4CE54BA042BA}|StudentTracking.csproj|c:\\users\\bmmeh\\source\\repos\\student_tracking\\teacher\\manageteacherrequest.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{9479ECB3-5559-453A-B168-4CE54BA042BA}|StudentTracking.csproj|solutionrelative:teacher\\manageteacherrequest.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9479ECB3-5559-453A-B168-4CE54BA042BA}|StudentTracking.csproj|c:\\users\\bmmeh\\source\\repos\\student_tracking\\teacher\\manageteacherrequest.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9479ECB3-5559-453A-B168-4CE54BA042BA}|StudentTracking.csproj|solutionrelative:teacher\\manageteacherrequest.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9479ECB3-5559-453A-B168-4CE54BA042BA}|StudentTracking.csproj|c:\\users\\bmmeh\\source\\repos\\student_tracking\\admin\\admin.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9479ECB3-5559-453A-B168-4CE54BA042BA}|StudentTracking.csproj|solutionrelative:admin\\admin.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9479ECB3-5559-453A-B168-4CE54BA042BA}|StudentTracking.csproj|c:\\users\\bmmeh\\source\\repos\\student_tracking\\teacher\\teacherlogin.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9479ECB3-5559-453A-B168-4CE54BA042BA}|StudentTracking.csproj|solutionrelative:teacher\\teacherlogin.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9479ECB3-5559-453A-B168-4CE54BA042BA}|StudentTracking.csproj|c:\\users\\bmmeh\\source\\repos\\student_tracking\\admin\\admin.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{9479ECB3-5559-453A-B168-4CE54BA042BA}|StudentTracking.csproj|solutionrelative:admin\\admin.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9479ECB3-5559-453A-B168-4CE54BA042BA}|StudentTracking.csproj|c:\\users\\bmmeh\\source\\repos\\student_tracking\\teacher\\teacher.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{9479ECB3-5559-453A-B168-4CE54BA042BA}|StudentTracking.csproj|solutionrelative:teacher\\teacher.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9479ECB3-5559-453A-B168-4CE54BA042BA}|StudentTracking.csproj|c:\\users\\bmmeh\\source\\repos\\student_tracking\\teacher\\teacher.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9479ECB3-5559-453A-B168-4CE54BA042BA}|StudentTracking.csproj|solutionrelative:teacher\\teacher.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9479ECB3-5559-453A-B168-4CE54BA042BA}|StudentTracking.csproj|C:\\Users\\bmmeh\\source\\repos\\Student_Tracking\\grouprequests\\managegrouprequests.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
       "RelativeMoniker": "D:0:0:{9479ECB3-5559-453A-B168-4CE54BA042BA}|StudentTracking.csproj|solutionrelative:grouprequests\\managegrouprequests.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9479ECB3-5559-453A-B168-4CE54BA042BA}|StudentTracking.csproj|c:\\users\\bmmeh\\source\\repos\\student_tracking\\group\\grouplist.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{9479ECB3-5559-453A-B168-4CE54BA042BA}|StudentTracking.csproj|C:\\Users\\bmmeh\\source\\repos\\Student_Tracking\\group\\grouplist.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9479ECB3-5559-453A-B168-4CE54BA042BA}|StudentTracking.csproj|solutionrelative:group\\grouplist.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9479ECB3-5559-453A-B168-4CE54BA042BA}|StudentTracking.csproj|c:\\users\\bmmeh\\source\\repos\\student_tracking\\group\\grouplist.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "AbsoluteMoniker": "D:0:0:{9479ECB3-5559-453A-B168-4CE54BA042BA}|StudentTracking.csproj|C:\\Users\\bmmeh\\source\\repos\\Student_Tracking\\group\\grouplist.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
       "RelativeMoniker": "D:0:0:{9479ECB3-5559-453A-B168-4CE54BA042BA}|StudentTracking.csproj|solutionrelative:group\\grouplist.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{9479ECB3-5559-453A-B168-4CE54BA042BA}|StudentTracking.csproj|C:\\Users\\bmmeh\\source\\repos\\Student_Tracking\\student\\studentlist.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9479ECB3-5559-453A-B168-4CE54BA042BA}|StudentTracking.csproj|solutionrelative:student\\studentlist.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9479ECB3-5559-453A-B168-4CE54BA042BA}|StudentTracking.csproj|C:\\Users\\bmmeh\\source\\repos\\Student_Tracking\\studenttrackingentitiesdb.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|",
-      "RelativeMoniker": "D:0:0:{9479ECB3-5559-453A-B168-4CE54BA042BA}|StudentTracking.csproj|solutionrelative:studenttrackingentitiesdb.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,7 +62,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 10,
           "Children": [
             {
               "$type": "Bookmark",
@@ -43,6 +71,110 @@
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "TManageTeacherRequests.aspx.cs",
+              "DocumentMoniker": "C:\\Users\\bmmeh\\source\\repos\\Student_Tracking\\Teacher\\TManageTeacherRequests.aspx.cs",
+              "RelativeDocumentMoniker": "Teacher\\TManageTeacherRequests.aspx.cs",
+              "ToolTip": "C:\\Users\\bmmeh\\source\\repos\\Student_Tracking\\Teacher\\TManageTeacherRequests.aspx.cs",
+              "RelativeToolTip": "Teacher\\TManageTeacherRequests.aspx.cs",
+              "ViewState": "AQIAABAAAAAAAAAAAAAIwBcAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-13T14:03:55.474Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ManageTeacherRequest.aspx.cs",
+              "DocumentMoniker": "C:\\Users\\bmmeh\\source\\repos\\Student_Tracking\\Teacher\\ManageTeacherRequest.aspx.cs",
+              "RelativeDocumentMoniker": "Teacher\\ManageTeacherRequest.aspx.cs",
+              "ToolTip": "C:\\Users\\bmmeh\\source\\repos\\Student_Tracking\\Teacher\\ManageTeacherRequest.aspx.cs",
+              "RelativeToolTip": "Teacher\\ManageTeacherRequest.aspx.cs",
+              "ViewState": "AQIAABsAAAAAAAAAAAAYwDUAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-13T13:54:38.699Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ManageTeacherRequest.aspx",
+              "DocumentMoniker": "C:\\Users\\bmmeh\\source\\repos\\Student_Tracking\\Teacher\\ManageTeacherRequest.aspx",
+              "RelativeDocumentMoniker": "Teacher\\ManageTeacherRequest.aspx",
+              "ToolTip": "C:\\Users\\bmmeh\\source\\repos\\Student_Tracking\\Teacher\\ManageTeacherRequest.aspx",
+              "RelativeToolTip": "Teacher\\ManageTeacherRequest.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2024-06-13T13:54:36.55Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "TeacherLogin.aspx.cs",
+              "DocumentMoniker": "C:\\Users\\bmmeh\\source\\repos\\Student_Tracking\\Teacher\\TeacherLogin.aspx.cs",
+              "RelativeDocumentMoniker": "Teacher\\TeacherLogin.aspx.cs",
+              "ToolTip": "C:\\Users\\bmmeh\\source\\repos\\Student_Tracking\\Teacher\\TeacherLogin.aspx.cs",
+              "RelativeToolTip": "Teacher\\TeacherLogin.aspx.cs",
+              "ViewState": "AQIAABIAAAAAAAAAAAAYwCwAAAARAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-13T13:45:06.985Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Teacher.aspx.cs",
+              "DocumentMoniker": "C:\\Users\\bmmeh\\source\\repos\\Student_Tracking\\Teacher\\Teacher.aspx.cs",
+              "RelativeDocumentMoniker": "Teacher\\Teacher.aspx.cs",
+              "ToolTip": "C:\\Users\\bmmeh\\source\\repos\\Student_Tracking\\Teacher\\Teacher.aspx.cs",
+              "RelativeToolTip": "Teacher\\Teacher.aspx.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAEAAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-13T13:41:50.819Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Admin.aspx.cs",
+              "DocumentMoniker": "C:\\Users\\bmmeh\\source\\repos\\Student_Tracking\\Admin\\Admin.aspx.cs",
+              "RelativeDocumentMoniker": "Admin\\Admin.aspx.cs",
+              "ToolTip": "C:\\Users\\bmmeh\\source\\repos\\Student_Tracking\\Admin\\Admin.aspx.cs",
+              "RelativeToolTip": "Admin\\Admin.aspx.cs",
+              "ViewState": "AQIAACAAAAAAAAAAAAAIwDAAAAAYAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-13T13:41:14.767Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Admin.aspx",
+              "DocumentMoniker": "C:\\Users\\bmmeh\\source\\repos\\Student_Tracking\\Admin\\Admin.aspx",
+              "RelativeDocumentMoniker": "Admin\\Admin.aspx",
+              "ToolTip": "C:\\Users\\bmmeh\\source\\repos\\Student_Tracking\\Admin\\Admin.aspx",
+              "RelativeToolTip": "Admin\\Admin.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2024-06-13T13:41:09.974Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Teacher.aspx",
+              "DocumentMoniker": "C:\\Users\\bmmeh\\source\\repos\\Student_Tracking\\Teacher\\Teacher.aspx",
+              "RelativeDocumentMoniker": "Teacher\\Teacher.aspx",
+              "ToolTip": "C:\\Users\\bmmeh\\source\\repos\\Student_Tracking\\Teacher\\Teacher.aspx",
+              "RelativeToolTip": "Teacher\\Teacher.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2024-06-13T13:41:03.142Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -59,7 +191,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 11,
               "Title": "GroupList.aspx",
               "DocumentMoniker": "C:\\Users\\bmmeh\\source\\repos\\Student_Tracking\\Group\\GroupList.aspx",
               "RelativeDocumentMoniker": "Group\\GroupList.aspx",
@@ -72,7 +204,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 10,
               "Title": "GroupList.aspx.cs",
               "DocumentMoniker": "C:\\Users\\bmmeh\\source\\repos\\Student_Tracking\\Group\\GroupList.aspx.cs",
               "RelativeDocumentMoniker": "Group\\GroupList.aspx.cs",
@@ -85,7 +217,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 9,
               "Title": "ManageGroupRequests.aspx",
               "DocumentMoniker": "C:\\Users\\bmmeh\\source\\repos\\Student_Tracking\\GroupRequests\\ManageGroupRequests.aspx",
               "RelativeDocumentMoniker": "GroupRequests\\ManageGroupRequests.aspx",
@@ -98,18 +230,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "StudentTrackingEntitiesDb.edmx [Diagram1]",
-              "DocumentMoniker": "C:\\Users\\bmmeh\\source\\repos\\Student_Tracking\\StudentTrackingEntitiesDb.edmx",
-              "RelativeDocumentMoniker": "StudentTrackingEntitiesDb.edmx",
-              "ToolTip": "C:\\Users\\bmmeh\\source\\repos\\Student_Tracking\\StudentTrackingEntitiesDb.edmx [Diagram1]",
-              "RelativeToolTip": "StudentTrackingEntitiesDb.edmx [Diagram1]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001116|",
-              "WhenOpened": "2024-06-13T12:07:17.513Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 12,
               "Title": "StudentList.aspx.cs",
               "DocumentMoniker": "C:\\Users\\bmmeh\\source\\repos\\Student_Tracking\\Student\\StudentList.aspx.cs",
               "RelativeDocumentMoniker": "Student\\StudentList.aspx.cs",
